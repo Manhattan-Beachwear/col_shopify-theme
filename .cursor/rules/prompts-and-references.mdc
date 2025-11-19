@@ -48,3 +48,16 @@ When an AI agent is asked to perform a task that has corresponding documentation
 - Adding a reference to a newly created documentation file
 - Updating commands or scripts that have changed
 - Adding examples of good vs bad practices
+
+## Available Reference Documentation
+
+### Combined Listing Variant Picker
+See `.cursor/references/combined-listing-variant-picker.md` for comprehensive documentation on:
+- Architecture and implementation details
+- Dual variant detection and filtering logic
+- Swatch priority and rendering
+- Event handling and URL synchronization
+- Known issues and solutions
+- Best practices and patterns
+
+This documentation should be consulted when working on or extending the combined listing variant picker feature.

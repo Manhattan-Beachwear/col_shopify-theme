@@ -79,6 +79,23 @@
   if is_rte
     assign element = 'rte-formatter'
   endif
+  
+  # Custom product title processing - looks for a variant in the product title and removes it
+  # Check if this text block contains a product title that needs processing
+  assign processed_text = block.settings.text
+  if closest.product != blank and block.settings.text contains closest.product.title
+    # Extract the title from the HTML/text and process it
+    assign original_title = closest.product.title
+    capture processed_title
+      render 'product-title-processed', product: closest.product
+    endcapture
+    assign processed_title = processed_title | strip
+    
+    # Replace the original title with the processed one in the text
+    if processed_title != original_title
+      assign processed_text = block.settings.text | replace: original_title, processed_title
+    endif
+  endif
 %}
 
 {% if fallback_text != blank and plain_text == blank %}
@@ -87,7 +104,7 @@
   </div>
 {% elsif plain_text != blank %}
   <{{ element }} {{ attributes }}>
-    {{ block.settings.text }}
+    {{ processed_text }}
   </{{ element }}>
 {% endif %}
 
