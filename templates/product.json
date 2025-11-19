@@ -173,14 +173,15 @@
               },
               "blocks": {}
             },
-            "variant_picker_R3rGDr": {
-              "type": "variant-picker",
+            "variant_picker_cl_HHnpk6": {
+              "type": "variant-picker-cl",
+              "name": "Combined Listing Picker",
               "settings": {
                 "variant_style": "buttons",
                 "show_swatches": true,
                 "alignment": "left",
                 "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-end": 8,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -251,7 +252,7 @@
           "block_order": [
             "group_icgrde",
             "divider_VJhene",
-            "variant_picker_R3rGDr",
+            "variant_picker_cl_HHnpk6",
             "buy_buttons_eYQEYi",
             "text_aEtTtq"
           ]
