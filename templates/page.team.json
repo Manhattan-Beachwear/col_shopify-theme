@@ -899,7 +899,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/ITALO_TEAM_PAGE_20236.jpg",
+                "image": "shopify://shop_images/JACK_TEAM_PAGE_202310.jpg",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -960,7 +960,7 @@
                 "text_Uhcmpn": {
                   "type": "text",
                   "settings": {
-                    "text": "<h2>Italo Ferreira</h2>",
+                    "text": "<h2>Jack Freestone</h2>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -986,7 +986,7 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "@ italoferreira",
+                    "label": "@ jackfreestone",
                     "link": "https://www.instagram.com/italoferreira",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
