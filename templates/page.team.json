@@ -2799,7 +2799,7 @@
                 "text_bbQeee": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Ryan Hardy</p>",
+                    "text": "<p>Mitch Coleborn</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
@@ -2825,8 +2825,8 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "@ hardballs",
-                    "link": "https://www.instagram.com/HARDBALLS",
+                    "label": "@ mitch_coleborn",
+                    "link": "https://www.instagram.com/MITCH_COLEBORN",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "width": "fit-content",
