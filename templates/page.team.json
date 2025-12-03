@@ -2546,7 +2546,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/IMAI_TEAM_PAGE_202318.jpg",
+                "image": "shopify://shop_images/JAY_TEAM_PAGE_202312.jpg",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -2607,7 +2607,7 @@
                 "text_zr3Ajt": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Imaikalani DeVault</p>",
+                    "text": "<p>Jay Davies</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "center",
