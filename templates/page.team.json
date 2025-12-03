@@ -1168,7 +1168,7 @@
         "group_Mk96ey",
         "group_PM4bEk"
       ],
-      "name": "t:names.icons_with_text",
+      "name": "Team Row",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -1666,7 +1666,7 @@
         "group_pq4nCE",
         "group_P7DdVM"
       ],
-      "name": "t:names.icons_with_text",
+      "name": "Team Row",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -2164,7 +2164,7 @@
         "group_8VCHt9",
         "group_LmFT8F"
       ],
-      "name": "t:names.icons_with_text",
+      "name": "Team Row",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
@@ -2662,7 +2662,7 @@
         "group_AzQC3r",
         "group_UwdwE7"
       ],
-      "name": "t:names.icons_with_text",
+      "name": "Team Row",
       "settings": {
         "content_direction": "row",
         "vertical_on_mobile": true,
