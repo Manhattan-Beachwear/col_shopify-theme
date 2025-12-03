@@ -81,7 +81,23 @@
 -%}
 
 {% if has_combined_listing and enable_combined %}
-  {% render 'variant-combined-listing-picker', product_resource: closest.product, block: block %}
+  <product-swatches
+    data-product-id="{{ closest.product.id }}"
+    data-product-url="{{ closest.product.url }}"
+    style="
+      --overflow-list-alignment: {{ block_settings.product_swatches_alignment }};
+      --overflow-list-alignment-mobile: {{ block_settings.product_swatches_alignment_mobile }};
+      --product-swatches-alignment: {% if block_settings.product_swatches_alignment == 'flex-start' %}start{% elsif block_settings.product_swatches_alignment == 'flex-end' %}end{% else %}center{% endif %};
+      --product-swatches-alignment-mobile: {% if block_settings.product_swatches_alignment_mobile == 'flex-start' %}start{% elsif block_settings.product_swatches_alignment_mobile == 'flex-end' %}end{% else %}center{% endif %};
+      --product-swatches-padding-block-start: {{ block_settings.product_swatches_padding_top }}px;
+      --product-swatches-padding-block-end: {{ block_settings.product_swatches_padding_bottom }}px;
+      --product-swatches-padding-inline-start: {{ block_settings.product_swatches_padding_left }}px;
+      --product-swatches-padding-inline-end: {{ block_settings.product_swatches_padding_right }}px;
+    "
+    {{ block.shopify_attributes }}
+  >
+    {% render 'variant-combined-listing-picker', product_resource: closest.product, block: block %}
+  </product-swatches>
 {% elsif product_has_swatches %}
   <product-swatches
     data-product-id="{{ closest.product.id }}"
@@ -108,9 +124,12 @@
     width: 100%;
     display: flex;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     gap: 0;
     flex-shrink: 0;
+    /* Add padding to prevent border clipping - account for max border width (10px) + focus outline */
+    padding: calc(var(--style-border-swatch-width, 1px) + var(--focus-outline-width, 2px) + 1px);
+    margin: calc(-1 * (var(--style-border-swatch-width, 1px) + var(--focus-outline-width, 2px) + 1px));
   }
 
   swatches-variant-picker-component {
@@ -126,13 +145,13 @@
 
   swatches-variant-picker-component .variant-option--swatches {
     padding-block: calc(
-        var(--product-swatches-padding-block-start) + var(--focus-outline-offset) + var(--focus-outline-width)
+        var(--product-swatches-padding-block-start) + var(--focus-outline-offset) + var(--focus-outline-width) + var(--style-border-swatch-width, 1px)
       )
-      calc(var(--product-swatches-padding-block-end) + var(--focus-outline-offset) + var(--focus-outline-width));
+      calc(var(--product-swatches-padding-block-end) + var(--focus-outline-offset) + var(--focus-outline-width) + var(--style-border-swatch-width, 1px));
     padding-inline: calc(
-        var(--product-swatches-padding-inline-start) + var(--focus-outline-offset) + (1.5 * var(--focus-outline-width))
+        var(--product-swatches-padding-inline-start) + var(--focus-outline-offset) + (1.5 * var(--focus-outline-width)) + var(--style-border-swatch-width, 1px)
       )
-      calc(var(--product-swatches-padding-inline-end) + var(--focus-outline-offset) + var(--focus-outline-width));
+      calc(var(--product-swatches-padding-inline-end) + var(--focus-outline-offset) + var(--focus-outline-width) + var(--style-border-swatch-width, 1px));
   }
 
   .variant-option--swatches {
@@ -274,6 +293,13 @@
       "unit": "px",
       "default": 0,
       "visible_if": "{{ block.settings.hide_padding == false }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_swatch_text_labels",
+      "label": "Text labels for swatches",
+      "default": false,
+      "info": "When enabled, the selected swatch value will be displayed next to the option name"
     }
   ],
   "presets": [

@@ -977,8 +977,17 @@
     <form>
       <fieldset class="variant-option variant-option--buttons variant-option--swatches">
         <legend>
-          {{ color_option_name | escape }}
-          {%- if current_color_value != blank and current_color_value != '' -%}
+          {{ color_option_name | escape }}:
+          {%- liquid
+            # Check if text labels for swatches is enabled
+            assign show_text_labels = false
+            if block != blank and block.settings.show_swatch_text_labels
+              assign show_text_labels = true
+            elsif settings.show_swatch_text_labels
+              assign show_text_labels = true
+            endif
+          -%}
+          {%- if show_text_labels and current_color_value != blank and current_color_value != '' -%}
             <span class="variant-option__swatch-value">{{ current_color_value | escape }}</span>
           {%- endif %}
         </legend>
@@ -1154,6 +1163,7 @@
                 # Find the first available variant for this color to get variant ID and URL
                 assign first_available_variant_id = ''
                 assign first_available_variant_url = ''
+                assign variant_for_hover = ''
                 if dual_variant_data != ''
                   assign combinations_check = dual_variant_data | split: '|||'
                   for combination_entry in combinations_check
@@ -1169,6 +1179,38 @@
                         if combo_color == color_value_normalized and combo_available == 'true'
                           assign first_available_variant_id = combo_variant_id
                           assign first_available_variant_url = combo_url
+                          
+                          # Try to find the actual variant object for hover preview
+                          if matching_product_for_fallback != ''
+                            assign variant_id_as_number = combo_variant_id | plus: 0
+                            assign variant_id_as_string = combo_variant_id | append: ''
+                            for variant in matching_product_for_fallback.variants
+                              if variant.id == variant_id_as_number or variant.id == variant_id_as_string or variant.id == combo_variant_id
+                                assign variant_for_hover = variant
+                                break
+                              endif
+                            endfor
+                          endif
+                          
+                          # If not found in matching product, check all linked products
+                          if variant_for_hover == blank
+                            if combined_listings_metafield != blank and combined_listings_metafield.value != blank
+                              for linked_product in combined_listings_metafield.value
+                                assign variant_id_as_number = combo_variant_id | plus: 0
+                                assign variant_id_as_string = combo_variant_id | append: ''
+                                for variant in linked_product.variants
+                                  if variant.id == variant_id_as_number or variant.id == variant_id_as_string or variant.id == combo_variant_id
+                                    assign variant_for_hover = variant
+                                    break
+                                  endif
+                                endfor
+                                if variant_for_hover != blank
+                                  break
+                                endif
+                              endfor
+                            endif
+                          endif
+                          
                           break
                         endif
                       endif
@@ -1176,9 +1218,13 @@
                   endfor
                 endif
                 
-                # Get featured media for hover preview
-                assign featured_media = variant_image_for_swatch
-                if featured_media == blank and matching_product_for_fallback != ''
+                # Get featured media for hover preview - prioritize variant's featured media
+                assign featured_media = ''
+                if variant_for_hover != blank and variant_for_hover.featured_media != blank
+                  assign featured_media = variant_for_hover.featured_media
+                elsif variant_image_for_swatch != blank
+                  assign featured_media = variant_image_for_swatch
+                elsif matching_product_for_fallback != '' and matching_product_for_fallback.featured_media != blank
                   assign featured_media = matching_product_for_fallback.featured_media
                 endif
               %}
@@ -1263,8 +1309,17 @@
     <form>
       <fieldset class="variant-option variant-option--buttons variant-option--swatches">
         <legend>
-          {{ variant_option_name | escape }}
-          {%- if selected_color_value != blank and selected_color_value != '' -%}
+          {{ variant_option_name | escape }}:
+          {%- liquid
+            # Check if text labels for swatches is enabled
+            assign show_text_labels = false
+            if block != blank and block.settings.show_swatch_text_labels
+              assign show_text_labels = true
+            elsif settings.show_swatch_text_labels
+              assign show_text_labels = true
+            endif
+          -%}
+          {%- if show_text_labels and selected_color_value != blank and selected_color_value != '' -%}
             <span class="variant-option__swatch-value">{{ selected_color_value | escape }}</span>
           {%- endif %}
         </legend>
@@ -1488,15 +1543,35 @@
               endif
             %}
 
+            {%- liquid
+              # Get the actual variant's featured media for hover preview
+              assign hover_media = variant_image_for_swatch
+              if display_product != '' and variant_id != blank
+                assign variant_id_as_number = variant_id | plus: 0
+                assign variant_id_as_string = variant_id | append: ''
+                for variant in display_product.variants
+                  if variant.id == variant_id or variant.id == variant_id_as_number or variant.id == variant_id_as_string
+                    if variant.featured_media != blank
+                      assign hover_media = variant.featured_media
+                    endif
+                    break
+                  endif
+                endfor
+              endif
+              # Fallback to variant_image_for_swatch if variant doesn't have featured media
+              if hover_media == blank
+                assign hover_media = variant_image_for_swatch
+              endif
+            -%}
             <li class="variant-option__swatch">
               <label
-                {% if variant_image_for_swatch != blank %}
-                  data-media-id="{{ variant_image_for_swatch.id }}"
+                {% if hover_media != blank %}
+                  data-media-id="{{ hover_media.id }}"
                 {% endif %}
                 data-option-available="{{ variant_actually_available }}"
                 class="variant-option__button-label variant-option__button-label--has-swatch swatch-rounded"
-                {% if variant_image_for_swatch != blank %}
-                  on:pointerenter="product-card/previewVariant/{{ variant_image_for_swatch.id }}"
+                {% if hover_media != blank %}
+                  on:pointerenter="product-card/previewVariant/{{ hover_media.id }}"
                   on:pointerleave="product-card/resetVariant"
                 {% endif %}
               >
@@ -1506,8 +1581,8 @@
                   value="{{ variant_id }}"
                   aria-label="{{ product_title | escape }}"
                   data-input-id="1-{{ forloop.index0 }}"
-                  {% if variant_image_for_swatch != blank %}
-                    data-option-media-id="{{ variant_image_for_swatch.id }}"
+                  {% if hover_media != blank %}
+                    data-option-media-id="{{ hover_media.id }}"
                   {% endif %}
                   data-option-available="{{ variant_actually_available }}"
                   {% if product_url != blank %}
@@ -1524,13 +1599,13 @@
                   {% if swatch_to_render != blank %}
                     {% render 'swatch',
                       swatch: swatch_to_render,
-                      variant_image: variant_image_for_swatch,
+                      variant_image: hover_media,
                       option_value_name: option_value_name_for_swatch
                     %}
                   {% else %}
                     {% render 'swatch',
                       swatch: blank,
-                      variant_image: variant_image_for_swatch,
+                      variant_image: hover_media,
                       option_value_name: option_value_name_for_swatch
                     %}
                   {% endif %}
