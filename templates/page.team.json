@@ -1331,7 +1331,7 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "@ griffin_cola",
+                    "label": "@ lewyfinnegan",
                     "link": "https://www.instagram.com/LEWYFINNEGAN",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
@@ -1397,7 +1397,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/JACK_TEAM_PAGE_202310.jpg",
+                "image": "shopify://shop_images/BENNETTS_TEAM_PAGE_2023.jpg",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
