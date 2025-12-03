@@ -1654,10 +1654,10 @@
         "padding-block-end": 40
       }
     },
-    "section_aLgUrx": {
+    "section_akgRTK": {
       "type": "section",
       "blocks": {
-        "image_n3tRg7": {
+        "image_AA8FUc": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/ABOUTweb_DNA.jpg",
@@ -1679,7 +1679,7 @@
           },
           "blocks": {}
         },
-        "group_ATHzF4": {
+        "group_w7Mt33": {
           "type": "group",
           "settings": {
             "content_direction": "column",
@@ -1718,7 +1718,7 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_bTLmAM": {
+            "text_fLpURF": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
@@ -1744,7 +1744,7 @@
               },
               "blocks": {}
             },
-            "text_FDBULy": {
+            "text_jGEMrf": {
               "type": "text",
               "settings": {
                 "text": "<p>Creatures releases the DNA Flex Mould. The world's first cord to mould connection absorbing wave impact, increasing strength, and reducing breakages. Return rate near went to zero once introduced. It was the brand's first patented innovation which still remains today.</p>",
@@ -1771,14 +1771,14 @@
             }
           },
           "block_order": [
-            "text_bTLmAM",
-            "text_FDBULy"
+            "text_fLpURF",
+            "text_jGEMrf"
           ]
         }
       },
       "block_order": [
-        "image_n3tRg7",
-        "group_ATHzF4"
+        "image_AA8FUc",
+        "group_w7Mt33"
       ],
       "name": "t:names.image_with_text",
       "settings": {
@@ -2214,6 +2214,162 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "section_aLgUrx": {
+      "type": "section",
+      "blocks": {
+        "group_ATHzF4": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_bTLmAM": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h2>2017</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_FDBULy": {
+              "type": "text",
+              "settings": {
+                "text": "<p>The lightest, strongest boardcover material in the market is introduced. DIAMOND-TECH® Fabric is a triple laminated, tear-resistant, water-resistant, abrasion-resistant woven fabric exclusive to Creatures of Leisure.</p>",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_bTLmAM",
+            "text_FDBULy"
+          ]
+        },
+        "image_n3tRg7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ABOUTweb_DNA.jpg",
+            "link": "",
+            "image_ratio": "square",
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "group_ATHzF4",
+        "image_n3tRg7"
+      ],
+      "name": "t:names.image_with_text",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "image_zoom_fade_animation": false,
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
     }
   },
   "order": [
@@ -2228,7 +2384,8 @@
     "section_JGjkCD",
     "section_rQyp4z",
     "section_xqCfPc",
-    "section_aLgUrx",
-    "section_EGWYRr"
+    "section_akgRTK",
+    "section_EGWYRr",
+    "section_aLgUrx"
   ]
 }
