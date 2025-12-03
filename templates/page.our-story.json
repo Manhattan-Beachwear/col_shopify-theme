@@ -1722,7 +1722,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>2003</h2>",
+                "text": "<h2>2007</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1747,7 +1747,7 @@
             "text_FDBULy": {
               "type": "text",
               "settings": {
-                "text": "<p>John invents a long-lasting swivel that won't seize up in saltwater. The Stainless Steel Bearing Swivel with acetal plastic remains industry standard in the best surf leashes across the globe, no matter what the brand.</p>",
+                "text": "<p>Creatures releases the DNA Flex Mould. The world's first cord to mould connection absorbing wave impact, increasing strength, and reducing breakages. Return rate near went to zero once introduced. It was the brand's first patented innovation which still remains today.</p>",
                 "width": "fit-content",
                 "max_width": "narrow",
                 "alignment": "left",
