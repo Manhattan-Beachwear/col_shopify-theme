@@ -1637,8 +1637,8 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "@ harrisonsan",
-                    "link": "https://www.instagram.com/HARRISONSAN",
+                    "label": "@ jettschilling",
+                    "link": "https://www.instagram.com/JETTSCHILLING",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "width": "fit-content",
