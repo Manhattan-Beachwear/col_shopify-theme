@@ -2327,8 +2327,8 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "@ hughievaughan",
-                    "link": "https://www.instagram.com/HUGHIEVAUGHAN",
+                    "label": "@ hardballs",
+                    "link": "https://www.instagram.com/HARDBALLS",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "width": "fit-content",
