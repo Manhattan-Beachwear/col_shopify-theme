@@ -166,7 +166,6 @@
   .menu-list__list-item {
     flex-shrink: 0;
     white-space: nowrap;
-    position: relative;
   }
 
   .menu-list__list-item[aria-hidden='true'] {
@@ -290,8 +289,7 @@
     visibility: hidden;
     background-color: var(--color-background);
     position: absolute;
-    width: auto;
-    min-width: max-content;
+    width: 100%;
     left: 0;
     top: calc(100% - 1px + var(--border-bottom-width));
     z-index: var(--layer-header-menu);
@@ -404,7 +402,7 @@
   }
 
   .menu-list__submenu-inner {
-    position: relative;
+    position: static;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -417,6 +415,14 @@
     grid-column: unset;
     padding-inline: var(--padding-lg);
     min-width: 200px;
+  }
+
+  /* For megamenus, center align to ensure all items are visible */
+  .menu-list__list-item:where(:not([slot='overflow'])) > .menu-list__submenu:has(.mega-menu__grid) {
+    left: 0;
+    transform: translateX(0);
+    width: max-content;
+    max-width: min(100vw - var(--padding-inline) * 2, var(--full-page-width, 100%));
   }
 
   .mega-menu__link {
