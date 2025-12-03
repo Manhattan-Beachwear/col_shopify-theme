@@ -87,7 +87,7 @@
         "video_position": "cover",
         "background_image": "{{ collection.image }}",
         "background_image_position": "cover",
-        "image_zoom_fade_animation": false,
+        "image_zoom_fade_animation": true,
         "border": "none",
         "border_width": 1,
         "border_opacity": 100,
