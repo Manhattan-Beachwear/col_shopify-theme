@@ -382,7 +382,7 @@
                       "name": "t:names.icon",
                       "settings": {
                         "icon": "australia_map",
-                        "width": 48,
+                        "width": 40,
                         "link": "",
                         "open_in_new_tab": false
                       },
@@ -409,7 +409,7 @@
                         "corner_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
-                        "padding-inline-start": 0,
+                        "padding-inline-start": 6,
                         "padding-inline-end": 0
                       },
                       "blocks": {}
