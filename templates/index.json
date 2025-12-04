@@ -247,7 +247,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h2>Bad thing come in three</h2>",
+                    "text": "<h2>Bad things come in three</h2>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
