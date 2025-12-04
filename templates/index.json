@@ -24,8 +24,8 @@
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
+            "vertical_alignment_flex_direction_column": "space-between",
+            "gap": 63,
             "inherit_color_scheme": true,
             "color_scheme": "",
             "toggle_overlay": true,
@@ -33,7 +33,7 @@
             "overlay_style": "solid",
             "gradient_direction": "to top",
             "padding-block-start": 100,
-            "padding-block-end": 0,
+            "padding-block-end": 100,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -82,7 +82,7 @@
                   "settings": {
                     "text": "<p>RELIANCE 2.0 IS HERE</p>",
                     "width": "fit-content",
-                    "max_width": "normal",
+                    "max_width": "narrow",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-body--family)",
@@ -437,7 +437,7 @@
         "autoplay": true,
         "autoplay_speed": 5,
         "section_width": "full-width",
-        "slide_height": "medium",
+        "slide_height": "large",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
