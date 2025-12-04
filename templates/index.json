@@ -499,8 +499,8 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 48,
-                "padding-block-end": 48,
+                "padding-block-start": 37,
+                "padding-block-end": 15,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -512,7 +512,7 @@
               "settings": {
                 "text": "<p>Tested in the most intense conditions by the world's best - RELIANCE 2.0 is <strong>BUILT FOR PUNISHMENT</strong>.</p>",
                 "width": "fit-content",
-                "max_width": "narrow",
+                "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
