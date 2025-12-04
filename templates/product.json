@@ -214,6 +214,18 @@
               },
               "blocks": {}
             },
+            "icon_BTqN3R": {
+              "type": "icon",
+              "name": "t:names.icon",
+              "disabled": true,
+              "settings": {
+                "icon": "plant",
+                "width": 28,
+                "link": "",
+                "open_in_new_tab": false
+              },
+              "blocks": {}
+            },
             "product_inventory_BEeQGN": {
               "type": "product-inventory",
               "name": "t:names.product_inventory",
@@ -357,6 +369,7 @@
             "group_icgrde",
             "divider_VJhene",
             "variant_picker_cl_HHnpk6",
+            "icon_BTqN3R",
             "product_inventory_BEeQGN",
             "buy_buttons_eYQEYi",
             "text_aEtTtq",
@@ -412,7 +425,7 @@
           "type": "text",
           "name": "t:names.header",
           "settings": {
-            "text": "<h3>You may also like </h3>",
+            "text": "<p>You may also like </p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
