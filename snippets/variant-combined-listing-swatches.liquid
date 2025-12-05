@@ -970,6 +970,16 @@
                 if hover_media == blank
                   assign hover_media = variant_image_for_swatch
                 endif
+                
+                # Get the featured image URL for the product (for hover preview)
+                assign featured_image_url = ''
+                if display_product != '' and display_product.featured_media != blank
+                  if display_product.featured_media.preview_image != blank
+                    assign featured_image_url = display_product.featured_media.preview_image | image_url: width: 1000
+                  elsif display_product.featured_image != blank
+                    assign featured_image_url = display_product.featured_image | image_url: width: 1000
+                  endif
+                endif
               -%}
               <li class="variant-option__swatch">
                 <label
@@ -981,6 +991,13 @@
                   {% if hover_media != blank %}
                     on:pointerenter="product-card/previewVariant/{{ hover_media.id }}"
                     on:pointerleave="product-card/resetVariant"
+                  {% endif %}
+                  {% if display_product != '' %}
+                    data-product-id="{{ display_product.id }}"
+                    data-product-url="{{ product_url }}"
+                  {% endif %}
+                  {% if featured_image_url != blank %}
+                    data-featured-image-url="{{ featured_image_url }}"
                   {% endif %}
                 >
                   <input
@@ -995,6 +1012,13 @@
                     data-option-available="{{ variant_actually_available }}"
                     {% if product_url != blank %}
                       data-connected-product-url="{{ product_url }}?variant={{ variant_id }}"
+                    {% endif %}
+                    {% if display_product != '' %}
+                      data-product-id="{{ display_product.id }}"
+                      data-product-url="{{ product_url }}"
+                    {% endif %}
+                    {% if featured_image_url != blank %}
+                      data-featured-image-url="{{ featured_image_url }}"
                     {% endif %}
                     {% if is_current_product %}
                       checked

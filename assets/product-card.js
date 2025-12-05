@@ -342,6 +342,14 @@ export class ProductCard extends Component {
   }
   /** @type {number | null} */
   #previousSlideIndex = null;
+  /** @type {string | null} */
+  #originalProductUrl = null;
+  /** @type {string | null} */
+  #originalImageSrc = null;
+  /** @type {string | null} */
+  #selectedSwatchImageUrl = null;
+  /** @type {string | null} */
+  #selectedSwatchProductUrl = null;
 
   /**
    * Handles the slideshow select event.
@@ -364,7 +372,143 @@ export class ProductCard extends Component {
     if (!slideshow) return;
 
     this.resetVariant.cancel();
-    slideshow.select({ id }, undefined, { animate: false });
+
+    // Convert media ID to string for comparison
+    const idStr = id.toString();
+
+    // Check if this is a combined listing swatch (different product)
+    // Get product data directly from the swatch element
+    let connectedProductUrl = null;
+    let featuredImageUrl = null;
+    /** @type {HTMLElement | null} */
+    let swatchElement = null;
+
+    if (event) {
+      const target = event.target instanceof Element ? event.target : null;
+
+      // Find the label or input element that has the product data
+      if (target) {
+        if (target instanceof HTMLLabelElement && target.dataset.productUrl) {
+          swatchElement = target;
+        } else if (target instanceof HTMLInputElement && target.dataset.productUrl) {
+          swatchElement = target;
+        } else {
+          // Try to find the label or input from the target
+          const label = target.closest('label[data-product-url]');
+          if (label instanceof HTMLLabelElement) {
+            swatchElement = label;
+          } else {
+            const input =
+              target.closest('input[data-product-url]') ||
+              target.closest('label')?.querySelector('input[data-product-url]');
+            if (input instanceof HTMLInputElement) {
+              swatchElement = input;
+            }
+          }
+        }
+      }
+
+      // Fallback: search for input with matching media ID
+      if (!swatchElement && idStr) {
+        const allInputs = this.querySelectorAll('input[data-option-media-id]');
+        for (const inp of allInputs) {
+          if (inp instanceof HTMLInputElement && inp.dataset.optionMediaId === idStr) {
+            swatchElement = inp;
+            break;
+          }
+        }
+      }
+
+      // Get the connected product URL from the swatch element
+      if (swatchElement) {
+        // If swatchElement is a label, try to get variant ID and featured image URL from the input inside it
+        let variantId = swatchElement.dataset.variantId;
+        if (!variantId && swatchElement instanceof HTMLLabelElement) {
+          const input = swatchElement.querySelector('input[data-variant-id]');
+          if (input instanceof HTMLInputElement) {
+            variantId = input.dataset.variantId;
+            // Also check for connectedProductUrl on the input
+            if (!swatchElement.dataset.connectedProductUrl && input.dataset.connectedProductUrl) {
+              swatchElement.dataset.connectedProductUrl = input.dataset.connectedProductUrl;
+            }
+            // Get featured image URL from input if not on label
+            if (!swatchElement.dataset.featuredImageUrl && input.dataset.featuredImageUrl) {
+              swatchElement.dataset.featuredImageUrl = input.dataset.featuredImageUrl;
+            }
+          }
+        }
+
+        // Get featured image URL
+        featuredImageUrl = swatchElement.dataset.featuredImageUrl;
+
+        connectedProductUrl =
+          swatchElement.dataset.connectedProductUrl ||
+          (swatchElement.dataset.productUrl && variantId
+            ? `${swatchElement.dataset.productUrl}?variant=${variantId}`
+            : swatchElement.dataset.productUrl);
+      }
+    }
+
+    // Try to find the slide with this media ID
+    const slide = Array.from(slideshow.slides || []).find((s) => s.getAttribute('slide-id') === idStr);
+
+    if (slide) {
+      // Slide exists in current product - select it
+      slideshow.select({ id: idStr }, undefined, { animate: false });
+    } else if (connectedProductUrl && featuredImageUrl) {
+      // This is a combined listing - different product
+      // Store original URL if not already stored
+      if (!this.#originalProductUrl) {
+        this.#originalProductUrl = this.refs.productCardLink.href;
+      }
+
+      // Update the product card link URL to point to the connected product
+      this.refs.productCardLink.href = connectedProductUrl;
+
+      // Also update other links if they exist
+      const { cardGalleryLink, productTitleLink } = this.refs;
+      if (cardGalleryLink instanceof HTMLAnchorElement) {
+        cardGalleryLink.href = connectedProductUrl;
+      }
+      if (productTitleLink instanceof HTMLAnchorElement) {
+        productTitleLink.href = connectedProductUrl;
+      }
+
+      // Update the current slide's image if we have a featured image URL
+      if (featuredImageUrl && slideshow.slides && slideshow.slides.length > 0) {
+        const currentSlide = slideshow.slides[slideshow.current || 0];
+        if (currentSlide) {
+          const img = currentSlide.querySelector('img');
+          if (img instanceof HTMLImageElement) {
+            // Store original image source if not already stored
+            if (!this.#originalImageSrc) {
+              this.#originalImageSrc = img.src || '';
+            }
+
+            // Update the image source
+            if (featuredImageUrl) {
+              img.src = featuredImageUrl;
+              img.srcset = featuredImageUrl;
+            }
+            // Also update any picture source elements
+            if (featuredImageUrl) {
+              const picture = currentSlide.querySelector('picture');
+              if (picture) {
+                const sources = picture.querySelectorAll('source');
+                sources.forEach((source) => {
+                  if (source instanceof HTMLSourceElement && source.srcset) {
+                    source.srcset = featuredImageUrl;
+                  }
+                });
+              }
+            }
+          }
+        }
+      }
+    } else {
+      // Regular variant preview - try to select the slide
+      slideshow.select({ id: idStr }, undefined, { animate: false });
+    }
 
     // Update badge visibility based on variant availability
     this.#updateBadgeVisibility(event);
@@ -416,6 +560,84 @@ export class ProductCard extends Component {
 
     if (!slideshow) return;
 
+    // Restore original URL if it was changed (combined listing hover)
+    if (this.#originalProductUrl) {
+      this.refs.productCardLink.href = this.#originalProductUrl;
+
+      // Also restore other links if they exist
+      const { cardGalleryLink, productTitleLink } = this.refs;
+      if (cardGalleryLink instanceof HTMLAnchorElement) {
+        cardGalleryLink.href = this.#originalProductUrl;
+      }
+      if (productTitleLink instanceof HTMLAnchorElement) {
+        productTitleLink.href = this.#originalProductUrl;
+      }
+
+      this.#originalProductUrl = null;
+    }
+
+    // If there's a selected swatch (clicked), restore to that instead of original
+    if (this.#selectedSwatchImageUrl && slideshow.slides && slideshow.slides.length > 0) {
+      const currentSlide = slideshow.slides[slideshow.current || 0];
+      if (currentSlide) {
+        const img = currentSlide.querySelector('img');
+        if (img instanceof HTMLImageElement && this.#selectedSwatchImageUrl) {
+          const selectedImageUrl = this.#selectedSwatchImageUrl;
+          img.src = selectedImageUrl;
+          img.srcset = selectedImageUrl;
+          // Also update picture source elements
+          const picture = currentSlide.querySelector('picture');
+          if (picture) {
+            const sources = picture.querySelectorAll('source');
+            sources.forEach((source) => {
+              if (source instanceof HTMLSourceElement && source.srcset) {
+                source.srcset = selectedImageUrl;
+              }
+            });
+          }
+        }
+      }
+      // Restore selected product URL
+      if (this.#selectedSwatchProductUrl) {
+        this.refs.productCardLink.href = this.#selectedSwatchProductUrl;
+        const { cardGalleryLink, productTitleLink } = this.refs;
+        if (cardGalleryLink instanceof HTMLAnchorElement) {
+          cardGalleryLink.href = this.#selectedSwatchProductUrl;
+        }
+        if (productTitleLink instanceof HTMLAnchorElement) {
+          productTitleLink.href = this.#selectedSwatchProductUrl;
+        }
+      }
+      // Clear hover state (but keep selected state)
+      this.#originalImageSrc = null;
+      this.#originalProductUrl = null;
+      return;
+    }
+
+    // Restore original image if it was changed (combined listing hover, no selection)
+    if (this.#originalImageSrc && slideshow.slides && slideshow.slides.length > 0) {
+      const currentSlide = slideshow.slides[slideshow.current || 0];
+      if (currentSlide) {
+        const img = currentSlide.querySelector('img');
+        if (img instanceof HTMLImageElement) {
+          const originalSrc = this.#originalImageSrc;
+          img.src = originalSrc;
+          img.srcset = originalSrc;
+          // Also restore picture source elements
+          const picture = currentSlide.querySelector('picture');
+          if (picture) {
+            const sources = picture.querySelectorAll('source');
+            sources.forEach((source) => {
+              if (source instanceof HTMLSourceElement && source.srcset) {
+                source.srcset = originalSrc;
+              }
+            });
+          }
+          this.#originalImageSrc = null;
+        }
+      }
+    }
+
     // If we have a selected variant, always use its image
     if (this.variantPicker?.selectedOption) {
       const id = this.variantPicker.selectedOption.dataset.optionMediaId;
@@ -442,6 +664,16 @@ export class ProductCard extends Component {
     // Reset badge to product's default availability
     this.#resetBadgeVisibility();
   };
+
+  /**
+   * Sets the selected swatch for combined listings (persists image on click).
+   * @param {string | null} imageUrl - The image URL of the selected swatch.
+   * @param {string | null} productUrl - The product URL of the selected swatch.
+   */
+  setSelectedSwatch(imageUrl, productUrl) {
+    this.#selectedSwatchImageUrl = imageUrl;
+    this.#selectedSwatchProductUrl = productUrl;
+  }
 
   /**
    * Updates the badge visibility based on the variant being previewed.
@@ -635,6 +867,9 @@ if (!customElements.get('product-card')) {
  * @extends {VariantPicker<SwatchesRefs>}
  */
 class SwatchesVariantPickerComponent extends VariantPicker {
+  /** @type {AbortController | undefined} */
+  #combinedListingAbortController;
+
   connectedCallback() {
     super.connectedCallback();
 
@@ -658,6 +893,64 @@ class SwatchesVariantPickerComponent extends VariantPicker {
   }
 
   /**
+   * Fetches a combined listing product and updates the product card.
+   * @param {string} requestUrl - The URL to fetch.
+   */
+  #fetchCombinedListingProduct(requestUrl) {
+    // Abort any pending request
+    if (this.#combinedListingAbortController) {
+      this.#combinedListingAbortController.abort();
+    }
+    this.#combinedListingAbortController = new AbortController();
+
+    fetch(requestUrl, { signal: this.#combinedListingAbortController.signal })
+      .then((response) => response.text())
+      .then((responseText) => {
+        const html = new DOMParser().parseFromString(responseText, 'text/html');
+
+        // Find the product card in the response
+        const newProductCard = html.querySelector('product-card');
+        if (!newProductCard) return;
+
+        // Find the current product card
+        const currentProductCard = this.parentProductCard;
+        if (!(currentProductCard instanceof ProductCard)) return;
+
+        // Morph the entire product card
+        morph(currentProductCard, newProductCard);
+
+        // Dispatch variant update event
+        const variantScript = newProductCard.querySelector(
+          'swatches-variant-picker-component script[type="application/json"]'
+        );
+        if (variantScript?.textContent) {
+          const variantData = JSON.parse(variantScript.textContent);
+          const selectedInput = newProductCard.querySelector('input[type="radio"]:checked[data-variant-id]');
+          const selectedOptionId = selectedInput instanceof HTMLInputElement ? selectedInput.dataset.variantId : null;
+
+          if (selectedOptionId && newProductCard instanceof HTMLElement) {
+            const htmlDoc = new DOMParser().parseFromString(responseText, 'text/html');
+            currentProductCard.dispatchEvent(
+              new VariantUpdateEvent(variantData, selectedOptionId, {
+                html: htmlDoc,
+                productId: newProductCard.dataset.productId || '',
+                newProduct: {
+                  id: newProductCard.dataset.productId || '',
+                  url: newProductCard.dataset.productUrl || '',
+                },
+              })
+            );
+          }
+        }
+      })
+      .catch((error) => {
+        if (error.name !== 'AbortError') {
+          // Silently handle errors
+        }
+      });
+  }
+
+  /**
    * Override the variantChanged method to handle unavailable swatches with available alternatives.
    * @param {Event} event - The variant change event.
    */
@@ -671,9 +964,19 @@ class SwatchesVariantPickerComponent extends VariantPicker {
     const firstAvailableVariantId = clickedSwatch.dataset.firstAvailableOrFirstVariantId;
 
     // Check if this swatch points to a different product (combined listing)
-    const connectedProductUrl = clickedSwatch.dataset.connectedProductUrl;
+    // Use product data from the swatch element directly
+    const swatchProductId = clickedSwatch.dataset.productId;
+    const swatchProductUrl = clickedSwatch.dataset.productUrl;
+    const connectedProductUrl =
+      clickedSwatch.dataset.connectedProductUrl ||
+      (swatchProductUrl && clickedSwatch.dataset.variantId
+        ? `${swatchProductUrl}?variant=${clickedSwatch.dataset.variantId}`
+        : swatchProductUrl);
     const currentProductUrl = this.dataset.productUrl?.split('?')[0];
-    const isDifferentProduct = Boolean(connectedProductUrl && connectedProductUrl !== currentProductUrl);
+    const isDifferentProduct = Boolean(
+      (swatchProductId && swatchProductId !== this.dataset.productId) ||
+        (connectedProductUrl && connectedProductUrl.split('?')[0] !== currentProductUrl)
+    );
 
     // For swatch inputs, check if we need special handling
     if (isSwatchInput && availableCount > 0 && firstAvailableVariantId) {
@@ -706,29 +1009,73 @@ class SwatchesVariantPickerComponent extends VariantPicker {
 
     // For combined listings with different products, update the product card image
     if (isDifferentProduct && this.parentProductCard instanceof ProductCard) {
-      // Get the media ID from the swatch label (set by variant-combined-listing-picker)
+      // Prevent default handling to avoid the option value ID error
+      event.stopPropagation();
+
+      // Update the selected option visually
+      this.updateSelectedOption(clickedSwatch);
+
+      // Get the media ID from the swatch label (set by variant-combined-listing-swatches)
       const swatchLabel = clickedSwatch.closest('label');
       const mediaId = swatchLabel?.dataset.mediaId || clickedSwatch.dataset.optionMediaId;
 
-      // If we have a media ID, try to update the slideshow immediately
-      if (mediaId && this.parentProductCard.refs.slideshow) {
+      // Get the featured image URL from the swatch
+      const featuredImageUrl = swatchLabel?.dataset.featuredImageUrl || clickedSwatch.dataset.featuredImageUrl;
+
+      // Store the selected swatch's image and URL (for persistence)
+      this.parentProductCard.setSelectedSwatch(featuredImageUrl || null, connectedProductUrl || null);
+
+      // Update the image if we have a featured image URL
+      if (featuredImageUrl && this.parentProductCard.refs.slideshow) {
         const slideshow = this.parentProductCard.refs.slideshow;
-        const mediaIdStr = mediaId.toString();
+        const mediaIdStr = mediaId?.toString();
 
-        // Try to find the slide with this media ID
-        const slide = Array.from(slideshow.slides || []).find((s) => s.getAttribute('slide-id') === mediaIdStr);
+        // Try to find the slide with this media ID first
+        let slide = null;
+        if (mediaIdStr) {
+          slide = Array.from(slideshow.slides || []).find((s) => s.getAttribute('slide-id') === mediaIdStr);
+        }
 
-        if (slide) {
-          // Slide exists - select it immediately for instant feedback
+        if (slide && mediaIdStr) {
+          // Slide exists - select it
           slideshow.select({ id: mediaIdStr }, undefined, { animate: false });
+        } else if (slideshow.slides && slideshow.slides.length > 0) {
+          // Update the current slide's image
+          const currentSlide = slideshow.slides[slideshow.current || 0];
+          if (currentSlide) {
+            const img = currentSlide.querySelector('img');
+            if (img instanceof HTMLImageElement && featuredImageUrl) {
+              img.src = featuredImageUrl;
+              img.srcset = featuredImageUrl;
+              // Also update any picture source elements
+              if (featuredImageUrl) {
+                const picture = currentSlide.querySelector('picture');
+                if (picture) {
+                  const sources = picture.querySelectorAll('source');
+                  sources.forEach((source) => {
+                    if (source instanceof HTMLSourceElement && source.srcset) {
+                      source.srcset = featuredImageUrl;
+                    }
+                  });
+                }
+              }
+            }
+          }
         }
       }
 
-      // Fetch the updated section to update other product card data
-      // The #updateProductCardImages method will handle updating the slideshow if the slide doesn't exist
-      const selectedOption = event.target instanceof HTMLInputElement ? event.target : event.target;
-      const requestUrl = this.buildRequestUrl(selectedOption);
-      this.fetchUpdatedSection(requestUrl, false);
+      // Update the URL (but don't navigate)
+      if (connectedProductUrl) {
+        // Update the product card link URL
+        this.parentProductCard.refs.productCardLink.href = connectedProductUrl;
+        const { cardGalleryLink, productTitleLink } = this.parentProductCard.refs;
+        if (cardGalleryLink instanceof HTMLAnchorElement) {
+          cardGalleryLink.href = connectedProductUrl;
+        }
+        if (productTitleLink instanceof HTMLAnchorElement) {
+          productTitleLink.href = connectedProductUrl;
+        }
+      }
       return;
     }
 
