@@ -484,7 +484,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>Introducing Reliance 2.0</h3>",
+                "text": "<h2>Introducing Reliance 2.0</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -525,7 +525,7 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 50,
+                "padding-block-start": 30,
                 "padding-block-end": 50,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -748,33 +748,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h3>PURPOSE-BUILT SURF GEAR FOR A LIFETIME OF DISCOVERY. SINCE 1987.</h3>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_9x6fbf": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<p>Creatures was started to support the surfing lifestyle and shaped by the coast we call home.</p>",
+            "text": "<h2>PURPOSE-BUILT SURF GEAR FOR A LIFETIME OF DISCOVERY. SINCE 1987.</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -798,8 +772,7 @@
         }
       },
       "block_order": [
-        "text_njHjMB",
-        "text_9x6fbf"
+        "text_njHjMB"
       ],
       "name": "t:names.rich_text_section",
       "settings": {
