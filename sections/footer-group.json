@@ -81,7 +81,7 @@
                 "inherit_color_scheme": true,
                 "color_scheme": "",
                 "heading_preset": "h3",
-                "link_preset": "paragraph",
+                "link_preset": "h5",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -166,6 +166,7 @@
               "settings": {
                 "image": "shopify://shop_images/B_CORP_Campaign_WEBSITE_FOOTER.jpg",
                 "link": "",
+                "hover_scale": false,
                 "image_ratio": "adapt",
                 "width": "fit-content",
                 "custom_width": 100,
