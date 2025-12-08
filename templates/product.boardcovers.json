@@ -299,7 +299,7 @@
                       "name": "t:names.icon",
                       "settings": {
                         "icon": "leaf",
-                        "width": 26,
+                        "width": 20,
                         "link": "",
                         "open_in_new_tab": false
                       },
@@ -382,7 +382,7 @@
                       "name": "t:names.icon",
                       "settings": {
                         "icon": "australia_map",
-                        "width": 48,
+                        "width": 30,
                         "link": "",
                         "open_in_new_tab": false
                       },
