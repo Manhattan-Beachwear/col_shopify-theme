@@ -60,10 +60,8 @@ input:hover {
 }
 
 iframe {
-  max-width: 100%;
   width: 100%;
   height: auto;
-  display: block;
 }
 
 /** override ios and firefox defaults */
