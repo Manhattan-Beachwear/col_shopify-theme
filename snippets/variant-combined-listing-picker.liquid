@@ -560,17 +560,19 @@
       endif
     endfor
     
-    # Sort unique colors and sizes alphabetically
+    # Sort unique colors alphabetically
     if unique_colors != ''
       assign colors_array_unsorted = unique_colors | split: '|||'
       assign colors_array_sorted = colors_array_unsorted | sort
       assign unique_colors = colors_array_sorted | join: '|||'
     endif
     
+    # Sort unique sizes with custom logic for numeric and standard sizes
     if unique_sizes != ''
-      assign sizes_array_unsorted = unique_sizes | split: '|||'
-      assign sizes_array_sorted = sizes_array_unsorted | sort
-      assign unique_sizes = sizes_array_sorted | join: '|||'
+      capture sorted_sizes_result
+        render 'util-size-sort', sizes_string: unique_sizes
+      endcapture
+      assign unique_sizes = sorted_sizes_result | strip
     endif
   endif
 %}

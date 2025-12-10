@@ -21,6 +21,31 @@ Comprehensive documentation for the combined listing variant picker feature that
 
 ---
 
+### Size Sorting Utility
+
+**File**: `snippets/util-size-sort.liquid`
+
+Reusable utility snippet for sorting size values in logical ascending order. Handles standard sizes (xs, s, m, l, xl, etc.), numeric sizes with feet/inches, and simple numeric values.
+
+**Key Features**:
+
+- Standard size ordering (xs → s → m → l → xl → xxl → 3x, etc.)
+- Numeric size parsing (e.g., "5 ft 6 in", "6 ft 0 in")
+- Apostrophe notation support ("5'6", "5'6\"")
+- Simple numeric sorting ("10", "12", etc.)
+- Customizable delimiters for input/output
+
+**Usage**:
+
+```liquid
+{% capture sorted_sizes %}
+  {% render 'util-size-sort', sizes_string: unique_sizes %}
+{% endcapture %}
+{% assign unique_sizes = sorted_sizes | strip %}
+```
+
+---
+
 ## Adding New Documentation
 
 When creating new documentation:

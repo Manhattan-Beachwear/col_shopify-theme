@@ -6,14 +6,15 @@ This document provides comprehensive documentation for all customizations made t
 
 ## Customization Index
 
-| Customization | Purpose | Files Created | Files Modified |
-|--------------|---------|---------------|----------------|
-| [Combined Listing Variant Picker](#1-combined-listing-variant-picker) | Enable multi-variant selection for ERP-constrained products | `variant-picker-cl.js`, `variant-picker-utils.js`, `variant-combined-listing-picker.liquid`, `product-title-processed.liquid` | `text.liquid`, `scripts.liquid` |
-| [Custom Accordion Component](#2-custom-accordion-component) | Enhanced accordion with responsive behavior | `accordion-custom.js` | `blocks/_accordion-row.liquid`, `blocks/accordion.liquid`, `blocks/menu.liquid`, `snippets/cart-note.liquid`, `assets/base.css` |
-| [Custom Disclosure Component](#3-custom-disclosure-component) | Animated disclosure panels with CSS grid | `disclosure-custom.js` | `snippets/cart-discount.liquid`, `snippets/cart-note.liquid`, `snippets/header-drawer.liquid`, `snippets/sorting.liquid`, `snippets/price-filter.liquid`, `snippets/list-filter.liquid` |
-| [Product Custom Property Block](#4-product-custom-property-block) | Custom product properties with character counting | `blocks/product-custom-property.liquid`, `assets/product-custom-property.js` | `scripts.liquid` |
-| [Product Title Processing](#5-product-title-processing) | Server-side title processing for combined listings | `snippets/product-title-processed.liquid` | `snippets/text.liquid` |
-| [Variant Picker Utilities](#6-variant-picker-utilities) | Shared utilities for variant picker animations | `assets/variant-picker-utils.js` | `assets/variant-picker-cl.js` |
+| Customization                                                         | Purpose                                                     | Files Created                                                                                                                 | Files Modified                                                                                                                                                                          |
+| --------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Combined Listing Variant Picker](#1-combined-listing-variant-picker) | Enable multi-variant selection for ERP-constrained products | `variant-picker-cl.js`, `variant-picker-utils.js`, `variant-combined-listing-picker.liquid`, `product-title-processed.liquid` | `text.liquid`, `scripts.liquid`                                                                                                                                                         |
+| [Custom Accordion Component](#2-custom-accordion-component)           | Enhanced accordion with responsive behavior                 | `accordion-custom.js`                                                                                                         | `blocks/_accordion-row.liquid`, `blocks/accordion.liquid`, `blocks/menu.liquid`, `snippets/cart-note.liquid`, `assets/base.css`                                                         |
+| [Custom Disclosure Component](#3-custom-disclosure-component)         | Animated disclosure panels with CSS grid                    | `disclosure-custom.js`                                                                                                        | `snippets/cart-discount.liquid`, `snippets/cart-note.liquid`, `snippets/header-drawer.liquid`, `snippets/sorting.liquid`, `snippets/price-filter.liquid`, `snippets/list-filter.liquid` |
+| [Product Custom Property Block](#4-product-custom-property-block)     | Custom product properties with character counting           | `blocks/product-custom-property.liquid`, `assets/product-custom-property.js`                                                  | `scripts.liquid`                                                                                                                                                                        |
+| [Product Title Processing](#5-product-title-processing)               | Server-side title processing for combined listings          | `snippets/product-title-processed.liquid`                                                                                     | `snippets/text.liquid`                                                                                                                                                                  |
+| [Variant Picker Utilities](#6-variant-picker-utilities)               | Shared utilities for variant picker animations              | `assets/variant-picker-utils.js`                                                                                              | `assets/variant-picker-cl.js`                                                                                                                                                           |
+| [Size Sorting Utility](#7-size-sorting-utility)                       | Reusable size sorting for logical ascending order           | `snippets/util-size-sort.liquid`                                                                                              | `snippets/variant-combined-listing-picker.liquid`                                                                                                                                       |
 
 ---
 
@@ -24,6 +25,7 @@ This document provides comprehensive documentation for all customizations made t
 The Combined Listing Variant Picker enables products with ERP limitations (where each product can only have one variant) to display multiple variant options (e.g., color and size) by linking related products together. This allows customers to select both a color and a size, with the system navigating to the appropriate product that matches both selections.
 
 **Strategy**: Instead of modifying the ERP system, we work within Shopify's constraints by:
+
 - Linking related products via metafields
 - Aggregating variant options across linked products
 - Using morphing for seamless navigation between products
@@ -44,18 +46,21 @@ Due to ERP constraints, each product in Shopify can only have a single variant. 
 ### Files Created
 
 - **`snippets/variant-combined-listing-picker.liquid`**: Main Liquid snippet that renders the variant picker UI
+
   - Detects dual variants (color + size)
   - Builds comprehensive data structure of all variant combinations
   - Renders either single or dual variant picker UI
   - Handles swatch rendering with proper priority
 
 - **`assets/variant-picker-cl.js`**: JavaScript custom elements
+
   - `<variant-picker-cl>`: Single variant picker (original)
   - `<variant-picker-cl-dual>`: Dual variant picker (new)
   - Handles event listeners for `popstate` and `VariantUpdateEvent`
   - Manages URL synchronization and navigation logic
 
 - **`assets/variant-picker-utils.js`**: Shared utility functions
+
   - `updateSelectedOptionPillAnimation()`: Shared pill animation logic for variant selection
 
 - **`snippets/product-title-processed.liquid`**: Server-side product title processing
@@ -70,11 +75,13 @@ Due to ERP constraints, each product in Shopify can only have a single variant. 
 ### Usage & Integration
 
 The snippet is automatically used when:
+
 1. A product has a `custom.combined_listing` metafield
 2. The metafield contains an array of linked products
 3. The variant picker block is added to the product information section
 
 **Metafield Setup**:
+
 - Namespace: `custom`
 - Key: `combined_listing`
 - Type: `list.product_reference`
@@ -103,6 +110,7 @@ The Custom Accordion Component extends the base HTML `<details>` element with en
 ### Problem Statement
 
 The base theme's accordion implementation lacked:
+
 - Responsive open/close behavior (different defaults for mobile vs desktop)
 - Ability to disable accordion interaction on specific breakpoints
 - Escape key support for closing accordions when used as menus
@@ -138,6 +146,7 @@ The base theme's accordion implementation lacked:
 ### Usage & Integration
 
 **Basic Usage**:
+
 ```liquid
 <accordion-custom
   open-by-default-on-desktop
@@ -153,6 +162,7 @@ The base theme's accordion implementation lacked:
 ```
 
 **With Breakpoint Controls**:
+
 ```liquid
 <accordion-custom
   data-disable-on-mobile="true"
@@ -184,6 +194,7 @@ The Custom Disclosure Component provides a reusable pattern for animated disclos
 ### Problem Statement
 
 The theme needed a consistent way to handle animated disclosure panels that:
+
 - Work with forms and interactive elements (not just inside `<details>`)
 - Provide smooth height animations
 - Maintain proper accessibility attributes
@@ -215,6 +226,7 @@ The theme needed a consistent way to handle animated disclosure panels that:
 ### Usage & Integration
 
 **Basic Usage**:
+
 ```liquid
 <disclosure-custom>
   {% render 'disclosure-trigger',
@@ -234,6 +246,7 @@ The theme needed a consistent way to handle animated disclosure panels that:
 ```
 
 **With Disclosure Trigger Snippet**:
+
 ```liquid
 {% render 'disclosure-trigger',
   controls_id: 'cart-discount-disclosure',
@@ -275,6 +288,7 @@ The base theme lacked a way for merchants to collect custom information from cus
 ### Files Created
 
 - **`blocks/product-custom-property.liquid`**: Block template
+
   - Renders input fields based on type
   - Handles character count display
   - Includes heading and description
@@ -292,6 +306,7 @@ The base theme lacked a way for merchants to collect custom information from cus
 ### Usage & Integration
 
 **Block Settings**:
+
 - `property_heading`: Heading text for the property
 - `property_description`: Description/help text
 - `property_key`: Key for the custom property (e.g., "engraving", "message")
@@ -303,6 +318,7 @@ The base theme lacked a way for merchants to collect custom information from cus
 
 **Character Count Template**:
 Uses translation key `content.product_custom_property_character_count` with placeholders:
+
 - `[current]`: Current character count
 - `[max]`: Maximum character count
 
@@ -333,7 +349,7 @@ In combined listings, product titles often include the color name (e.g., "T-Shir
 1. **Server-Side Processing**: Title processing happens in Liquid, not JavaScript
 2. **Automatic Detection**: Detects if a product is part of a combined listing
 3. **Color Extraction**: Extracts color value from current variant
-4. **Title Stripping**: Removes color name from title using common separators (`: `, ` - `, ` | `)
+4. **Title Stripping**: Removes color name from title using common separators (`: `, `-`, `|`)
 5. **Integration**: Automatically processes titles in text blocks
 
 ### Files Created
@@ -355,11 +371,13 @@ In combined listings, product titles often include the color name (e.g., "T-Shir
 
 **Automatic Processing**:
 The title processing happens automatically when:
+
 1. A product has a `custom.combined_listing` metafield, OR
 2. A product is referenced in another product's `custom.combined_listing` metafield
 3. The product title contains the color name from the current variant
 
 **Manual Usage**:
+
 ```liquid
 {% render 'product-title-processed', product: product %}
 ```
@@ -367,7 +385,7 @@ The title processing happens automatically when:
 ### Technical Notes
 
 - Processes titles server-side to prevent "flash" of unstripped title
-- Handles multiple separator formats: `: `, ` - `, ` | `
+- Handles multiple separator formats: `: `, `-`, `|`
 - Case-insensitive matching for color values
 - Normalizes whitespace before comparison
 - Falls back to original title if processing fails
@@ -407,16 +425,19 @@ The pill animation logic for variant selection was duplicated between the legacy
 ### Usage & Integration
 
 **Import**:
+
 ```javascript
 import { updateSelectedOptionPillAnimation } from './variant-picker-utils.js';
 ```
 
 **Usage**:
+
 ```javascript
 updateSelectedOptionPillAnimation(radios, checkedIndices, inputIndex, container);
 ```
 
 **Parameters**:
+
 - `radios`: Array of radio input elements
 - `checkedIndices`: Array tracking checked indices (max 2)
 - `inputIndex`: Index of newly selected input
@@ -431,18 +452,138 @@ updateSelectedOptionPillAnimation(radios, checkedIndices, inputIndex, container)
 
 ---
 
+## 7. Size Sorting Utility
+
+### Purpose & Strategy
+
+The Size Sorting Utility provides a reusable Liquid snippet for sorting size values in logical ascending order. It handles various size formats including standard sizes (xs, s, m, l, xl, etc.), numeric sizes with feet/inches notation, and simple numeric values.
+
+**Strategy**: Extract size sorting logic into a centralized, reusable utility to ensure consistent size ordering across the theme and reduce code duplication.
+
+### Problem Statement
+
+Size variants in variant pickers were displaying in alphabetical order, which doesn't work for:
+
+- Standard sizes (xs, s, m, l, xl, xxl, 3x, etc.) - should follow size progression
+- Numeric sizes with feet/inches (e.g., "5 ft 6 in", "5 ft 10 in", "6 ft 0 in") - should sort numerically
+- Simple numeric sizes (e.g., "10", "12", "5.5") - should sort numerically
+
+Alphabetical sorting resulted in illogical ordering like "5 ft 10 in" appearing before "5 ft 6 in".
+
+### Implementation Approach
+
+1. **Standard Size Mapping**: Maps common size names to numeric sort keys (xs=0001, s=0002, m=0003, etc.)
+2. **Numeric Parsing**: Extracts numeric values from feet/inches notation and converts to total inches for sorting
+3. **Pattern Recognition**: Handles multiple size formats:
+   - "X ft Y in" (e.g., "5 ft 6 in")
+   - "X'Y" or "X'Y\"" (e.g., "5'6", "5'6\"")
+   - Simple numbers (e.g., "10", "12")
+4. **Sort Key Generation**: Creates zero-padded sort keys for consistent string sorting
+5. **Reusable Snippet**: Can be called from any Liquid file that needs size sorting
+
+### Files Created
+
+- **`snippets/util-size-sort.liquid`**: Reusable size sorting utility
+  - Accepts `sizes_string` parameter (delimited by `|||` by default)
+  - Supports custom `delimiter` and `output_delimiter` parameters
+  - Returns sorted sizes string
+  - Handles standard sizes, feet/inches notation, and numeric values
+
+### Files Modified
+
+- **`snippets/variant-combined-listing-picker.liquid`**: Replaced inline sorting logic with utility snippet call
+  - Reduced ~185 lines of sorting code to 3 lines
+  - Uses `capture` to get sorted result from snippet
+
+### Usage & Integration
+
+**Basic Usage**:
+
+```liquid
+{% capture sorted_sizes %}
+  {% render 'util-size-sort', sizes_string: unique_sizes %}
+{% endcapture %}
+{% assign unique_sizes = sorted_sizes | strip %}
+```
+
+**With Custom Delimiters**:
+
+```liquid
+{% capture sorted_sizes %}
+  {% render 'util-size-sort',
+     sizes_string: size_list,
+     delimiter: ',',
+     output_delimiter: ',' %}
+{% endcapture %}
+```
+
+**Parameters**:
+
+- `sizes_string` (required): Unsorted sizes delimited by `|||` (e.g., "xs|||m|||l|||xl")
+- `delimiter` (optional): Input delimiter, defaults to `'|||'`
+- `output_delimiter` (optional): Output delimiter, defaults to `'|||'`
+
+### Supported Size Formats
+
+**Standard Sizes**:
+
+- xs, extra small → 0001
+- s, small → 0002
+- m, medium → 0003
+- l, large → 0004
+- xl, extra large → 0005
+- xxl, 2xl, 2x, double extra large → 0006
+- xxxl, 3xl, 3x, triple extra large → 0007
+- 4xl, 4x → 0008
+- 5xl, 5x → 0009
+- 6xl, 6x → 0010
+
+**Numeric Sizes with Feet/Inches**:
+
+- "5 ft 6 in" → 66 total inches → sort key: 000066
+- "6 ft 0 in" → 72 total inches → sort key: 000072
+- "5'6" or "5'6\"" → 66 total inches → sort key: 000066
+
+**Simple Numeric Sizes**:
+
+- "10" → sort key: 000010
+- "12" → sort key: 000012
+- "5.5" → sort key: 000005
+
+### Technical Notes
+
+- Uses zero-padded sort keys (6 digits) for consistent string sorting
+- Converts feet/inches to total inches for accurate numeric comparison
+- Falls back to alphabetical sorting (with prefix) for unrecognized formats
+- Case-insensitive matching for standard size names
+- Handles edge cases like "6 ft 0 in" (zero inches)
+
+### Integration Points
+
+- **Combined Listing Variant Picker**: Used to sort size options in dual variant mode
+- **Future Use**: Can be used in any file that needs size sorting (variant pickers, filters, etc.)
+
+---
+
 ## Cross-References
 
 ### Related Customizations
 
 1. **Combined Listing Variant Picker** uses:
+
    - Variant Picker Utilities (pill animation)
    - Product Title Processing (title display)
+   - Size Sorting Utility (size option ordering)
 
 2. **Product Title Processing** is used by:
+
    - Combined Listing Variant Picker (via text.liquid)
 
-3. **Custom Accordion** and **Custom Disclosure** are used together in:
+3. **Size Sorting Utility** is used by:
+
+   - Combined Listing Variant Picker (size variant ordering)
+
+4. **Custom Accordion** and **Custom Disclosure** are used together in:
    - Cart discount form
    - Cart note
    - Header drawer navigation
@@ -492,3 +633,4 @@ updateSelectedOptionPillAnimation(radios, checkedIndices, inputIndex, container)
   - Product Custom Property Block
   - Product Title Processing
   - Variant Picker Utilities
+  - Size Sorting Utility
