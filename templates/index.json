@@ -158,10 +158,9 @@
         },
         "slide_J8rd8r": {
           "type": "_slide",
-          "disabled": true,
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/BTCIT_WEBSITE_2880X1410_3_2.jpg",
+            "image_1": "shopify://shop_images/XMAS_2022_WEBSITE_HOMEPAGE_SLIDER.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
