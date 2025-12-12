@@ -248,6 +248,7 @@
               "type": "swatches",
               "name": "t:names.swatches",
               "settings": {
+                "show_swatch_text_labels": false,
                 "product_swatches_alignment": "flex-start",
                 "product_swatches_alignment_mobile": "flex-start",
                 "hide_padding": false,
@@ -271,8 +272,8 @@
         "layout_type": "grid",
         "product_card_size": "medium",
         "mobile_product_card_size": "small",
-        "enable_infinite_scroll": true,
-        "products_per_page": 24,
+        "enable_infinite_scroll": false,
+        "products_per_page": 36,
         "product_grid_width": "centered",
         "full_width_on_mobile": true,
         "columns_gap_horizontal": 16,
@@ -281,7 +282,8 @@
         "padding-inline-end": 0,
         "color_scheme": "scheme-1",
         "padding-block-start": 0,
-        "padding-block-end": 32
+        "padding-block-end": 32,
+        "enable_combined_listings": false
       }
     },
     "collection_list_aL73XL": {
@@ -455,7 +457,8 @@
         "gap": 12,
         "color_scheme": "",
         "padding-block-start": 24,
-        "padding-block-end": 24
+        "padding-block-end": 24,
+        "enable_combined_listings": false
       }
     }
   },
