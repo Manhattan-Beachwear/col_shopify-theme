@@ -908,7 +908,7 @@
       "name": "t:names.collections_grid",
       "settings": {
         "collection_list": [
-          "leashes",
+          "leashes-1",
           "traction",
           "surf-essentials",
           "boardcovers"

@@ -208,7 +208,6 @@
               "type": "swatches",
               "name": "t:names.swatches",
               "settings": {
-                "show_swatch_text_labels": false,
                 "product_swatches_alignment": "flex-start",
                 "product_swatches_alignment_mobile": "flex-start",
                 "hide_padding": false,
@@ -392,7 +391,7 @@
       "name": "t:names.collections_bento",
       "settings": {
         "collection_list": [
-          "leashes",
+          "leashes-1",
           "traction",
           "boardcovers-1",
           "auto",

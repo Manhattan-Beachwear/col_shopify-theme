@@ -391,7 +391,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Browse Leashes",
-            "link": "shopify://collections/leashes",
+            "link": "shopify://collections/leashes-1",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "fit-content",
