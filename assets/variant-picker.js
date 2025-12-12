@@ -230,18 +230,47 @@ export default class VariantPicker extends Component {
         // Defer is only useful for the initial rendering of the page. Remove it here.
         html.querySelector('overflow-list[defer]')?.removeAttribute('defer');
 
-        const textContent = html.querySelector(`variant-picker script[type="application/json"]`)?.textContent;
-        if (!textContent) return;
+        // Look for variant data in either variant-picker or swatches-variant-picker-component
+        const textContent =
+          html.querySelector(`variant-picker script[type="application/json"]`)?.textContent ||
+          html.querySelector(`swatches-variant-picker-component script[type="application/json"]`)?.textContent;
+
+        // If no variant data found, try to get it from the selected option directly
+        let variantData = null;
+        if (textContent) {
+          try {
+            variantData = JSON.parse(textContent);
+          } catch (e) {
+            // Silently handle parse errors
+          }
+        }
+
+        // If still no variant data, try to construct it from the selected option
+        if (!variantData && this.selectedOption) {
+          const variantId = this.selectedOption.dataset.variantId;
+          if (variantId) {
+            // Create a minimal variant object for the event
+            variantData = { id: variantId };
+          }
+        }
+
+        if (!variantData) return;
 
         if (shouldMorphMain) {
           this.updateMain(html);
         } else {
-          const newProduct = this.updateVariantPicker(html);
+          let newProduct;
+          try {
+            newProduct = this.updateVariantPicker(html);
+          } catch (error) {
+            // If variant picker update fails, still dispatch the event so quick add and other features work
+            console.warn('Variant picker update failed, but continuing with variant update event:', error);
+          }
 
           // We grab the variant object from the response and dispatch an event with it.
           if (this.selectedOptionId) {
             this.dispatchEvent(
-              new VariantUpdateEvent(JSON.parse(textContent), this.selectedOptionId, {
+              new VariantUpdateEvent(variantData, this.selectedOptionId, {
                 html,
                 productId: this.dataset.productId ?? '',
                 newProduct,
@@ -274,10 +303,19 @@ export default class VariantPicker extends Component {
     /** @type {NewProduct | undefined} */
     let newProduct;
 
-    const newVariantPickerSource = newHtml.querySelector(this.tagName.toLowerCase());
+    // Try to find the variant picker by tag name (works for both variant-picker and swatches-variant-picker-component)
+    let newVariantPickerSource = newHtml.querySelector(this.tagName.toLowerCase());
+
+    // If not found, try finding it within a product-card (for product card swatches)
+    if (!newVariantPickerSource) {
+      const productCard = newHtml.querySelector('product-card');
+      if (productCard) {
+        newVariantPickerSource = productCard.querySelector(this.tagName.toLowerCase());
+      }
+    }
 
     if (!newVariantPickerSource) {
-      throw new Error('No new variant picker source found');
+      throw new Error(`No new variant picker source found for ${this.tagName.toLowerCase()}`);
     }
 
     // For combined listings, the product might have changed, so update the related data attribute.

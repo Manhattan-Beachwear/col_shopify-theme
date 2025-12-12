@@ -145,6 +145,9 @@
               <label
                 data-media-id="{{ featured_media.id }}"
                 data-option-available="{{ product_option_value.available }}"
+                {% if featured_media != blank and featured_media.preview_image != blank %}
+                  data-featured-image-url="{{ featured_media.preview_image | image_url: width: 1200 }}"
+                {% endif %}
                 class="variant-option__button-label variant-option__button-label--has-swatch swatch-rounded"
                 on:pointerenter="product-card/previewVariant/{{ featured_media.id }}"
                 on:pointerleave="product-card/resetVariant"
@@ -159,6 +162,9 @@
                   data-option-value-id="{{ product_option_value.id }}"
                   data-option-available="{{ product_option_value.available }}"
                   data-connected-product-url="{{ product_option_value.product_url }}"
+                  {% if featured_media != blank and featured_media.preview_image != blank %}
+                    data-featured-image-url="{{ featured_media.preview_image | image_url: width: 1200 }}"
+                  {% endif %}
                   {% if none_checked != true %}
                     {% if product_option_value.selected or is_checked == true %}
                       checked

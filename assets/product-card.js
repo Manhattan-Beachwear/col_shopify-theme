@@ -144,6 +144,38 @@ export class ProductCard extends Component {
       this.variantPicker?.updateVariantPicker(event.detail.data.html);
     }
 
+    // Store selected swatch image URL for legacy swatches (non-combined listings)
+    // This ensures the image persists after clicking a swatch
+    const checkedInput = this.querySelector('input[type="radio"]:checked[data-featured-image-url]');
+    if (checkedInput instanceof HTMLInputElement && checkedInput.dataset.featuredImageUrl) {
+      // This is a legacy swatch that was clicked - store the image URL and update the image immediately
+      const featuredImageUrl = checkedInput.dataset.featuredImageUrl;
+      this.#selectedSwatchImageUrl = featuredImageUrl;
+
+      // Update the image immediately when swatch is clicked
+      const { slideshow } = this.refs;
+      if (slideshow && slideshow.slides && slideshow.slides.length > 0) {
+        const currentSlide = slideshow.slides[slideshow.current || 0];
+        if (currentSlide) {
+          const img = currentSlide.querySelector('img');
+          if (img instanceof HTMLImageElement) {
+            img.src = featuredImageUrl;
+            img.srcset = featuredImageUrl;
+            // Also update any picture source elements
+            const picture = currentSlide.querySelector('picture');
+            if (picture) {
+              const sources = picture.querySelectorAll('source');
+              sources.forEach((source) => {
+                if (source instanceof HTMLSourceElement && source.srcset) {
+                  source.srcset = featuredImageUrl;
+                }
+              });
+            }
+          }
+        }
+      }
+    }
+
     // Check if this is a combined listing product change (new product)
     const newProduct = event.detail.data?.newProduct;
     if (newProduct) {
@@ -380,6 +412,14 @@ export class ProductCard extends Component {
     // Convert media ID to string for comparison
     const idStr = id.toString();
 
+    // Quick check: if no event, this is definitely a legacy swatch (original behavior)
+    // Also check early if this might be a combined listing swatch
+    if (!event) {
+      // Original simple behavior for legacy swatches (no event parameter)
+      slideshow.select({ id: idStr }, undefined, { animate: false });
+      return;
+    }
+
     // Check if this is a combined listing swatch (different product)
     // Get product data directly from the swatch element
     let connectedProductUrl = null;
@@ -387,86 +427,149 @@ export class ProductCard extends Component {
     /** @type {HTMLElement | null} */
     let swatchElement = null;
 
-    if (event) {
-      const target = event.target instanceof Element ? event.target : null;
+    const target = event.target instanceof Element ? event.target : null;
 
-      // Find the label or input element that has the product data
-      if (target) {
-        if (target instanceof HTMLLabelElement && target.dataset.productUrl) {
-          swatchElement = target;
-        } else if (target instanceof HTMLInputElement && target.dataset.productUrl) {
-          swatchElement = target;
+    // Find the label or input element that has the product data
+    if (target) {
+      if (target instanceof HTMLLabelElement && target.dataset.productUrl) {
+        swatchElement = target;
+      } else if (target instanceof HTMLInputElement && target.dataset.productUrl) {
+        swatchElement = target;
+      } else {
+        // Try to find the label or input from the target
+        const label = target.closest('label[data-product-url]');
+        if (label instanceof HTMLLabelElement) {
+          swatchElement = label;
         } else {
-          // Try to find the label or input from the target
-          const label = target.closest('label[data-product-url]');
-          if (label instanceof HTMLLabelElement) {
-            swatchElement = label;
-          } else {
-            const input =
-              target.closest('input[data-product-url]') ||
-              target.closest('label')?.querySelector('input[data-product-url]');
-            if (input instanceof HTMLInputElement) {
-              swatchElement = input;
-            }
-          }
-        }
-      }
-
-      // Fallback: search for input with matching media ID
-      if (!swatchElement && idStr) {
-        const allInputs = this.querySelectorAll('input[data-option-media-id]');
-        for (const inp of allInputs) {
-          if (inp instanceof HTMLInputElement && inp.dataset.optionMediaId === idStr) {
-            swatchElement = inp;
-            break;
-          }
-        }
-      }
-
-      // Get the connected product URL from the swatch element
-      if (swatchElement) {
-        // If swatchElement is a label, try to get variant ID and featured image URL from the input inside it
-        let variantId = swatchElement.dataset.variantId;
-        if (!variantId && swatchElement instanceof HTMLLabelElement) {
-          const input = swatchElement.querySelector('input[data-variant-id]');
+          const input =
+            target.closest('input[data-product-url]') ||
+            target.closest('label')?.querySelector('input[data-product-url]');
           if (input instanceof HTMLInputElement) {
-            variantId = input.dataset.variantId;
-            // Also check for connectedProductUrl on the input
-            if (!swatchElement.dataset.connectedProductUrl && input.dataset.connectedProductUrl) {
-              swatchElement.dataset.connectedProductUrl = input.dataset.connectedProductUrl;
-            }
-            // Get featured image URL from input if not on label
-            if (!swatchElement.dataset.featuredImageUrl && input.dataset.featuredImageUrl) {
-              swatchElement.dataset.featuredImageUrl = input.dataset.featuredImageUrl;
-            }
+            swatchElement = input;
           }
         }
-
-        // Get featured image URL
-        featuredImageUrl = swatchElement.dataset.featuredImageUrl;
-
-        connectedProductUrl =
-          swatchElement.dataset.connectedProductUrl ||
-          (swatchElement.dataset.productUrl && variantId
-            ? `${swatchElement.dataset.productUrl}?variant=${variantId}`
-            : swatchElement.dataset.productUrl);
       }
     }
 
-    // Check if this is a combined listing swatch (different product or has featured image URL)
-    const isCombinedListingSwatch = Boolean(
-      (swatchElement &&
-        swatchElement.dataset.productId &&
-        swatchElement.dataset.productId !== this.dataset.productId) ||
-        (swatchElement &&
-          swatchElement.dataset.productUrl &&
-          this.dataset.productUrl &&
-          swatchElement.dataset.productUrl.split('?')[0] !== this.dataset.productUrl.split('?')[0]) ||
-        featuredImageUrl
-    );
+    // Fallback: search for input with matching media ID (only if we haven't found one yet)
+    if (!swatchElement && idStr) {
+      const allInputs = this.querySelectorAll('input[data-option-media-id]');
+      for (const inp of allInputs) {
+        if (inp instanceof HTMLInputElement && inp.dataset.optionMediaId === idStr) {
+          swatchElement = inp;
+          break;
+        }
+      }
+    }
 
-    // Try to find the slide with this media ID
-    const slide = Array.from(slideshow.slides || []).find((s) => s.getAttribute('slide-id') === idStr);
+    // Quick check: if no swatchElement found or no combined listing indicators, use legacy behavior
+    if (!swatchElement || (!swatchElement.dataset.productId && !swatchElement.dataset.productUrl)) {
+      // Legacy swatch - use featured image URL to update current slide (like combined listings)
+      // Get the featured image URL from the swatch element
+      let featuredImageUrl = null;
+
+      // Try to get from label first, then input
+      if (event?.target) {
+        const target = event.target instanceof Element ? event.target : null;
+        if (target) {
+          const label = target.closest('label[data-featured-image-url]');
+          if (label instanceof HTMLLabelElement && label.dataset.featuredImageUrl) {
+            featuredImageUrl = label.dataset.featuredImageUrl;
+          } else {
+            const input =
+              target.closest('input[data-featured-image-url]') ||
+              target.closest('label')?.querySelector('input[data-featured-image-url]');
+            if (input instanceof HTMLInputElement && input.dataset.featuredImageUrl) {
+              featuredImageUrl = input.dataset.featuredImageUrl;
+            }
+          }
+        }
+      }
+
+      // If we have a featured image URL, update the current slide's image directly
+      if (featuredImageUrl && slideshow.slides && slideshow.slides.length > 0) {
+        const currentSlide = slideshow.slides[slideshow.current || 0];
+        if (currentSlide) {
+          const img = currentSlide.querySelector('img');
+          if (img instanceof HTMLImageElement) {
+            // Store original image source only if there's no selected swatch
+            // (we want to preserve the selected swatch image, not the original)
+            if (!this.#originalImageSrc && !this.#selectedSwatchImageUrl) {
+              this.#originalImageSrc = img.src || '';
+            }
+
+            // Update the image source
+            img.src = featuredImageUrl;
+            img.srcset = featuredImageUrl;
+            // Also update any picture source elements
+            const picture = currentSlide.querySelector('picture');
+            if (picture) {
+              const sources = picture.querySelectorAll('source');
+              sources.forEach((source) => {
+                if (source instanceof HTMLSourceElement && source.srcset) {
+                  source.srcset = featuredImageUrl;
+                }
+              });
+            }
+
+            // If this swatch is checked (clicked), store it as the selected swatch
+            // so the image persists until another swatch is selected
+            const checkedInput =
+              event?.target instanceof Element
+                ? event.target.closest('label')?.querySelector('input[type="radio"]:checked') ||
+                  (event.target instanceof HTMLInputElement && event.target.checked ? event.target : null)
+                : null;
+
+            if (checkedInput instanceof HTMLInputElement) {
+              // This swatch is selected - store the image URL so it persists
+              this.#selectedSwatchImageUrl = featuredImageUrl;
+            }
+          }
+        }
+        return;
+      }
+
+      // Fallback: try to find and select the slide by ID (original behavior)
+      slideshow.select({ id: idStr }, undefined, { animate: false });
+      return;
+    }
+
+    // Get the connected product URL from the swatch element
+    // If swatchElement is a label, try to get variant ID and featured image URL from the input inside it
+    let variantId = swatchElement.dataset.variantId;
+    if (!variantId && swatchElement instanceof HTMLLabelElement) {
+      const input = swatchElement.querySelector('input[data-variant-id]');
+      if (input instanceof HTMLInputElement) {
+        variantId = input.dataset.variantId;
+        // Also check for connectedProductUrl on the input
+        if (!swatchElement.dataset.connectedProductUrl && input.dataset.connectedProductUrl) {
+          swatchElement.dataset.connectedProductUrl = input.dataset.connectedProductUrl;
+        }
+        // Get featured image URL from input if not on label
+        if (!swatchElement.dataset.featuredImageUrl && input.dataset.featuredImageUrl) {
+          swatchElement.dataset.featuredImageUrl = input.dataset.featuredImageUrl;
+        }
+      }
+    }
+
+    // Get featured image URL
+    featuredImageUrl = swatchElement.dataset.featuredImageUrl;
+
+    connectedProductUrl =
+      swatchElement.dataset.connectedProductUrl ||
+      (swatchElement.dataset.productUrl && variantId
+        ? `${swatchElement.dataset.productUrl}?variant=${variantId}`
+        : swatchElement.dataset.productUrl);
+
+    // Check if this is a combined listing swatch (different product)
+    // Legacy swatches don't have data-product-id or data-product-url on the input/label
+    // Only combined listing swatches have these attributes
+    const isCombinedListingSwatch = Boolean(
+      (swatchElement.dataset.productId && swatchElement.dataset.productId !== this.dataset.productId) ||
+        (swatchElement.dataset.productUrl &&
+          this.dataset.productUrl &&
+          swatchElement.dataset.productUrl.split('?')[0] !== this.dataset.productUrl.split('?')[0])
+    );
 
     // For combined listings, always update the image even if a slide exists
     // (the slide might be from a different product)
@@ -518,11 +621,8 @@ export class ProductCard extends Component {
           }
         }
       }
-    } else if (slide) {
-      // Slide exists in current product - select it
-      slideshow.select({ id: idStr }, undefined, { animate: false });
     } else {
-      // Regular variant preview - try to select the slide
+      // Regular legacy swatch - original simple behavior
       slideshow.select({ id: idStr }, undefined, { animate: false });
     }
 
@@ -543,9 +643,21 @@ export class ProductCard extends Component {
 
     this.resetVariant.cancel();
 
-    if (this.#previousSlideIndex != null && this.#previousSlideIndex > 0) {
+    // Always show the second image (index 1) when hovering over the product image
+    // This ensures consistent behavior regardless of swatch selection
+    if (slideshow.slides && slideshow.slides.length > 1) {
+      // Store the current index before switching (for restoring)
+      if (this.#previousSlideIndex === null) {
+        this.#previousSlideIndex = slideshow.current || 0;
+      }
+      // Show the second image (index 1)
+      slideshow.select(1, undefined, { animate: false });
+      setTimeout(() => this.#preloadNextPreviewImage());
+    } else if (this.#previousSlideIndex != null && this.#previousSlideIndex > 0) {
+      // Fallback: use previous slide index if available
       slideshow.select(this.#previousSlideIndex, undefined, { animate: false });
     } else {
+      // Last resort: go to next slide
       slideshow.next(undefined, { animate: false });
       setTimeout(() => this.#preloadNextPreviewImage());
     }
@@ -562,9 +674,18 @@ export class ProductCard extends Component {
 
     if (!this.variantPicker) {
       if (!slideshow) return;
-      slideshow.previous(undefined, { animate: false });
+      // If we have a previous slide index, restore to that
+      if (this.#previousSlideIndex !== null) {
+        slideshow.select(this.#previousSlideIndex, undefined, { animate: false });
+        this.#previousSlideIndex = null;
+      } else {
+        slideshow.previous(undefined, { animate: false });
+      }
     } else {
+      // Reset to selected swatch image (or original)
       this.#resetVariant();
+      // Clear the previous slide index after reset
+      this.#previousSlideIndex = null;
     }
   }
 
@@ -578,25 +699,35 @@ export class ProductCard extends Component {
 
     // If there's a selected swatch (clicked or checked on load), restore to that instead of original
     if (this.#selectedSwatchImageUrl && slideshow.slides && slideshow.slides.length > 0) {
-      const currentSlide = slideshow.slides[slideshow.current || 0];
-      if (currentSlide) {
-        const img = currentSlide.querySelector('img');
-        if (img instanceof HTMLImageElement && this.#selectedSwatchImageUrl) {
-          const selectedImageUrl = this.#selectedSwatchImageUrl;
-          img.src = selectedImageUrl;
-          img.srcset = selectedImageUrl;
-          // Also update picture source elements
-          const picture = currentSlide.querySelector('picture');
-          if (picture) {
-            const sources = picture.querySelectorAll('source');
-            sources.forEach((source) => {
-              if (source instanceof HTMLSourceElement && source.srcset) {
-                source.srcset = selectedImageUrl;
-              }
-            });
+      // Always restore to the first slide (index 0) before updating the image
+      // This ensures the selected swatch image is on the correct slide
+      if (slideshow.current !== 0) {
+        slideshow.select(0, undefined, { animate: false });
+      }
+
+      // Wait for slide to be selected, then update the image
+      requestAnimationFrame(() => {
+        const currentSlide = slideshow.slides?.[0];
+        if (currentSlide) {
+          const img = currentSlide.querySelector('img');
+          if (img instanceof HTMLImageElement && this.#selectedSwatchImageUrl) {
+            const selectedImageUrl = this.#selectedSwatchImageUrl;
+            img.src = selectedImageUrl;
+            img.srcset = selectedImageUrl;
+            // Also update picture source elements
+            const picture = currentSlide.querySelector('picture');
+            if (picture) {
+              const sources = picture.querySelectorAll('source');
+              sources.forEach((source) => {
+                if (source instanceof HTMLSourceElement && source.srcset) {
+                  source.srcset = selectedImageUrl;
+                }
+              });
+            }
           }
         }
-      }
+      });
+
       // Restore selected product URL
       if (this.#selectedSwatchProductUrl) {
         this.refs.productCardLink.href = this.#selectedSwatchProductUrl;
@@ -1089,8 +1220,10 @@ class SwatchesVariantPickerComponent extends VariantPicker {
         (connectedProductUrl && connectedProductUrl.split('?')[0] !== currentProductUrl)
     );
 
-    // For swatch inputs, check if we need special handling
-    if (isSwatchInput && availableCount > 0 && firstAvailableVariantId) {
+    // For combined listing swatch inputs, check if we need special handling
+    // Only apply this logic for combined listing swatches (which have data-product-id)
+    // Regular swatches should fall through to super.variantChanged(event)
+    if (isSwatchInput && swatchProductId && availableCount > 0 && firstAvailableVariantId) {
       // If this is an unavailable variant but there are available alternatives
       // Prevent the default handling
       event.stopPropagation();
