@@ -14,7 +14,3 @@ sections/*.json                 merge=ours
 # Per your request: Keeps your unique 3rd party scripts safe.
 # NOTE: You must manually patch this file if the Parent adds new global features.
 layout/theme.liquid             merge=ours
-
-# 5. Protect Locales (Optional)
-# If children have unique translations, uncomment this:
-# locales/*.json                merge=ours
