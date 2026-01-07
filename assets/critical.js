@@ -141,8 +141,8 @@ export class OverflowList extends DeclarativeShadowElement {
       !(overflowSlot instanceof HTMLSlotElement) ||
       !(moreSlot instanceof HTMLSlotElement) ||
       !(overflow instanceof HTMLElement) ||
-      !(list instanceof HTMLDivElement) ||
-      !(placeholder instanceof HTMLDivElement)
+      !(list instanceof HTMLUListElement) ||
+      !(placeholder instanceof HTMLLIElement)
     ) {
       throw new Error('Invalid element types in <OverflowList />');
     }
@@ -402,8 +402,8 @@ export class OverflowList extends DeclarativeShadowElement {
    *   overflowSlot: HTMLSlotElement;
    *   moreSlot: HTMLSlotElement;
    *   overflow: HTMLElement;
-   *   list: HTMLDivElement;
-   *   placeholder: HTMLDivElement;
+   *   list: HTMLUListElement;
+   *   placeholder: HTMLLIElement;
    * }}
    */
   #refs;

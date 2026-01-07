@@ -5,7 +5,6 @@
   @param {number} [minimum-items] - The minimum number of items to show in the overflow list.
   @param {string} [more-attributes] - The attributes that are applied on the more button.
   @param {string} [ref] - The ref that is set on the overflow-list element.
-  @param {string} [role] - The role that is set on the overflow-list element.
 {%- enddoc -%}
 
 <overflow-list
@@ -25,14 +24,7 @@
   <template shadowrootmode="open">
     {{ 'overflow-list.css' | asset_url | stylesheet_tag }}
 
-    <div
-      part="list"
-      {% if role %}
-        role="{{ role }}"
-      {% else %}
-        role="list"
-      {% endif %}
-    >
+    <ul part="list">
       <slot></slot>
       <slot
         name="more"
@@ -42,7 +34,9 @@
           {{ more-attributes }}
         {% endif %}
       >
-        <div part="more">
+        <li
+          part="more"
+        >
           <button
             class="button"
             type="button"
@@ -50,25 +44,18 @@
           >
             {{ 'actions.more' | t }}
           </button>
-        </div>
+        </li>
       </slot>
-      <div
+      <li
         part="placeholder"
         hidden
-      ></div>
-    </div>
+      ></li>
+    </ul>
 
     <div part="overflow">
-      <div
-        part="overflow-list"
-        {% if role %}
-          role="{{ role }}"
-        {% else %}
-          role="list"
-        {% endif %}
-      >
+      <ul part="overflow-list">
         <slot name="overflow"></slot>
-      </div>
+      </ul>
     </div>
   </template>
 

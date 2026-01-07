@@ -9,10 +9,10 @@
  */
 {
   "sections": {
-    "section_GrLN7C": {
+    "section_kxLi9z": {
       "type": "section",
       "blocks": {
-        "text_qG8Uh8": {
+        "text_jrNxfW": {
           "type": "text",
           "name": "t:names.heading",
           "settings": {
@@ -40,7 +40,7 @@
         }
       },
       "block_order": [
-        "text_qG8Uh8"
+        "text_jrNxfW"
       ],
       "name": "t:names.rich_text_section",
       "settings": {
@@ -79,7 +79,7 @@
           "type": "filters",
           "static": true,
           "settings": {
-            "enable_filtering": false,
+            "enable_filtering": true,
             "filter_style": "horizontal",
             "filter_width": "centered",
             "text_label_case": "default",
@@ -136,8 +136,8 @@
               "settings": {
                 "width": "100%",
                 "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "paragraph",
+                "alignment": "left",
+                "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -163,7 +163,7 @@
                 "show_tax_info": false,
                 "type_preset": "h6",
                 "width": "100%",
-                "alignment": "center",
+                "alignment": "left",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -181,8 +181,8 @@
               "type": "swatches",
               "name": "t:names.swatches",
               "settings": {
-                "product_swatches_alignment": "center",
-                "product_swatches_alignment_mobile": "center",
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
                 "hide_padding": false,
                 "product_swatches_padding_top": 4,
                 "product_swatches_padding_bottom": 0,
@@ -200,6 +200,7 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "layout_type": "grid",
         "product_card_size": "medium",
@@ -395,7 +396,7 @@
     }
   },
   "order": [
-    "section_GrLN7C",
+    "section_kxLi9z",
     "main",
     "collection_list_A7dfPn"
   ]
