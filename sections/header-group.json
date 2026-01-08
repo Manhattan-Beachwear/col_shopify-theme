@@ -17,6 +17,7 @@
         "announcement_y4xynq": {
           "type": "_announcement",
           "name": "t:names.announcement",
+          "disabled": true,
           "settings": {
             "text": "Order by December 15th for Christmas Delivery | More Info Here",
             "link": "shopify://pages/holiday-2025-shipping-information",
