@@ -136,7 +136,7 @@
                     "label": "Explore",
                     "link": "shopify://collections/reliance-2-0",
                     "open_in_new_tab": false,
-                    "style_class": "button-secondary",
+                    "style_class": "button",
                     "width": "custom",
                     "custom_width": 28,
                     "width_mobile": "fit-content",
@@ -468,6 +468,7 @@
           "name": "t:names.video",
           "settings": {
             "source": "uploaded",
+            "video_url": "",
             "video_autoplay": false,
             "video_loop": true,
             "alt": "",
