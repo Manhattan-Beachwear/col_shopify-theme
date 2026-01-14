@@ -212,6 +212,7 @@
               "type": "_product-card-gallery",
               "settings": {
                 "image_ratio": "adapt",
+                "media_fit": "cover",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -431,7 +432,7 @@
               "type": "button",
               "settings": {
                 "label": "Explore Proto 1.4",
-                "link": "shopify://blogs/news/creatures-proto-1-4-wins-good-design-award",
+                "link": "shopify://pages/proto",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
