@@ -1,7 +1,7 @@
 #!/bin/bash
 # sync-all-themes.sh
 # Central script to sync grandparent → parent → children
-# NOW WITH TEST MODE
+# Syncs entire directories EXCEPT specific excluded files
 
 set -e
 
@@ -24,6 +24,12 @@ SYNC_DIRS=(
     "blocks"
     "assets"
     "locales"
+)
+
+# Files to EXCLUDE from sync (child-specific)
+EXCLUDE_FILES=(
+    "sections/footer-group.json"
+    "sections/header-group.json"
 )
 
 # ============================================
@@ -65,6 +71,11 @@ while [[ $# -gt 0 ]]; do
             echo "  --only <child>  Only sync to one child (otis/col/sito/layday)"
             echo "  --help          Show this help"
             echo ""
+            echo "Excluded files (child-specific):"
+            for file in "${EXCLUDE_FILES[@]}"; do
+                echo "  - $file"
+            done
+            echo ""
             echo "Examples:"
             echo "  $0 --test                    # See what would happen"
             echo "  $0 --test --only otis        # Test sync to just Otis"
@@ -82,6 +93,7 @@ done
 
 echo "🔄 Starting grandparent → parent → children sync..."
 echo "📁 Syncing directories: ${SYNC_DIRS[*]}"
+echo "🚫 Excluding files: ${EXCLUDE_FILES[*]}"
 echo ""
 
 # ============================================
@@ -107,8 +119,23 @@ if [[ "$SKIP_PARENT_UPDATE" == "false" ]]; then
             if [[ "$TEST_MODE" == "false" ]]; then
                 rm -rf "$dir"
                 git checkout $GRANDPARENT_REMOTE/$GRANDPARENT_BRANCH -- "$dir"
+                
+                # Restore excluded files from parent
+                for exclude in "${EXCLUDE_FILES[@]}"; do
+                    if [[ "$exclude" == "$dir/"* ]]; then
+                        if git show HEAD:"$exclude" > /dev/null 2>&1; then
+                            echo "    ↩️  Restoring excluded: $exclude"
+                            git checkout HEAD -- "$exclude"
+                        fi
+                    fi
+                done
             else
                 echo "    [TEST] Would update from grandparent"
+                for exclude in "${EXCLUDE_FILES[@]}"; do
+                    if [[ "$exclude" == "$dir/"* ]]; then
+                        echo "    [TEST] Would restore: $exclude"
+                    fi
+                done
             fi
         else
             echo "  ⚠ $dir/ (not found in grandparent, skipping)"
@@ -127,6 +154,7 @@ if [[ "$SKIP_PARENT_UPDATE" == "false" ]]; then
             git commit -m "Sync from grandparent [$(date +%Y-%m-%d)]
 
 Updated directories: ${SYNC_DIRS[*]}
+Excluded files: ${EXCLUDE_FILES[*]}
 Files changed: $CHANGED_FILES"
             
             git push origin main
@@ -182,6 +210,7 @@ for i in "${!CHILD_REPOS[@]}"; do
         echo "[TEST] Would clone, create branch, copy files, and push"
         echo "[TEST] Review branch: $REVIEW_BRANCH"
         echo "[TEST] Directories to sync: ${SYNC_DIRS[*]}"
+        echo "[TEST] Files to preserve: ${EXCLUDE_FILES[*]}"
         continue
     fi
     
@@ -195,6 +224,17 @@ for i in "${!CHILD_REPOS[@]}"; do
     # Create review branch
     git checkout -b "$REVIEW_BRANCH"
     
+    # Backup excluded files before copying
+    echo "Backing up excluded files..."
+    mkdir -p .excluded-backup
+    for exclude in "${EXCLUDE_FILES[@]}"; do
+        if [[ -f "$exclude" ]]; then
+            echo "  💾 $exclude"
+            mkdir -p ".excluded-backup/$(dirname "$exclude")"
+            cp "$exclude" ".excluded-backup/$exclude"
+        fi
+    done
+    
     # Copy directories from parent
     echo "Copying directories..."
     for dir in "${SYNC_DIRS[@]}"; do
@@ -207,6 +247,17 @@ for i in "${!CHILD_REPOS[@]}"; do
             echo "  ⚠ $dir/ (not in parent, skipping)"
         fi
     done
+    
+    # Restore excluded files
+    echo "Restoring excluded files..."
+    for exclude in "${EXCLUDE_FILES[@]}"; do
+        if [[ -f ".excluded-backup/$exclude" ]]; then
+            echo "  ↩️  $exclude"
+            mkdir -p "$(dirname "$exclude")"
+            cp ".excluded-backup/$exclude" "$exclude"
+        fi
+    done
+    rm -rf .excluded-backup
     
     # Check if there are changes
     if git diff --quiet; then
@@ -223,6 +274,7 @@ for i in "${!CHILD_REPOS[@]}"; do
     git commit -m "Sync parent theme updates [$(date +%Y-%m-%d)]
 
 Updated directories: ${SYNC_DIRS[*]}
+Excluded (preserved): ${EXCLUDE_FILES[*]}
 Files changed: $FILES_CHANGED
 
 ⚠️ REVIEW BEFORE MERGING TO MAIN"
