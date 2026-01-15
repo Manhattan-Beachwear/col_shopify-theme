@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>PROTO™1.5 - SIGNATURE</h1>",
+            "text": "<h1>PROTO™ traction</h1>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -42,7 +42,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h3>MOULDED TECHNOLOGY IS THE BIGGEST REVOLUTION IN SURF TRACTION SINCE IT WAS INVENTED<br/></h3><p>After 3 years of intensive development with World Champs Mick Fanning and Italo Ferreira, we've created a traction pad that both elevates your surfing <em>and </em>drastically reduces manufacturing waste. Now PROTO™1.5 offers the same game-changing moulded tech features in Signature Ethan Ewing, Griffin Colapinto and Molly Picklum.</p>",
+            "text": "<h3>MOULDED TECHNOLOGY IS THE BIGGEST REVOLUTION IN SURF TRACTION SINCE IT WAS INVENTED<br/></h3><p>After 3 years of intensive development with World Champs Mick Fanning and Italo Ferreira, we created  PROTO™, a traction pad that both elevates your surfing <em>and </em>drastically reduces manufacturing waste. </p><p></p><p>Now PROTO™1.5 offers the same game-changing moulded tech features in Signature Ethan Ewing, Griffin Colapinto and Molly Picklum.</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -146,6 +146,7 @@
               "type": "_product-card-gallery",
               "settings": {
                 "image_ratio": "adapt",
+                "media_fit": "cover",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
