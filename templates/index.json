@@ -184,10 +184,9 @@
         },
         "slide_J8rd8r": {
           "type": "_slide",
-          "disabled": true,
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/XMAS_2022_WEBSITE_HOMEPAGE_SLIDER.jpg",
+            "image_1": "shopify://shop_images/RELIANCE_20_JULY_2025_RELIANCE_COLLECTION_PAGE_HEADER_1.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -216,7 +215,7 @@
                 "horizontal_alignment": "flex-start",
                 "vertical_alignment": "center",
                 "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "center",
+                "horizontal_alignment_flex_direction_column": "flex-end",
                 "vertical_alignment_flex_direction_column": "center",
                 "gap": 8,
                 "width": "fill",
@@ -250,13 +249,13 @@
                 "text_eUWRaN": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Shop go-to accessories for all surfers</p>",
+                    "text": "<h2>reliance 2.0</h2>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-heading--family)",
-                    "font_size": "1.25rem",
+                    "font_size": "3rem",
                     "line_height": "loose",
                     "letter_spacing": "loose",
                     "case": "uppercase",
@@ -276,7 +275,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h2>Holiday Gift Guide</h2>",
+                    "text": "<h2>strongest & most reliable leash ever</h2>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -303,7 +302,7 @@
                   "name": "t:names.button",
                   "settings": {
                     "label": "Shop now",
-                    "link": "shopify://blogs/news/surfers-gift-guide-10-things-surfers-love",
+                    "link": "shopify://collections/reliance-2-0",
                     "open_in_new_tab": true,
                     "style_class": "button",
                     "width": "fit-content",
@@ -943,8 +942,8 @@
           "settings": {
             "content_direction": "row",
             "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
             "align_baseline": true,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
@@ -953,7 +952,7 @@
             "custom_width": 100,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
-            "height": "fit",
+            "height": "fill",
             "custom_height": 100,
             "inherit_color_scheme": true,
             "color_scheme": "",
@@ -970,11 +969,11 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "product_list_text_xF6AKE": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
+            "text_tKqQDU": {
+              "type": "text",
+              "name": "t:names.text",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "text": "<h2>THE NEW LEASH STANDARD<br/></h2><p>Introducing RELIANCE 2.0 - our <strong>STRONGEST</strong>, most <strong>RELIABLE</strong>, and most <strong>COMFORTABLE</strong> leash we've ever built. Attach your leash to your board faster and more secure than ever before with QUICK CONNECT (without tying yourself in knots). Tested in the most intense conditions by the world's best - RELIANCE 2.0 is BUILT FOR PUNISHMENT.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -1012,7 +1011,7 @@
             }
           },
           "block_order": [
-            "product_list_text_xF6AKE",
+            "text_tKqQDU",
             "product_list_button_ypfMjP"
           ]
         },
