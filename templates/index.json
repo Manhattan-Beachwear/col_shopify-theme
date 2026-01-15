@@ -41,7 +41,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h1><strong>just landed: </strong></h1><h1><strong>PROTO™ signature traction</strong></h1>",
+                "text": "<h1><strong>just landed: </strong></h1><h1><strong>PROTO™ 1.5 signature traction</strong></h1>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "center",
