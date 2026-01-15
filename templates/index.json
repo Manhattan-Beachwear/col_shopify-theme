@@ -16,15 +16,15 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/RELIANCE_20_JULY_2025_RELIANCE_COLLECTION_PAGE_HEADER.jpg",
-            "image_1_mobile": "shopify://shop_images/RELIANCE20_WEB_IMAGERY_4_1.jpg",
+            "image_1": "shopify://shop_images/Screenshot_2025-12-11_095914.png",
+            "image_1_mobile": "shopify://shop_images/PROTO1.4_PIN_IG_9X16_RETAILER_HERO_1_2.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "space-between",
+            "vertical_alignment_flex_direction_column": "flex-start",
             "gap": 63,
             "inherit_color_scheme": true,
             "color_scheme": "",
@@ -38,6 +38,47 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "text_gJbJEp": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h1>just landed: PROTO™ signature traction</h1>",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "center",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 50,
+                "padding-inline-end": 50
+              },
+              "blocks": {}
+            },
+            "button_4VBHJc": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "explore",
+                "link": "shopify://collections/proto-moulded-traction",
+                "open_in_new_tab": false,
+                "style_class": "button-secondary",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            },
             "group_HBbyyj": {
               "type": "group",
               "settings": {
@@ -47,7 +88,7 @@
                 "vertical_alignment": "center",
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "center",
-                "vertical_alignment_flex_direction_column": "flex-end",
+                "vertical_alignment_flex_direction_column": "flex-start",
                 "gap": 51,
                 "width": "fit-content",
                 "custom_width": 50,
@@ -81,7 +122,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h1>RELIANCE 2.0 IS HERE</h1>",
+                    "text": "",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -107,13 +148,13 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Featuring Quick Connect</p>",
+                    "text": "",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-body--family)",
-                    "font_size": "1.25rem",
+                    "font_size": "2rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "uppercase",
@@ -128,31 +169,17 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "button_6NHGcn": {
-                  "type": "button",
-                  "name": "t:names.button",
-                  "settings": {
-                    "label": "Explore",
-                    "link": "shopify://collections/reliance-2-0",
-                    "open_in_new_tab": false,
-                    "style_class": "button",
-                    "width": "custom",
-                    "custom_width": 28,
-                    "width_mobile": "fit-content",
-                    "custom_width_mobile": 100
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
                 "text_NxCpT4",
-                "text_mafjRc",
-                "button_6NHGcn"
+                "text_mafjRc"
               ]
             }
           },
           "block_order": [
+            "text_gJbJEp",
+            "button_4VBHJc",
             "group_HBbyyj"
           ]
         },
@@ -455,7 +482,7 @@
         "autoplay": true,
         "autoplay_speed": 3,
         "section_width": "full-width",
-        "slide_height": "auto",
+        "slide_height": "large",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
