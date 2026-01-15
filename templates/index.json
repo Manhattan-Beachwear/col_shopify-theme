@@ -786,6 +786,7 @@
             "video_url": "https://www.youtube.com/watch?v=qmTy2oKoY4k",
             "video_autoplay": false,
             "video_loop": true,
+            "cover_image": "shopify://shop_images/RELIANCE_20_JULY_2025_edm_header_3.jpg",
             "alt": "Video describing the features of the new Reliance 2.0 leash",
             "custom_width": 100,
             "custom_width_mobile": 100,
@@ -841,7 +842,8 @@
         "image_Px93bn": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/RELIANCE_20_JULY_2025_customerFeedback__2.jpg",
+            "image": "shopify://shop_images/RELIANCE_20_JULY_2025_customerFeedback_3_2.jpg",
+            "image_mobile": "shopify://shop_images/RELIANCE_20_JULY_2025_customerFeedback_2_2.jpg",
             "link": "",
             "hover_scale": false,
             "image_ratio": "portrait",
@@ -1166,7 +1168,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1><strong>PURPOSE-BUILT SURF GEAR FOR A LIFETIME OF DISCOVERY. SINCE 1987.</strong></h1>",
+            "text": "<h1>PURPOSE-BUILT SURF GEAR FOR A LIFETIME OF DISCOVERY. SINCE 1987.</h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
