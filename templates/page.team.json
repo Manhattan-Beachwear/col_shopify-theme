@@ -249,7 +249,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/MICK_TEAM_PAGE_20235_d92fc133-ea1d-4f9e-9a84-e3c15539f8da.jpg",
+                "image": "shopify://shop_images/COL_MickLocLite_2023_Traction_1080.jpg",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -557,7 +557,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/MOLLY_TEAM_PAGE_20234.jpg",
+                "image": "shopify://shop_images/MOLLY_PICKLUM_TEAM.jpg",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -1709,160 +1709,6 @@
     "section_VUTHV6": {
       "type": "section",
       "blocks": {
-        "group_iW9GWX": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 16,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "image_AiLXiX": {
-              "type": "image",
-              "name": "t:names.image",
-              "settings": {
-                "image": "shopify://shop_images/JETT_TEAM_PAGE_20232.jpg",
-                "link": "",
-                "hover_scale": false,
-                "image_ratio": "adapt",
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "group_aybhVV": {
-              "type": "group",
-              "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "center",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 24,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "link": "",
-                "open_in_new_tab": false,
-                "placeholder": "",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "text_rr493H": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Jett Schilling</p>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "center",
-                    "type_preset": "h4",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "button_hhC3MU": {
-                  "type": "button",
-                  "name": "t:names.button",
-                  "settings": {
-                    "label": "@ jettschilling",
-                    "link": "https://www.instagram.com/JETTSCHILLING",
-                    "open_in_new_tab": true,
-                    "style_class": "button-secondary",
-                    "width": "fit-content",
-                    "custom_width": 100,
-                    "width_mobile": "fit-content",
-                    "custom_width_mobile": 100
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_rr493H",
-                "button_hhC3MU"
-              ]
-            }
-          },
-          "block_order": [
-            "image_AiLXiX",
-            "group_aybhVV"
-          ]
-        },
         "group_gVfWYH": {
           "type": "group",
           "settings": {
@@ -1906,7 +1752,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/HUGHIE_TEAM_PAGE_20233.jpg",
+                "image": "shopify://shop_images/HUGHIE_TEAM_PAGE_2024_1.jpg",
                 "link": "",
                 "hover_scale": false,
                 "image_ratio": "adapt",
@@ -2060,10 +1906,10 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/CRUZ_TEAM_PAGE_20232.jpg",
+                "image": "shopify://shop_images/CRUZ_POST2.jpg",
                 "link": "",
                 "hover_scale": false,
-                "image_ratio": "adapt",
+                "image_ratio": "square",
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
@@ -2173,7 +2019,6 @@
         }
       },
       "block_order": [
-        "group_iW9GWX",
         "group_gVfWYH",
         "group_8VCHt9"
       ],
