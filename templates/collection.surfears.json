@@ -87,28 +87,12 @@
             "padding-inline-end": 0
           },
           "blocks": {}
-        },
-        "button_eWTmfi": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Shop now",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
         }
       },
       "block_order": [
         "text_AAVK8i",
         "image_rUpyV7",
-        "text_DeRGQw",
-        "button_eWTmfi"
+        "text_DeRGQw"
       ],
       "name": "t:names.rich_text_section",
       "settings": {
@@ -163,7 +147,7 @@
           "static": true,
           "settings": {
             "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "space-between",
+            "vertical_alignment_flex_direction_column": "center",
             "gap": 24
           },
           "blocks": {
@@ -323,6 +307,149 @@
         "padding-block-end": 0
       }
     },
+    "section_6bmHQV": {
+      "type": "section",
+      "blocks": {
+        "text_hRbjMj": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<h3>Medical Aspects</h3><p></p><p><strong>Prevention of Surfer’s Ear and Swimmer’s Ear</strong></p><p>SurfEars provides a protective barrier against prolonged water exposure, reducing the risk of developing conditions like surfer’s ear (exostosis) and swimmer’s ear (otitis externa), which can result from repeated water exposure and cause discomfort and hearing issues.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "image_paWJaM": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "image": "shopify://shop_images/surfers_ear_illustration-600x488.webp",
+            "image_mobile": "shopify://shop_images/surfers_ear_illustration-600x488.webp",
+            "link": "",
+            "hover_scale": false,
+            "image_ratio": "square",
+            "width": "custom",
+            "custom_width": 51,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_CdjxbJ": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p><strong>Defending Against Irritants and Infections</strong></p><p>By effectively sealing the ear canal, SurfEars minimizes the entry of waterborne irritants, pollutants, and pathogens that can trigger infections, inflammation, and complications in the ear, supporting long-term ear health.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_dGtGCx": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Testimonials from the worlds best</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_hRbjMj",
+        "image_paWJaM",
+        "text_CdjxbJ",
+        "text_dGtGCx"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "image_zoom_fade_animation": false,
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
     "section_GrLN7C": {
       "type": "section",
       "blocks": {
@@ -348,10 +475,26 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "button_VU7Vya": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop SurfEars 4.0",
+            "link": "shopify://products/surfears-4-0-black-sage",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "video_H9cCdf"
+        "video_H9cCdf",
+        "button_VU7Vya"
       ],
       "name": "t:names.rich_text_section",
       "settings": {
@@ -705,122 +848,6 @@
         "enable_combined_listings": false
       }
     },
-    "section_6bmHQV": {
-      "type": "section",
-      "blocks": {
-        "image_paWJaM": {
-          "type": "image",
-          "name": "t:names.image",
-          "settings": {
-            "image": "shopify://shop_images/surfers_ear_illustration-600x488.webp",
-            "image_mobile": "shopify://shop_images/surfers_ear_illustration-600x488.webp",
-            "link": "",
-            "hover_scale": false,
-            "image_ratio": "adapt",
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_hRbjMj": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<h3>Medical Aspects</h3><p></p><p><strong>Prevention of Surfer’s Ear and Swimmer’s Ear</strong></p><p>SurfEars provides a protective barrier against prolonged water exposure, reducing the risk of developing conditions like surfer’s ear (exostosis) and swimmer’s ear (otitis externa), which can result from repeated water exposure and cause discomfort and hearing issues.</p><p><strong>Defending Against Irritants and Infections</strong></p><p>By effectively sealing the ear canal, SurfEars minimizes the entry of waterborne irritants, pollutants, and pathogens that can trigger infections, inflammation, and complications in the ear, supporting long-term ear health.</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "text_dGtGCx": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Testimonials from the worlds best</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "image_paWJaM",
-        "text_hRbjMj",
-        "text_dGtGCx"
-      ],
-      "name": "t:names.rich_text_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 25,
-        "section_width": "page-width",
-        "section_height": "small",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "image_zoom_fade_animation": false,
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
-    },
     "section_hTNzjV": {
       "type": "section",
       "blocks": {
@@ -884,10 +911,10 @@
   "order": [
     "section_XW8mxw",
     "media_with_content_ekiHRR",
+    "section_6bmHQV",
     "section_GrLN7C",
     "main",
     "collection_list_A7dfPn",
-    "section_6bmHQV",
     "section_hTNzjV"
   ]
 }
