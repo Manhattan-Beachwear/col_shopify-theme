@@ -355,7 +355,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Looking for more help?</h2>",
+            "text": "<h2>Surfboard Leashes</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -382,8 +382,8 @@
           "name": "t:names.text",
           "settings": {
             "text": "<p>Finding the right surfboard leash isn't always easy. You might be looking for surfboard leashes made for big waves, surfboard leashes designed for aerial surfing or maybe even a certain colored surfboard leash. When you need some help, Creatures surfboard leash gurus have your back. Visit the guide below for a full breakdown of our surfboard leashes.</p>",
-            "width": "fit-content",
-            "max_width": "normal",
+            "width": "100%",
+            "max_width": "none",
             "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
