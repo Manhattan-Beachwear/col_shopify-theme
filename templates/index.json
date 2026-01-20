@@ -41,7 +41,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h1><strong>just landed: </strong></h1><h1><strong>PROTO™ 1.5 signature traction</strong></h1>",
+                "text": "<h1><strong>just landed: </strong></h1><h1><strong>PROTO™ 1.5 signature traction Pads</strong></h1>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "center",
@@ -578,7 +578,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>PROTO™ 1.5 signature traction</h2>",
+                "text": "<h2>PROTO™ 1.5 Surf Traction Pads</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -604,7 +604,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Moulded technology taken to another level with help from the worlds best. PROTO™1.5 offers the same game-changing moulded tech features in Signature Ethan Ewing, Griffin Colapinto and Molly Picklum. Performance meets personality. <br/><br/></p>",
+                "text": "<p>Moulded technology taken to another level with help from the worlds best. PROTO™1.5, the worlds best traction pad, offers the same game-changing moulded tech features in Signature Ethan Ewing, Griffin Colapinto and Molly Picklum. Performance meets personality. <br/><br/></p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
