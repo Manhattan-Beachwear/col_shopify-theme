@@ -906,7 +906,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>RELIANCE 2.0 - THE NEW LEASH STANDARD</h2>",
+                "text": "<h2>RELIANCE 2.0 - The New Surfboard Leash Standard</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -931,9 +931,9 @@
             "text_cbeTiJ": {
               "type": "text",
               "settings": {
-                "text": "<p>Introducing RELIANCE 2.0 - our <strong>STRONGEST</strong>, most <strong>RELIABLE</strong>, and most <strong>COMFORTABLE</strong> leash we've ever built. Attach your leash to your board faster and more secure than ever before with QUICK CONNECT (without tying yourself in knots). Tested in the most intense conditions by the world's best - RELIANCE 2.0 is BUILT FOR PUNISHMENT.<br/><br/></p>",
+                "text": "<p>Introducing RELIANCE 2.0 - our <strong>STRONGEST</strong>, most <strong>RELIABLE</strong>, and most <strong>COMFORTABLE</strong> surfboard leash we've ever built. Attach your leash to your board faster and more secure than ever before with QUICK CONNECT (without tying yourself in knots). Tested in the most intense conditions by the world's best - RELIANCE 2.0 surf leashes are BUILT FOR PUNISHMENT.<br/><br/></p>",
                 "width": "100%",
-                "max_width": "narrow",
+                "max_width": "normal",
                 "alignment": "center",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
