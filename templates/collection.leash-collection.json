@@ -1140,7 +1140,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Compare Models</h2>",
+            "text": "<h2>Compare Surfboard Leash Models</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1167,8 +1167,8 @@
           "name": "t:names.text",
           "settings": {
             "text": "<p>Still not quite sure which surfboard leash is best for you? Looking for black surfboard leashes? Blue surfboard leashes? Durable surfboard leashes? Surfboard leashes for huge waves? Instead of tying you up in urethane we’ve put together a handy guide to help set you free.</p>",
-            "width": "fit-content",
-            "max_width": "normal",
+            "width": "100%",
+            "max_width": "none",
             "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
