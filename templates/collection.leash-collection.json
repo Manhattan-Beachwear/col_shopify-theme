@@ -164,7 +164,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h4>Leashes - Purpose Built</h4>",
+            "text": "<h4>Surfboard Leashes - Purpose Built</h4>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -190,7 +190,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>From the best of the best, to entry level leashes that still take a beating, our range comes are separated into the tiers below. Find the right surf leash for you below. To learn all about surf leashes read our <a href=\"https://creaturesusa.myshopify.com/blogs/news/how-to-choose-the-right-surfboard-leash\" target=\"_blank\" title=\"How to Choose the Right Surfboard Leash\">leash guide</a>.</p>",
+            "text": "<p>From the best surfboard leashes, to entry level surfboard leashes that still take a beating, our range comes are separated into the tiers below. Find the right surf leash for you below. To learn all about surf leashes read our <a href=\"https://creaturesusa.myshopify.com/blogs/news/how-to-choose-the-right-surfboard-leash\" target=\"_blank\" title=\"How to Choose the Right Surfboard Leash\">leash guide</a>.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
