@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h1>{{ closest.collection.title }}</h1>",
+            "text": "<h1>Surfboard Roof Racks</h1>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -37,10 +37,37 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "text_dix3xh": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Designed to make surf adventures easy, with a complete selection of surfboard roof racks, rack pads for surfboards, stash locks and more. Shop the collection below and travel seamlessly from home to beach with your surfboards in tow.</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "text_qG8Uh8"
+        "text_qG8Uh8",
+        "text_dix3xh"
       ],
       "name": "t:names.rich_text_section",
       "settings": {
@@ -119,6 +146,7 @@
               "type": "_product-card-gallery",
               "settings": {
                 "image_ratio": "adapt",
+                "media_fit": "cover",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -216,6 +244,96 @@
         "padding-block-start": 0,
         "padding-block-end": 32,
         "enable_combined_listings": true
+      }
+    },
+    "section_6QneFc": {
+      "type": "section",
+      "blocks": {
+        "text_4yemHg": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Surfboard Roof Racks and Rack Pads for Surfboards</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_kkMJWC": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>When you're ready for an adventure, be sure your surfboard accessories can keep up. Our collection of surfboard racks and surf roof racks is designed to make your life easier as a surfer. Whether you're using our surfboard roof racks for travel to and from the beach at home, or throwing our surf roof straps and pads in your luggage and heading for the tropics, we have you covered. Stay protected with surf key lock box or keep your boards secured with our surfboard roof straps. We have everything surfers need to transit seamlessly from home to surf.</p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_4yemHg",
+        "text_kkMJWC"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "small",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "image_zoom_fade_animation": false,
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "collection_list_A7dfPn": {
@@ -397,6 +515,7 @@
   "order": [
     "section_GrLN7C",
     "main",
+    "section_6QneFc",
     "collection_list_A7dfPn"
   ]
 }
