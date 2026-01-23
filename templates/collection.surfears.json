@@ -355,7 +355,7 @@
                 "text_63F4PX": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Our top surf ear plugs are designed to let sound in while keeping water out, utilizing unique acoustic mesh specifically developed to block out water, cold air, dirt and bacteria and elements that are known to create common issues like ear inflammation or bone growth in the ear canal known as surfer’s ear.  <br/><br/></p>",
+                    "text": "<p>Our top surf ear plugs are designed to let sound in while keeping water out, utilizing unique acoustic mesh specifically developed to block out water, cold air, dirt and bacteria and elements that are known to create common issues like ear inflammation or bone growth in the ear canal known as surfer’s ear.  FREE shipping available on all Surf Ears purchases.<br/><br/></p>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "left",
@@ -792,6 +792,7 @@
           "settings": {
             "source": "uploaded",
             "video": "shopify://files/videos/IMG_4507.MOV",
+            "video_url": "",
             "video_autoplay": false,
             "video_loop": true,
             "alt": "",
