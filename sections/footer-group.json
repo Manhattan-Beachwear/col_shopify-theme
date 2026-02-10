@@ -90,9 +90,7 @@
               "blocks": {}
             }
           },
-          "block_order": [
-            "menu_HpGdEt"
-          ]
+          "block_order": ["menu_HpGdEt"]
         },
         "group_wErUQf": {
           "type": "group",
@@ -159,63 +157,9 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "image_TqEmVH": {
-              "type": "image",
-              "name": "t:names.image",
-              "settings": {
-                "image": "shopify://shop_images/B_CORP_Campaign_WEBSITE_FOOTER.jpg",
-                "link": "",
-                "hover_scale": false,
-                "image_ratio": "adapt",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_ce9iyA": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<p>Click here to learn more about <a href=\"https://bcorporation.com.au/\" target=\"_blank\" title=\"https://bcorporation.com.au/\">B Corporations</a></p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "custom",
-                "font": "var(--font-body--family)",
-                "font_size": "0.75rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
             }
           },
-          "block_order": [
-            "text_fB4LiJ",
-            "image_TqEmVH",
-            "text_ce9iyA"
-          ]
+          "block_order": ["text_fB4LiJ"]
         },
         "group_6qNtXj": {
           "type": "group",
@@ -260,13 +204,12 @@
             "email_signup_bHiGhb": {
               "type": "email-signup",
               "name": "Email Signup",
-              "disabled": true,
               "settings": {
                 "width": "fill",
                 "custom_width": 100,
                 "inherit_color_scheme": true,
                 "color_scheme": "",
-                "heading": "Subscribe and be in the know on the latest from Creatures of Leisure",
+                "heading": "Subscribe and be in the know!",
                 "heading_preset": "paragraph",
                 "border_style": "underline",
                 "border_width": 2,
@@ -285,19 +228,17 @@
               "blocks": {}
             }
           },
-          "block_order": [
-            "email_signup_bHiGhb"
-          ]
+          "block_order": ["email_signup_bHiGhb"]
         }
       },
-      "block_order": [
-        "group_EgUCTR",
-        "group_wErUQf",
-        "group_6qNtXj"
-      ],
+      "block_order": ["group_EgUCTR", "group_wErUQf", "group_6qNtXj"],
       "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
         "gap": 34,
         "color_scheme": "scheme-1",
         "padding-block-start": 100,
@@ -344,11 +285,7 @@
           "blocks": {}
         }
       },
-      "block_order": [
-        "copyright",
-        "policy_list",
-        "social_icons"
-      ],
+      "block_order": ["copyright", "policy_list", "social_icons"],
       "settings": {
         "section_width": "page-width",
         "gap": 24,
@@ -359,9 +296,5 @@
       }
     }
   },
-  "order": [
-    "divider_zdYqKY",
-    "footer",
-    "utilities"
-  ]
+  "order": ["divider_zdYqKY", "footer", "utilities"]
 }

@@ -18,39 +18,25 @@
           "type": "_announcement",
           "name": "t:names.announcement",
           "settings": {
-            "text": "Order by December 15th for Christmas Delivery | More Info Here",
-            "link": "shopify://pages/holiday-2025-shipping-information",
+            "text": "New Collection Now LIVE!",
+            "link": "shopify://collections/2026-collection",
             "font": "var(--font-body--family)",
-            "font_size": "1rem",
+            "font_size": "0.875rem",
             "weight": "",
             "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
-        },
-        "announcement_BxgCk9": {
-          "type": "_announcement",
-          "settings": {
-            "text": "<strong>FREE SHIPPING</strong>  On all orders over $200",
-            "link": "",
-            "font": "var(--font-heading--family)",
-            "font_size": "0.75rem",
-            "weight": "",
-            "letter_spacing": "loose",
-            "case": "none"
+            "case": "uppercase"
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "announcement_y4xynq",
-        "announcement_BxgCk9"
+        "announcement_y4xynq"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
         "section_width": "page-width",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-2",
         "divider_width": 0,
         "padding-block-start": 15,
         "padding-block-end": 15
@@ -61,6 +47,7 @@
       "blocks": {
         "header-logo": {
           "type": "_header-logo",
+          "disabled": true,
           "static": true,
           "settings": {
             "hide_logo_on_home_page": false,
@@ -113,6 +100,7 @@
           "static": true,
           "settings": {
             "menu": "main-menu",
+            "menu": "main-menu",
             "color_scheme": "scheme-1",
             "type_font_primary_size": "1.125rem",
             "menu_font_style": "regular",
@@ -122,7 +110,7 @@
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
-            "navigation_bar": false,
+            "navigation_bar": true,
             "color_scheme_navigation_bar": "",
             "drawer_accordion": true,
             "drawer_accordion_expand_first": false,
@@ -137,11 +125,14 @@
         "menu_position": "left",
         "menu_row": "top",
         "menu_row_center": true,
+        "menu_row_center": true,
         "show_search": true,
-        "search_position": "right",
+        "search_position": "left",
         "search_row": "top",
         "show_country": false,
+        "show_country": false,
         "country_selector_style": false,
+        "show_language": false,
         "show_language": false,
         "localization_font": "heading",
         "localization_font_size": "0.875rem",
