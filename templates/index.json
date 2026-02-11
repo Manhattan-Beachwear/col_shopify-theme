@@ -193,7 +193,7 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "center",
                 "vertical_alignment_flex_direction_column": "center",
-                "gap": 16,
+                "gap": 20,
                 "width": "fill",
                 "custom_width": 50,
                 "width_mobile": "custom",
@@ -251,7 +251,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h2>Our strongest and most reliable leash ever</h2>",
+                    "text": "<h2>Our strongest and most reliable leash ever. Tested in the most intense conditions by the world's best - RELIANCE 2.0 is BUILT FOR PUNISHMENT.</h2>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
