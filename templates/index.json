@@ -78,6 +78,32 @@
                 "padding-inline-end": 0
               },
               "blocks": {
+                "text_UAwidh": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<p><strong>NEXT LEVEL TRACTION BUILT FOR THE FUTURE</strong></p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "1.125rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "uppercase",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
                 "text_4hDNFQ": {
                   "type": "text",
                   "name": "t:names.text",
@@ -92,32 +118,6 @@
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "text_UAwidh": {
-                  "type": "text",
-                  "name": "t:names.heading",
-                  "settings": {
-                    "text": "<p><strong>NEXT LEVEL TRACTION BUILT FOR THE FUTURE</strong></p>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-heading--family)",
-                    "font_size": "1.25rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "uppercase",
                     "wrap": "pretty",
                     "color": "var(--color-foreground)",
                     "background": false,
@@ -147,8 +147,8 @@
                 }
               },
               "block_order": [
-                "text_4hDNFQ",
                 "text_UAwidh",
+                "text_4hDNFQ",
                 "button_xi9Xe3"
               ]
             }
