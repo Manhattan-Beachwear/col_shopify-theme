@@ -162,7 +162,7 @@
           "settings": {
             "media_type_1": "image",
             "image_1": "shopify://shop_images/RELIANCE_20_JULY_2025_RELIANCE_COLLECTION_PAGE_HEADER_1.jpg",
-            "image_1_mobile": "shopify://shop_images/RELIANCE_2_1296X1620_4_3.jpg",
+            "image_1_mobile": "shopify://shop_images/RELIANCE_20_JULY_2025_1X1_2_8.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -193,7 +193,7 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-end",
                 "vertical_alignment_flex_direction_column": "flex-end",
-                "gap": 0,
+                "gap": 15,
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
@@ -272,11 +272,27 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
+                },
+                "button_LbernB": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Shop now",
+                    "link": "shopify://collections/reliance-2-0",
+                    "open_in_new_tab": false,
+                    "style_class": "button-secondary",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
                 }
               },
               "block_order": [
                 "text_eUWRaN",
-                "text_RNEdgE"
+                "text_RNEdgE",
+                "button_LbernB"
               ]
             }
           },
