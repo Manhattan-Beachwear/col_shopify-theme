@@ -420,14 +420,14 @@
                 "button_tYW8Yz": {
                   "type": "button",
                   "settings": {
-                    "label": "Travel in confidence",
+                    "label": "Explore",
                     "link": "shopify://products/shortboard-triple-black-silver-63",
-                    "open_in_new_tab": false,
+                    "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "width": "fit-content",
                     "custom_width": 100,
-                    "width_mobile": "fit-content",
-                    "custom_width_mobile": 81
+                    "width_mobile": "custom",
+                    "custom_width_mobile": 54
                   },
                   "blocks": {}
                 }
