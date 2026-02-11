@@ -193,12 +193,12 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-end",
                 "vertical_alignment_flex_direction_column": "flex-end",
-                "gap": 20,
+                "gap": 0,
                 "width": "fill",
-                "custom_width": 50,
-                "width_mobile": "custom",
-                "custom_width_mobile": 100,
-                "height": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 76,
+                "height": "custom",
                 "custom_height": 100,
                 "inherit_color_scheme": false,
                 "color_scheme": "scheme-6",
@@ -272,27 +272,11 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {}
-                },
-                "button_cXjAd3": {
-                  "type": "button",
-                  "name": "t:names.button",
-                  "settings": {
-                    "label": "Shop now",
-                    "link": "shopify://collections/reliance-2-0",
-                    "open_in_new_tab": true,
-                    "style_class": "button-secondary",
-                    "width": "fit-content",
-                    "custom_width": 100,
-                    "width_mobile": "fit-content",
-                    "custom_width_mobile": 100
-                  },
-                  "blocks": {}
                 }
               },
               "block_order": [
                 "text_eUWRaN",
-                "text_RNEdgE",
-                "button_cXjAd3"
+                "text_RNEdgE"
               ]
             }
           },
