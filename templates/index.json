@@ -1347,13 +1347,13 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Shop Now",
+                "label": "Shop",
                 "link": "{{ closest.collection.url }}",
                 "open_in_new_tab": false,
                 "style_class": "button-secondary",
-                "width": "custom",
+                "width": "fit-content",
                 "custom_width": 57,
-                "width_mobile": "custom",
+                "width_mobile": "fit-content",
                 "custom_width_mobile": 65
               },
               "blocks": {}
