@@ -210,7 +210,7 @@
               "type": "variant-picker-cl",
               "name": "Combined Listing Picker",
               "settings": {
-                "variant_style": "buttons",
+                "variant_style": "dropdowns",
                 "show_swatches": true,
                 "alignment": "left",
                 "padding-block-start": 0,
@@ -220,7 +220,7 @@
               },
               "blocks": {}
             },
-            "group_MfkUXm": {
+            "group_rUTk6E": {
               "type": "group",
               "name": "Icons",
               "settings": {
@@ -260,7 +260,7 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "group_JGDDTm": {
+                "group_XhUnAd": {
                   "type": "group",
                   "name": "B Corp",
                   "settings": {
@@ -300,26 +300,26 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
-                    "icon_cqzDJd": {
+                    "icon_MmEjfP": {
                       "type": "icon",
                       "name": "t:names.icon",
                       "settings": {
-                        "icon": "leaf",
+                        "icon": "truck",
                         "width": 20,
                         "link": "",
                         "open_in_new_tab": false
                       },
                       "blocks": {}
                     },
-                    "text_Qkqbn7": {
+                    "text_rKaaTH": {
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Certified B Corp</p>",
+                        "text": "<p>Free shipping on orders over $200</p>",
                         "width": "fit-content",
-                        "max_width": "normal",
+                        "max_width": "narrow",
                         "alignment": "left",
-                        "type_preset": "rte",
+                        "type_preset": "paragraph",
                         "font": "var(--font-body--family)",
                         "font_size": "1rem",
                         "line_height": "normal",
@@ -339,11 +339,177 @@
                     }
                   },
                   "block_order": [
-                    "icon_cqzDJd",
-                    "text_Qkqbn7"
+                    "icon_MmEjfP",
+                    "text_rKaaTH"
                   ]
                 },
-                "group_rnjBEb": {
+                "group_FerYCQ": {
+                  "type": "group",
+                  "name": "B Corp",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "align_baseline": false,
+                    "horizontal_alignment_flex_direction_column": "flex-start",
+                    "vertical_alignment_flex_direction_column": "center",
+                    "gap": 8,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "background_media": "none",
+                    "video_position": "cover",
+                    "background_image_position": "cover",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "toggle_overlay": false,
+                    "overlay_color": "#00000026",
+                    "overlay_style": "solid",
+                    "gradient_direction": "to top",
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "placeholder": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "icon_pCckbz": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "lock",
+                        "width": 20,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "text_MB4jTp": {
+                      "type": "text",
+                      "name": "t:names.text",
+                      "settings": {
+                        "text": "<p>Secure Checkout</p>",
+                        "width": "fit-content",
+                        "max_width": "narrow",
+                        "alignment": "left",
+                        "type_preset": "paragraph",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "icon_pCckbz",
+                    "text_MB4jTp"
+                  ]
+                },
+                "group_VfPrjD": {
+                  "type": "group",
+                  "name": "B Corp",
+                  "settings": {
+                    "content_direction": "row",
+                    "vertical_on_mobile": false,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "align_baseline": false,
+                    "horizontal_alignment_flex_direction_column": "flex-start",
+                    "vertical_alignment_flex_direction_column": "center",
+                    "gap": 8,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "background_media": "none",
+                    "video_position": "cover",
+                    "background_image_position": "cover",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "toggle_overlay": false,
+                    "overlay_color": "#00000026",
+                    "overlay_style": "solid",
+                    "gradient_direction": "to top",
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "placeholder": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "icon_jLwPfL": {
+                      "type": "icon",
+                      "name": "t:names.icon",
+                      "settings": {
+                        "icon": "leaf",
+                        "width": 20,
+                        "link": "",
+                        "open_in_new_tab": false
+                      },
+                      "blocks": {}
+                    },
+                    "text_KCDcK8": {
+                      "type": "text",
+                      "name": "t:names.text",
+                      "settings": {
+                        "text": "<p>Certified B Corp</p>",
+                        "width": "fit-content",
+                        "max_width": "narrow",
+                        "alignment": "left",
+                        "type_preset": "paragraph",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "icon_jLwPfL",
+                    "text_KCDcK8"
+                  ]
+                },
+                "group_W6KNw8": {
                   "type": "group",
                   "name": "Designed in Australia",
                   "settings": {
@@ -383,7 +549,7 @@
                     "padding-inline-end": 0
                   },
                   "blocks": {
-                    "icon_X4UwUd": {
+                    "icon_cmEFYe": {
                       "type": "icon",
                       "name": "t:names.icon",
                       "settings": {
@@ -394,7 +560,7 @@
                       },
                       "blocks": {}
                     },
-                    "text_L86XrR": {
+                    "text_CGRgQ7": {
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
@@ -422,14 +588,16 @@
                     }
                   },
                   "block_order": [
-                    "icon_X4UwUd",
-                    "text_L86XrR"
+                    "icon_cmEFYe",
+                    "text_CGRgQ7"
                   ]
                 }
               },
               "block_order": [
-                "group_JGDDTm",
-                "group_rnjBEb"
+                "group_XhUnAd",
+                "group_FerYCQ",
+                "group_VfPrjD",
+                "group_W6KNw8"
               ]
             },
             "product_inventory_BEeQGN": {
@@ -621,7 +789,7 @@
             "klaviyo_reviews_average_rating_qAWGJm",
             "divider_VJhene",
             "variant_picker_cl_HHnpk6",
-            "group_MfkUXm",
+            "group_rUTk6E",
             "product_inventory_BEeQGN",
             "buy_buttons_eYQEYi",
             "text_aEtTtq",
