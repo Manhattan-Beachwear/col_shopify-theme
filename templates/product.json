@@ -188,6 +188,12 @@
                 "text_zz3xdh"
               ]
             },
+            "klaviyo_reviews_average_rating_9VVF3C": {
+              "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
+              "settings": {
+                "product": "{{product}}"
+              }
+            },
             "divider_VJhene": {
               "type": "_divider",
               "name": "t:names.divider",
@@ -581,6 +587,7 @@
           },
           "block_order": [
             "group_icgrde",
+            "klaviyo_reviews_average_rating_9VVF3C",
             "divider_VJhene",
             "variant_picker_cl_HHnpk6",
             "group_METRyz",
