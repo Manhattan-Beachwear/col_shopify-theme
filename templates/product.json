@@ -304,7 +304,7 @@
                       "type": "icon",
                       "name": "t:names.icon",
                       "settings": {
-                        "icon": "lightning_bolt",
+                        "icon": "truck",
                         "width": 20,
                         "link": "",
                         "open_in_new_tab": false
@@ -315,7 +315,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Built for Punishment</p>",
+                        "text": "<p>Free shipping on orders over $200</p>",
                         "width": "fit-content",
                         "max_width": "narrow",
                         "alignment": "left",
