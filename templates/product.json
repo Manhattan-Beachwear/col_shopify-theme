@@ -315,7 +315,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Free shipping in Continental US on All Orders over $200</p>",
+                        "text": "<p>Free shipping in continental US on all orders over $200</p>",
                         "width": "fit-content",
                         "max_width": "narrow",
                         "alignment": "left",
