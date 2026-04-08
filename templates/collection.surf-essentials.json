@@ -83,7 +83,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Surfboard Bags</h2>",
+            "text": "<h2>Surf Essentials</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -109,7 +109,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>The key to surfboard longevity is protection. Creatures of Leisure offers a wide variety of surfboard covers to keep your trusty quiver protected from the wear and tear of surf travel.</p><p>We offer all types of surfboard bags -- from socks and day use covers for around-town transit to larger surfboard bags that fit 3+ boards, for those big surf trips where multiple boards are needed. Explore the collection below.</p>",
+            "text": "<p>Go-to surf accessories for travelling and scoring waves around home. Each piece of gear is carefully crafted to help enhance your surfing experience. Explore the collection of surf essentials below.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
