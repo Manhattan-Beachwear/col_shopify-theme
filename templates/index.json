@@ -1459,6 +1459,7 @@
         "text_FiX6CV",
         "button_mCdaGQ"
       ],
+      "disabled": true,
       "name": "t:names.rich_text_section",
       "settings": {
         "content_direction": "column",
@@ -1614,6 +1615,7 @@
           "block_order": []
         }
       },
+      "disabled": true,
       "name": "t:names.blog_posts_grid",
       "settings": {
         "blog": "news",
