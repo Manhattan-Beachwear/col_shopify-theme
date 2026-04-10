@@ -1112,8 +1112,8 @@
       "name": "t:names.collections_grid",
       "settings": {
         "collection_list": [
-          "auto",
-          "4-boards-plus"
+          "4-boards-plus",
+          "grom"
         ],
         "layout_type": "grid",
         "carousel_on_mobile": false,
