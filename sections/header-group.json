@@ -63,7 +63,7 @@
           "settings": {
             "menu": "main-menu-aus-update",
             "split_after_item": 2,
-            "color_scheme": "scheme-6",
+            "color_scheme": "scheme-1",
             "type_font_primary_size": "1.125rem",
             "menu_font_style": "regular",
             "type_font_primary_link": "subheading",
@@ -140,7 +140,7 @@
         "divider_width": 0,
         "divider_size": "page-width",
         "border_width": 0,
-        "color_scheme_top": "scheme-1",
+        "color_scheme_top": "scheme-2",
         "color_scheme_bottom": "scheme-1",
         "color_scheme_transparent": "scheme-6",
         "enable_transparent_header_home": true,
