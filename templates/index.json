@@ -159,8 +159,8 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/PROTO1.4_PIN_WEBSITE_JOURNAL_2880X1410_7.jpg",
-            "image_1_mobile": "shopify://shop_images/GPP25ECBKOPL_7.jpg",
+            "image_1": "shopify://shop_images/ETHAN_SITD_EP1_WEBSITE_2880x1620_475fbf27-96ee-4013-8cb5-17100f13b11e.jpg",
+            "image_1_mobile": "shopify://shop_images/ETHAN_SITD_EP1_WEBSITE_800x800_d34202a0-8577-464a-9982-578671395e90.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -177,7 +177,7 @@
             "gradient_direction": "to top",
             "padding-block-start": 0,
             "padding-block-end": 0,
-            "padding-inline-start": 0,
+            "padding-inline-start": 50,
             "padding-inline-end": 0
           },
           "blocks": {
@@ -225,13 +225,13 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p><strong>NEXT LEVEL TRACTION BUILT FOR THE FUTURE</strong></p>",
+                    "text": "<p><strong>ETHAN EWING</strong></p>",
                     "width": "100%",
                     "max_width": "narrow",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-heading--family)",
-                    "font_size": "1rem",
+                    "font_size": "2rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "uppercase",
@@ -251,7 +251,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Revolutionary Moulded Traction Pads designed for peak performance</p>",
+                    "text": "<p>Stab In The Dark</p>",
                     "width": "100%",
                     "max_width": "narrow",
                     "alignment": "left",
@@ -277,8 +277,8 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "Explore",
-                    "link": "https://www.creatures-usa.com/collections/proto-moulded-traction",
+                    "label": "Watch Ep. 1",
+                    "link": "shopify://blogs/news/ethan-ewing-in-stab-in-the-dark",
                     "open_in_new_tab": false,
                     "style_class": "button-secondary",
                     "width": "fit-content",
