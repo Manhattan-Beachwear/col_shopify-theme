@@ -63,7 +63,7 @@
           "settings": {
             "menu": "main-menu-aus-update",
             "split_after_item": 2,
-            "color_scheme": "",
+            "color_scheme": "scheme-6",
             "type_font_primary_size": "1.125rem",
             "menu_font_style": "regular",
             "type_font_primary_link": "subheading",
