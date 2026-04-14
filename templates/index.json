@@ -108,7 +108,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Stab In The Dark</p>",
+                    "text": "<p>in Stab In The Dark</p>",
                     "width": "100%",
                     "max_width": "narrow",
                     "alignment": "left",
