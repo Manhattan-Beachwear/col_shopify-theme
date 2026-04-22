@@ -499,17 +499,17 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_YYMPGT": {
+            "text_TbcBRj": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2><strong>NEW IN: PUNISH COLLECTION</strong></h2>",
+                "text": "<h2><strong>NEW IN: PUNISH COLLECTION</strong></h2><p>As core as the 90s with modern-day tech. The Punish collection is made from pure surf thrash. Traction AND leashes designed to take a beating.</p>",
                 "width": "100%",
-                "max_width": "none",
+                "max_width": "normal",
                 "alignment": "center",
                 "type_preset": "custom",
                 "font": "var(--font-body--family)",
-                "font_size": "1.125rem",
+                "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -524,25 +524,10 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "product_list_button_bmjneT": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
             }
           },
           "block_order": [
-            "text_YYMPGT",
-            "product_list_button_bmjneT"
+            "text_TbcBRj"
           ]
         },
         "static-product-card": {
