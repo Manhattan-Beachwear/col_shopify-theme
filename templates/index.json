@@ -12,6 +12,149 @@
     "slideshow_nngMxP": {
       "type": "slideshow",
       "blocks": {
+        "slide_J8rd8r": {
+          "type": "_slide",
+          "settings": {
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/PUNISHED_COLLECTION_WEBSITE_2880x1620_2.jpg",
+            "image_1_mobile": "shopify://shop_images/PUNISHED_COLLECTION_WEBSITE_800X800_MOBILE.jpg",
+            "content_direction": "column",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "space-between",
+            "gap": 64,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "toggle_overlay": true,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_EHmMfj": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-end",
+                "vertical_alignment_flex_direction_column": "flex-end",
+                "gap": 10,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 76,
+                "height": "custom",
+                "custom_height": 100,
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-6",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "https://www.creatures-usa.com/pages/bad-things-come-in-three",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 48,
+                "padding-block-end": 48,
+                "padding-inline-start": 48,
+                "padding-inline-end": 48
+              },
+              "blocks": {
+                "text_eUWRaN": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h3><strong>PUNISH COLLECTION</strong></h3>",
+                    "width": "fit-content",
+                    "max_width": "narrow",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "1.5rem",
+                    "line_height": "loose",
+                    "letter_spacing": "loose",
+                    "case": "uppercase",
+                    "wrap": "balance",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_RNEdgE": {
+                  "type": "text",
+                  "name": "t:names.heading",
+                  "settings": {
+                    "text": "<p>Core looks from surfing's glory days with the benefits of modern tech<br/></p>",
+                    "width": "fit-content",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-subheading--family)",
+                    "font_size": "0.875rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground-heading)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "button_LbernB": {
+                  "type": "button",
+                  "name": "t:names.button",
+                  "settings": {
+                    "label": "Shop now",
+                    "link": "https://www.creatures-usa.com/collections/punish-collection",
+                    "open_in_new_tab": false,
+                    "style_class": "button-secondary",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 100
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_eUWRaN",
+                "text_RNEdgE",
+                "button_LbernB"
+              ]
+            }
+          },
+          "block_order": [
+            "group_EHmMfj"
+          ]
+        },
         "slide_tazVJa": {
           "type": "_slide",
           "settings": {
@@ -299,155 +442,12 @@
           "block_order": [
             "group_jNMGMy"
           ]
-        },
-        "slide_J8rd8r": {
-          "type": "_slide",
-          "settings": {
-            "media_type_1": "image",
-            "image_1": "shopify://shop_images/RELIANCE_20_JULY_2025_RELIANCE_COLLECTION_PAGE_HEADER_1.jpg",
-            "image_1_mobile": "shopify://shop_images/Screenshot_2026-02-11_144202.png",
-            "content_direction": "column",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "space-between",
-            "gap": 64,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "toggle_overlay": true,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "group_EHmMfj": {
-              "type": "group",
-              "settings": {
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-end",
-                "vertical_alignment_flex_direction_column": "flex-end",
-                "gap": 10,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 76,
-                "height": "custom",
-                "custom_height": 100,
-                "inherit_color_scheme": false,
-                "color_scheme": "scheme-6",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "link": "https://www.creatures-usa.com/pages/bad-things-come-in-three",
-                "open_in_new_tab": false,
-                "placeholder": "",
-                "padding-block-start": 48,
-                "padding-block-end": 48,
-                "padding-inline-start": 48,
-                "padding-inline-end": 48
-              },
-              "blocks": {
-                "text_eUWRaN": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<h3><strong>reliance 2.0</strong></h3>",
-                    "width": "fit-content",
-                    "max_width": "narrow",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-heading--family)",
-                    "font_size": "1.5rem",
-                    "line_height": "loose",
-                    "letter_spacing": "loose",
-                    "case": "uppercase",
-                    "wrap": "balance",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "text_RNEdgE": {
-                  "type": "text",
-                  "name": "t:names.heading",
-                  "settings": {
-                    "text": "<h2>Our strongest and most reliable leash ever. Tested in the most intense conditions by the world's best .</h2>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-subheading--family)",
-                    "font_size": "0.875rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground-heading)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "button_LbernB": {
-                  "type": "button",
-                  "name": "t:names.button",
-                  "settings": {
-                    "label": "Shop now",
-                    "link": "shopify://collections/reliance-2-0",
-                    "open_in_new_tab": false,
-                    "style_class": "button-secondary",
-                    "width": "fit-content",
-                    "custom_width": 100,
-                    "width_mobile": "fit-content",
-                    "custom_width_mobile": 100
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_eUWRaN",
-                "text_RNEdgE",
-                "button_LbernB"
-              ]
-            }
-          },
-          "block_order": [
-            "group_EHmMfj"
-          ]
         }
       },
       "block_order": [
+        "slide_J8rd8r",
         "slide_tazVJa",
-        "slide_bcei9q",
-        "slide_J8rd8r"
+        "slide_bcei9q"
       ],
       "name": "Hero Slideshow",
       "settings": {
