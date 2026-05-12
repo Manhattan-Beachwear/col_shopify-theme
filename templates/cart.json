@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "cart-section": {
       "type": "main-cart",
@@ -170,6 +170,7 @@
               "name": "t:names.product_card_media",
               "settings": {
                 "image_ratio": "adapt",
+                "media_fit": "cover",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -239,10 +240,10 @@
       },
       "name": "t:names.featured_collection",
       "settings": {
-        "collection": "all",
+        "collection": "new-may-2026",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 4,
+        "max_products": 16,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
@@ -255,7 +256,8 @@
         "gap": 28,
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-end": 48,
+        "enable_combined_listings": true
       }
     }
   },
