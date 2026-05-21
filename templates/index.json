@@ -80,7 +80,7 @@
                 "text_eUWRaN": {
                   "type": "text",
                   "settings": {
-                    "text": "<h3><strong>PUNISH COLLECTION</strong></h3>",
+                    "text": "<h3><strong>OUR BIGGEST SALE OF THE YEAR IS LIVE</strong></h3>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "left",
@@ -106,7 +106,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p>Core looks from surfing's glory days with the benefits of modern tech<br/></p>",
+                    "text": "<p>Save 25% at checkout by using code: MDW25. Limited time only. </p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -133,7 +133,7 @@
                   "name": "t:names.button",
                   "settings": {
                     "label": "Shop now",
-                    "link": "https://www.creatures-usa.com/collections/punish-collection",
+                    "link": "https://www.creatures-usa.com/collections/all",
                     "open_in_new_tab": false,
                     "style_class": "button-secondary",
                     "width": "fit-content",
