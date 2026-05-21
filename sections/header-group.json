@@ -30,6 +30,7 @@
         },
         "announcement_BxgCk9": {
           "type": "_announcement",
+          "disabled": true,
           "settings": {
             "text": "<strong>FREE SHIPPING to continental US</strong>  On all orders over $200",
             "link": "",
