@@ -16,8 +16,8 @@
           "type": "_slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/ETHAN_SITD_EP1_WEBSITE_2880x1410_5_1.jpg",
-            "image_1_mobile": "shopify://shop_images/ETHAN_SITD_26_4X5_11_1.jpg",
+            "image_1": "shopify://shop_images/LewisFrenchPhoto-2021-54_2.jpg",
+            "image_1_mobile": "shopify://shop_images/LLA23009MLBK_5_2f251045-e4e6-438f-9f07-f5237f6b11f4.jpg",
             "content_direction": "column",
             "vertical_on_mobile": false,
             "horizontal_alignment": "flex-start",
@@ -80,7 +80,7 @@
                 "text_eUWRaN": {
                   "type": "text",
                   "settings": {
-                    "text": "<h3><strong>OUR BIGGEST SALE OF THE YEAR IS LIVE</strong></h3>",
+                    "text": "<h3><strong>OUR BIGGEST SALE OF THE YEAR IS LIve</strong></h3><h3></h3>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "left",
