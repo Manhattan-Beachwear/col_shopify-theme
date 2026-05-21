@@ -106,7 +106,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p>Save 25% at checkout by using code: MDW25. </p><p>Limited time only. </p>",
+                    "text": "<p>Save 25% at checkout by using code: MDW25</p><p>Limited time only</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
