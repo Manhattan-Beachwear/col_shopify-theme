@@ -81,7 +81,7 @@
                 "text_eUWRaN": {
                   "type": "text",
                   "settings": {
-                    "text": "<h3><strong>OUR BIGGEST SALE OF THE YEAR IS LIve</strong></h3><h3></h3>",
+                    "text": "<h3><strong>SUMMER ESSENTIALS</strong></h3><h3></h3>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "left",
@@ -107,7 +107,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p>Save 25% at checkout by using code: MDW25</p><p>Limited time only</p>",
+                    "text": "<p></p><p>Limited time only</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
