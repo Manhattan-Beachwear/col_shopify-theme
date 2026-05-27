@@ -17,6 +17,7 @@
         "announcement_eBXTYf": {
           "type": "_announcement",
           "name": "t:names.announcement",
+          "disabled": true,
           "settings": {
             "text": "Memorial Day Sale is <strong>Live</strong>. Use Code: <strong>MDW25</strong> for 25% Off Sitewide.",
             "link": "",
@@ -30,7 +31,6 @@
         },
         "announcement_BxgCk9": {
           "type": "_announcement",
-          "disabled": true,
           "settings": {
             "text": "<strong>FREE SHIPPING to continental US</strong>  On all orders over $200",
             "link": "",
