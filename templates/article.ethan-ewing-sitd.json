@@ -123,7 +123,7 @@
         "text_BXtJwg": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>STAB IN THE DARK</strong></p>",
+            "text": "<h1><strong>STAB IN THE DARK</strong></h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -255,7 +255,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p><strong>UNSEEN EXTRAS episode 1<br/><br/></strong></p>",
+            "text": "<h2><strong>UNSEEN EXTRAS episode 1<br/><br/></strong></h2>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -342,7 +342,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p><strong>EPISODE 1 PHOTOS & FRAMEGRABS</strong></p>",
+            "text": "<h2><strong>EPISODE 1 PHOTOS & FRAMEGRABS</strong></h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -670,7 +670,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3><strong>{{ closest.collection.title }}</strong></h3>",
+                "text": "<h2><strong>{{ closest.collection.title }}</strong></h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -929,7 +929,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3><strong>{{ closest.collection.title }}</strong></h3>",
+                "text": "<h2><strong>{{ closest.collection.title }}</strong></h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -1173,7 +1173,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3><strong>{{ closest.collection.title }}</strong></h3>",
+                "text": "<h2><strong>{{ closest.collection.title }}</strong></h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
