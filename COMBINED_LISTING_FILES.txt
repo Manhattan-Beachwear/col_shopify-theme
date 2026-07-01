@@ -1,0 +1,36 @@
+# Combined Listing Variant Picker — file manifest
+# Pull these from parent (upstream/main) when syncing the CL feature bundle.
+# See sync-combined-listing-from-parent.sh
+
+# Core picker (Liquid + JS)
+assets/variant-picker-cl.js
+assets/variant-picker-utils.js
+assets/combined-listing-group.js
+blocks/variant-picker-cl.liquid
+blocks/variant-title.liquid
+snippets/variant-combined-listing-picker.liquid
+snippets/util-combined-availability.liquid
+snippets/variant-option-unavailable-line.liquid
+snippets/util-size-sort.liquid
+snippets/util-combined-listing-data.liquid
+snippets/variant-combined-listing-swatches.liquid
+snippets/product-title-processed.liquid
+
+# Quick add + card integration
+assets/quick-add.js
+snippets/quick-add-modal-cl.liquid
+snippets/swatches-cl.liquid
+sections/section-rendering-product-card.liquid
+
+# Wiring (loads scripts, title processing)
+snippets/scripts.liquid
+snippets/text.liquid
+
+# Documentation (optional but recommended)
+.cursor/references/combined-listing-variant-picker.md
+
+# NOT included — child-specific (protected via .gitattributes):
+#   templates/product.json
+#   templates/product.*.json
+#   config/settings_data.json
+#   shopify.theme.toml
