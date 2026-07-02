@@ -81,6 +81,7 @@ export class Slideshow extends Component {
     if (this.#scroll) {
       const { scroller } = this.refs;
       scroller.removeEventListener('mousedown', this.#handleMouseDown);
+      scroller.removeEventListener('keydown', this.#handleScrollerKeydown);
       this.#scroll.destroy();
     }
 
@@ -123,7 +124,7 @@ export class Slideshow extends Component {
     for (const slide of this.refs.slides) {
       if (slide.hasAttribute('reveal')) {
         slide.removeAttribute('reveal');
-        slide.setAttribute('aria-hidden', 'true');
+        this.#setSlideHidden(slide, true);
       }
     }
 
@@ -139,7 +140,7 @@ export class Slideshow extends Component {
         // Force the slide to be revealed if it is hidden
         if (requestedSlide.hasAttribute('hidden')) {
           requestedSlide.setAttribute('reveal', '');
-          requestedSlide.setAttribute('aria-hidden', 'false');
+          this.#setSlideHidden(requestedSlide, false);
         }
 
         return this.slides.indexOf(requestedSlide);
@@ -211,7 +212,7 @@ export class Slideshow extends Component {
 
     const previousIndex = this.current;
 
-    slide.setAttribute('aria-hidden', 'false');
+    this.#setSlideHidden(slide, false);
 
     if (this.#scroll) {
       this.#scroll.to(slide, { instant });
@@ -445,8 +446,15 @@ export class Slideshow extends Component {
     }
 
     if (this.refs.slides?.[0]) {
-      this.refs.slides[0].setAttribute('aria-hidden', 'false');
+      this.#setSlideHidden(this.refs.slides[0], false);
     }
+
+    for (const slide of this.refs.slides ?? []) {
+      if (slide === this.refs.slides[0]) continue;
+      this.#setSlideHidden(slide, true);
+    }
+
+    this.#updateScrollerFocusability();
   }
 
   /**
@@ -462,6 +470,7 @@ export class Slideshow extends Component {
     });
 
     scroller.addEventListener('mousedown', this.#handleMouseDown);
+    scroller.addEventListener('keydown', this.#handleScrollerKeydown);
 
     this.addEventListener('mouseenter', this.suspend);
     this.addEventListener('mouseleave', this.resume);
@@ -471,6 +480,8 @@ export class Slideshow extends Component {
     this.#updateControlsVisibility();
 
     this.disabled = this.isNested || this.disabled;
+
+    this.#updateScrollerFocusability();
 
     this.resume();
 
@@ -502,6 +513,8 @@ export class Slideshow extends Component {
         if (visibleSlidesAmount > 1) {
           this.#updateVisibleSlides();
         }
+
+        this.#updateScrollerFocusability();
 
         if (this.hasAttribute('auto-hide-controls')) {
           this.#updateControlsVisibility();
@@ -590,6 +603,10 @@ export class Slideshow extends Component {
     // Check if the event target is within a 3D model interactive element
     // This prevents the slideshow from capturing drag events when interacting with 3D models
     if (event.target.closest('model-viewer')) {
+      return;
+    }
+
+    if (event.target.closest('a, button, input, textarea, select, label, .hero__slide-content, .text-block')) {
       return;
     }
 
@@ -746,6 +763,37 @@ export class Slideshow extends Component {
    */
   #handleVisibilityChange = () => (document.hidden ? this.pause() : this.resume());
 
+  /**
+   * Keeps the scroll container out of the tab order when it is not scrollable.
+   */
+  #updateScrollerFocusability() {
+    const { scroller } = this.refs;
+
+    if (!(scroller instanceof HTMLElement)) return;
+
+    const isScrollable = scroller.scrollWidth > scroller.clientWidth && !this.disabled;
+    scroller.tabIndex = isScrollable ? 0 : -1;
+  }
+
+  /**
+   * Moves between slides when the scroll container has keyboard focus.
+   * @param {KeyboardEvent} event
+   */
+  #handleScrollerKeydown = (event) => {
+    const { scroller } = this.refs;
+
+    if (!(scroller instanceof HTMLElement) || document.activeElement !== scroller) return;
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+
+    event.preventDefault();
+
+    if (event.key === 'ArrowLeft') {
+      this.previous(event);
+    } else {
+      this.next(event);
+    }
+  };
+
   #updateControlsVisibility() {
     if (!this.hasAttribute('auto-hide-controls')) return;
 
@@ -779,6 +827,16 @@ export class Slideshow extends Component {
     });
   }
 
+  /**
+   * Updates aria-hidden and inert together so hidden slides cannot receive focus.
+   * @param {HTMLElement} slide
+   * @param {boolean} hidden
+   */
+  #setSlideHidden(slide, hidden) {
+    slide.setAttribute('aria-hidden', `${hidden}`);
+    slide.inert = hidden;
+  }
+
   #updateVisibleSlides() {
     const { slides } = this;
     if (!slides || !slides.length) return 0;
@@ -790,7 +848,7 @@ export class Slideshow extends Component {
       // Update aria-hidden based on visibility
       slides.forEach((slide) => {
         const isVisible = visibleSlides.includes(slide);
-        slide.setAttribute('aria-hidden', `${!isVisible}`);
+        this.#setSlideHidden(slide, !isVisible);
       });
     });
 
