@@ -210,10 +210,20 @@ export class VariantPickerCLDual extends Component {
     this.#selectedColor = this.dataset.currentColor || undefined;
     this.#selectedSize = this.dataset.currentSize || undefined;
 
+    // #region agent log
+    fetch('http://127.0.0.1:7413/ingest/57d37fc0-8c49-40f7-bc8a-b744ba4de615',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5b7601'},body:JSON.stringify({sessionId:'5b7601',runId:'post-fix',location:'variant-picker-cl.js:connectedCallback',message:'Initial picker state',data:{combinationsCount:this.#combinations.length,combinations:this.#combinations.slice(0,8),currentColor:this.#selectedColor,currentSize:this.#selectedSize,rawCombinationsPreview:combinationsData?.slice(0,300)},timestamp:Date.now(),hypothesisId:'H1-H2-H5'})}).catch(()=>{});
+    // #endregion
+
     this.#initializeRadioGroups();
 
     // Initialize filtering
     this.#updateFiltering();
+
+    // #region agent log
+    const colorSwatchInputs=Array.from(this.querySelectorAll('fieldset.variant-option--swatches input[data-option-type="color"]')).map((input)=>({value:input.value,available:input.getAttribute('data-option-available'),disabled:input.disabled}));
+    const sizeInputs=Array.from(this.querySelectorAll('.variant-picker-cl-dual__options[data-option-type="size"] input[data-option-type="size"]')).map((input)=>({value:input.value,available:input.getAttribute('data-option-available'),disabled:input.disabled,ariaDisabled:input.getAttribute('aria-disabled')}));
+    fetch('http://127.0.0.1:7413/ingest/57d37fc0-8c49-40f7-bc8a-b744ba4de615',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5b7601'},body:JSON.stringify({sessionId:'5b7601',location:'variant-picker-cl.js:connectedCallback:dom',message:'Server-rendered DOM state after init filtering',data:{colorSwatchCount:colorSwatchInputs.length,colorSwatches:colorSwatchInputs,sizeCount:sizeInputs.length,sizes:sizeInputs},timestamp:Date.now(),hypothesisId:'H1-H2'})}).catch(()=>{});
+    // #endregion
 
     // Listen for change events on radio inputs
     this.addEventListener('change', this.#handleSelectionChange.bind(this));
@@ -738,6 +748,10 @@ export class VariantPickerCLDual extends Component {
     const availableColors = this.#getAvailableColors();
     const availableSizes = this.#getAvailableSizes();
 
+    // #region agent log
+    const sizeAvailabilityDebug=[];
+    // #endregion
+
     // Update color options (pill-style only — swatch availability is set server-side in Liquid)
     const colorLabels = this.querySelectorAll(
       '.variant-picker-cl-dual__options[data-option-type="color"] > .variant-picker-cl-dual__label'
@@ -801,6 +815,11 @@ export class VariantPickerCLDual extends Component {
           this.#matchesSelectedColor(c.color, c.size)
       );
 
+      // #region agent log
+      const matchingCombos=this.#combinations.filter((c)=>c.size&&c.size.trim()===sizeValue);
+      sizeAvailabilityDebug.push({sizeValue,isAvailable,hasAvailableCombination,matchingCombos:matchingCombos.map((c)=>({color:c.color,size:c.size,available:c.available,matchesColor:this.#matchesSelectedColor(c.color,c.size)}))});
+      // #endregion
+
       input.setAttribute('data-option-available', hasAvailableCombination.toString());
       label.setAttribute('data-option-available', hasAvailableCombination.toString());
       if (!hasAvailableCombination) {
@@ -817,6 +836,10 @@ export class VariantPickerCLDual extends Component {
         input.disabled = false;
       }
     });
+
+    // #region agent log
+    fetch('http://127.0.0.1:7413/ingest/57d37fc0-8c49-40f7-bc8a-b744ba4de615',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'5b7601'},body:JSON.stringify({sessionId:'5b7601',location:'variant-picker-cl.js:updateFiltering',message:'JS filtering results',data:{selectedColor:this.#selectedColor,selectedSize:this.#selectedSize,availableColors,availableSizes,sizeAvailabilityDebug},timestamp:Date.now(),hypothesisId:'H3'})}).catch(()=>{});
+    // #endregion
   }
 
   /**

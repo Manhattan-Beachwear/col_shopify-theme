@@ -34,8 +34,10 @@
             if combo_size != blank and combo_size != ''
               assign combo_combined = combo_color | append: ' / ' | append: combo_size
             endif
-            if combo_combined == option_normalized and combo_available == 'true'
-              assign is_match = true
+            if combo_combined == option_normalized or combo_color == option_normalized
+              if combo_available == 'true'
+                assign is_match = true
+              endif
             endif
           elsif match_type == 'size'
             assign size_match = false
@@ -50,6 +52,11 @@
                 endif
                 if filter_normalized == combo_color or filter_normalized == combo_combined
                   assign size_match = true
+                elsif filter_normalized contains ' / '
+                  assign filter_frame = filter_normalized | split: ' / ' | first | strip
+                  if filter_frame == combo_color
+                    assign size_match = true
+                  endif
                 endif
               endif
             endif

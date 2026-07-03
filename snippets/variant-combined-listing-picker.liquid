@@ -471,6 +471,9 @@
       assign size_option_position = option2_position
     endif
   endif
+
+  # Frame/lens products combine option1+option2 into one swatch key; color+size products do not
+  assign combine_option2_into_color = option2_is_color_like
 %}
 
 {% liquid
@@ -573,9 +576,9 @@
               elsif option3_position == 3
                 assign current_variant_option3_value = current_variant.option3
               endif
-              # Create combined current color value: frame + lens
+              # Combined color key: frame + lens only (not color + size)
               assign current_color_value = current_variant_option1_value
-              if current_variant_option2_value != blank and current_variant_option2_value != ''
+              if combine_option2_into_color and current_variant_option2_value != blank and current_variant_option2_value != ''
                 assign current_color_value = current_variant_option1_value | append: ' / ' | append: current_variant_option2_value
               endif
               assign current_size_value = current_variant_option2_value
@@ -618,10 +621,9 @@
               assign color_value = option1_value
               assign size_value = option2_value
               
-              # Create combined color value: frame color + lens color (or option1 + option2)
-              # This ensures products with same frame but different lenses get unique swatches
+              # Combined color key: frame + lens only (not color + size)
               assign combined_color_value = color_value
-              if size_value != blank and size_value != ''
+              if combine_option2_into_color and size_value != blank and size_value != ''
                 assign combined_color_value = color_value | append: ' / ' | append: size_value
               endif
               
@@ -671,34 +673,34 @@
                   endif
                 endunless
                 
-                # Track unique product-color combinations (product_id|combined_color_value)
-                # This ensures each product gets its own swatch
-                assign product_color_key = product_id_str | append: '|' | append: combined_color_value_str
-                assign product_color_found = false
-                if unique_products_with_colors != ''
-                  assign product_colors_check = unique_products_with_colors | split: '|||'
-                  for existing_product_color in product_colors_check
-                    if existing_product_color == product_color_key
-                      assign product_color_found = true
-                      break
+                # Per-product swatches only for frame/lens; color+size uses unique_colors fallback
+                if combine_option2_into_color
+                  assign product_color_key = product_id_str | append: '|' | append: combined_color_value_str
+                  assign product_color_found = false
+                  if unique_products_with_colors != ''
+                    assign product_colors_check = unique_products_with_colors | split: '|||'
+                    for existing_product_color in product_colors_check
+                      if existing_product_color == product_color_key
+                        assign product_color_found = true
+                        break
+                      endif
+                    endfor
+                  endif
+                  unless product_color_found
+                    if unique_products_with_colors == ''
+                      assign unique_products_with_colors = product_color_key
+                    else
+                      assign unique_products_with_colors = unique_products_with_colors | append: '|||' | append: product_color_key
                     endif
-                  endfor
+
+                    assign product_color_entry = product_id_str | append: ':' | append: combined_color_value_str
+                    if products_color_map == ''
+                      assign products_color_map = product_color_entry
+                    else
+                      assign products_color_map = products_color_map | append: '|||' | append: product_color_entry
+                    endif
+                  endunless
                 endif
-                unless product_color_found
-                  if unique_products_with_colors == ''
-                    assign unique_products_with_colors = product_color_key
-                  else
-                    assign unique_products_with_colors = unique_products_with_colors | append: '|||' | append: product_color_key
-                  endif
-                  
-                  # Also track product-color mapping for rendering (product_id:combined_color_value)
-                  assign product_color_entry = product_id_str | append: ':' | append: combined_color_value_str
-                  if products_color_map == ''
-                    assign products_color_map = product_color_entry
-                  else
-                    assign products_color_map = products_color_map | append: '|||' | append: product_color_entry
-                  endif
-                endunless
               endif
               
               # Track unique sizes
@@ -1447,7 +1449,7 @@
                           
                           # Reconstruct combined color value from stored frame + lens
                           assign combo_combined_color = combo_color
-                          if combo_size != blank and combo_size != ''
+                          if combine_option2_into_color and combo_size != blank and combo_size != ''
                             assign combo_combined_color = combo_color | append: ' / ' | append: combo_size
                           endif
                           
@@ -1667,7 +1669,7 @@
                           
                           # Reconstruct combined color from stored values
                           assign combo_combined_color = combo_color
-                          if combo_size != blank and combo_size != ''
+                          if combine_option2_into_color and combo_size != blank and combo_size != ''
                             assign combo_combined_color = combo_color | append: ' / ' | append: combo_size
                           endif
                           
@@ -1708,7 +1710,7 @@
                         
                         # Reconstruct combined color value from stored frame + lens
                         assign combo_combined_color = combo_color
-                        if combo_size != blank and combo_size != ''
+                        if combine_option2_into_color and combo_size != blank and combo_size != ''
                           assign combo_combined_color = combo_color | append: ' / ' | append: combo_size
                         endif
                         
@@ -1976,7 +1978,7 @@
                                 
                                 # Reconstruct combined color value from stored frame + lens
                                 assign combo_combined_color = combo_color
-                                if combo_size != blank and combo_size != ''
+                                if combine_option2_into_color and combo_size != blank and combo_size != ''
                                   assign combo_combined_color = combo_color | append: ' / ' | append: combo_size
                                 endif
                                 
@@ -2232,7 +2234,7 @@
                                 
                                 # Reconstruct combined color from stored values
                                 assign combo_combined_color = combo_color
-                                if combo_size != blank and combo_size != ''
+                                if combine_option2_into_color and combo_size != blank and combo_size != ''
                                   assign combo_combined_color = combo_color | append: ' / ' | append: combo_size
                                 endif
                                 
@@ -2273,7 +2275,7 @@
                               
                               # Reconstruct combined color value from stored frame + lens
                               assign combo_combined_color = combo_color
-                              if combo_size != blank and combo_size != ''
+                              if combine_option2_into_color and combo_size != blank and combo_size != ''
                                 assign combo_combined_color = combo_color | append: ' / ' | append: combo_size
                               endif
                               

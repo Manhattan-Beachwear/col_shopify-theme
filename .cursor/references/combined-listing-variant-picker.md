@@ -218,6 +218,24 @@ Each product in the combined listing should:
 
 ## Known Issues and Solutions
 
+### Issue: Duplicate color swatches and incorrect size availability (color + size products)
+
+**Symptoms**: Products with Color + Size options show one swatch per size (e.g. four identical "Black" swatches labeled "Black / 6 ft 3 in") and sizes may appear out of stock when only the current size matches the combined color filter.
+
+**Cause**: Liquid always combined option1 + option2 into the color swatch key (`"Frame / Lens"` logic). For Color + Size listings, option2 is size—not a second color—so each linked product produced a separate swatch and `current_color_value` became `"Black / 6 ft 3 in"`, breaking size availability filtering.
+
+**Solution**: Set `combine_option2_into_color = option2_is_color_like`. Only append option2 to the color key when option2 is color-like (frame/lens). For Color + Size, dedupe swatches via `unique_colors` only (skip per-product `unique_products_with_colors` entries).
+
+```liquid
+assign combine_option2_into_color = option2_is_color_like
+assign combined_color_value = color_value
+if combine_option2_into_color and size_value != blank
+  assign combined_color_value = color_value | append: ' / ' | append: size_value
+endif
+```
+
+**Runtime evidence (2026-07-02)**: Debug logs showed `currentColor: "Black / 6 ft 3 in"`, four swatch values with size appended, while `data-combinations` correctly stored `color: "Black"` per row—all variants `available: true`.
+
 ### Issue: Liquid Syntax Error with Pipe in Conditionals
 
 **Error**: `Expected end_of_string but found pipe`
