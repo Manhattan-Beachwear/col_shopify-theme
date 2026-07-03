@@ -121,7 +121,7 @@
               "settings": {
                 "show_second_image_on_hover": true,
                 "image_ratio": "square",
-                "media_fit": "cover",
+                "media_fit": "contain",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
