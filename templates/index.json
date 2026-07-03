@@ -354,13 +354,27 @@
       ],
       "name": "Hero Slideshow",
       "settings": {
+        "color_scheme": "scheme-6",
         "icons_style": "none",
         "slideshow_controls_style": "dots",
-        "color_scheme": "scheme-6",
         "autoplay": false,
         "autoplay_speed": 3,
+        "section_height": "medium",
+        "section_height_custom": 50,
         "section_width": "full-width",
-        "slide_height": "large",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 0,
+        "border_opacity": 100,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -455,6 +469,7 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
+                "show_second_image_on_hover": true,
                 "image_ratio": "adapt",
                 "media_fit": "cover",
                 "border": "none",
@@ -543,7 +558,11 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48,
-        "enable_combined_listings": false
+        "enable_combined_listings": false,
+        "show_product_image_swatches": false,
+        "product_image_swatch_style": "circle",
+        "product_image_swatch_size": 48,
+        "show_horizontal_scroll": false
       }
     },
     "section_ChrATT": {
@@ -867,7 +886,11 @@
         "color_scheme": "scheme-6",
         "padding-block-start": 48,
         "padding-block-end": 48,
-        "enable_combined_listings": false
+        "enable_combined_listings": false,
+        "show_product_image_swatches": false,
+        "product_image_swatch_style": "circle",
+        "product_image_swatch_size": 48,
+        "show_horizontal_scroll": false
       }
     },
     "product_list_DmmaD8": {
@@ -1002,8 +1025,9 @@
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
               "settings": {
+                "show_second_image_on_hover": true,
                 "image_ratio": "adapt",
-                "media_fit": "cover",
+                "media_fit": "contain",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -1073,7 +1097,11 @@
                 "product_swatches_padding_top": 4,
                 "product_swatches_padding_bottom": 0,
                 "product_swatches_padding_left": 0,
-                "product_swatches_padding_right": 0
+                "product_swatches_padding_right": 0,
+                "show_product_image_swatches": false,
+                "product_image_swatch_style": "circle",
+                "product_image_swatch_size": 48,
+                "show_horizontal_scroll": false
               },
               "blocks": {}
             }
@@ -1091,8 +1119,8 @@
         "collection": "ethans-traction",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 12,
-        "columns": 4,
+        "max_products": 9,
+        "columns": 2,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
         "columns_gap": 8,
@@ -1105,7 +1133,11 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48,
-        "enable_combined_listings": true
+        "enable_combined_listings": false,
+        "show_product_image_swatches": false,
+        "product_image_swatch_style": "circle",
+        "product_image_swatch_size": 48,
+        "show_horizontal_scroll": false
       }
     },
     "collection_list_LebnXF": {
@@ -1215,7 +1247,11 @@
         "color_scheme": "scheme-6",
         "padding-block-start": 48,
         "padding-block-end": 48,
-        "enable_combined_listings": false
+        "enable_combined_listings": false,
+        "show_product_image_swatches": false,
+        "product_image_swatch_style": "circle",
+        "product_image_swatch_size": 48,
+        "show_horizontal_scroll": false
       }
     },
     "section_cb4ar8": {
