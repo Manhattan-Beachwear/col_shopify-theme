@@ -80,15 +80,18 @@ export default class VariantPickerCL extends Component {
    * @param {string} variantId - The variant ID for the event.
    */
   #fetchAndMorphProduct(productUrl, isDifferentProduct, variantId) {
+
     // Abort any pending requests
     this.#abortController?.abort();
     this.#abortController = new AbortController();
+
 
     fetch(productUrl, { signal: this.#abortController.signal })
       .then((response) => {
         return response.text();
       })
       .then((responseText) => {
+
         const html = new DOMParser().parseFromString(responseText, 'text/html');
         const main = document.querySelector('main');
         const newMain = html.querySelector('main');
@@ -188,6 +191,9 @@ export class VariantPickerCLDual extends Component {
   /** @type {((event: VariantUpdateEvent) => void) | undefined} */
   #boundHandleVariantUpdate;
 
+  /** @type {((event: KeyboardEvent) => void) | undefined} */
+  #boundHandleSwatchKeydown;
+
   connectedCallback() {
     super.connectedCallback();
 
@@ -204,25 +210,7 @@ export class VariantPickerCLDual extends Component {
     this.#selectedColor = this.dataset.currentColor || undefined;
     this.#selectedSize = this.dataset.currentSize || undefined;
 
-    // Initialize radio tracking for pill animation (matching variant-main-picker)
-    const optionsContainers = this.querySelectorAll('.variant-picker-cl-dual__options[data-fieldset-index]');
-    optionsContainers.forEach((container) => {
-      const radios = Array.from(container.querySelectorAll('input[type="radio"]')).filter(
-        /**
-         * @param {Element} el
-         * @returns {el is HTMLInputElement}
-         */
-        (el) => el instanceof HTMLInputElement
-      );
-      this.#radios.push(radios);
-
-      const initialCheckedIndex = radios.findIndex((radio) => radio.dataset.currentChecked === 'true');
-      if (initialCheckedIndex !== -1) {
-        this.#checkedIndices.push([initialCheckedIndex]);
-      } else {
-        this.#checkedIndices.push([]);
-      }
-    });
+    this.#initializeRadioGroups();
 
     // Initialize filtering
     this.#updateFiltering();
@@ -230,6 +218,11 @@ export class VariantPickerCLDual extends Component {
     // Listen for change events on radio inputs
     this.addEventListener('change', this.#handleSelectionChange.bind(this));
 
+    // Arrow-key navigation for swatch fieldsets (each radio must be in its own label hit area)
+    this.#boundHandleSwatchKeydown = this.#handleSwatchKeydown.bind(this);
+    if (this.#boundHandleSwatchKeydown) {
+      this.addEventListener('keydown', this.#boundHandleSwatchKeydown);
+    }
     // Listen for URL changes (browser back/forward, direct URL changes)
     this.#boundHandleUrlChange = this.#handleUrlChange.bind(this);
     if (this.#boundHandleUrlChange) {
@@ -248,6 +241,10 @@ export class VariantPickerCLDual extends Component {
 
   disconnectedCallback() {
     super.disconnectedCallback();
+    if (this.#boundHandleSwatchKeydown !== undefined) {
+      this.removeEventListener('keydown', this.#boundHandleSwatchKeydown);
+      this.#boundHandleSwatchKeydown = undefined;
+    }
     if (this.#boundHandleUrlChange !== undefined) {
       window.removeEventListener('popstate', this.#boundHandleUrlChange);
       this.#boundHandleUrlChange = undefined;
@@ -256,6 +253,74 @@ export class VariantPickerCLDual extends Component {
       document.removeEventListener(ThemeEvents.variantUpdate, this.#boundHandleVariantUpdate);
       this.#boundHandleVariantUpdate = undefined;
     }
+  }
+
+  /**
+   * Initializes radio groups for pill animation (buttons and swatch fieldsets).
+   */
+  #initializeRadioGroups() {
+    this.#checkedIndices = [];
+    this.#radios = [];
+
+    const optionsContainers = this.querySelectorAll(
+      '.variant-picker-cl-dual__options[data-fieldset-index], fieldset.variant-option--swatches'
+    );
+
+    optionsContainers.forEach((container) => {
+      const radios = Array.from(container.querySelectorAll('input[type="radio"]')).filter(
+        /**
+         * @param {Element} el
+         * @returns {el is HTMLInputElement}
+         */
+        (el) => el instanceof HTMLInputElement
+      );
+      this.#radios.push(radios);
+
+      const initialCheckedIndex = radios.findIndex((radio) => radio.dataset.currentChecked === 'true');
+      if (initialCheckedIndex !== -1) {
+        this.#checkedIndices.push([initialCheckedIndex]);
+      } else {
+        this.#checkedIndices.push([]);
+      }
+    });
+  }
+
+  /**
+   * Handles arrow-key navigation within a swatch radio group.
+   * @param {KeyboardEvent} event - The keydown event.
+   */
+  #handleSwatchKeydown(event) {
+    if (!(event.target instanceof HTMLInputElement) || event.target.type !== 'radio') return;
+
+    const fieldset = event.target.closest('fieldset.variant-option--swatches');
+    if (!fieldset) return;
+
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight' && event.key !== 'ArrowUp' && event.key !== 'ArrowDown') {
+      return;
+    }
+
+    const radios = Array.from(fieldset.querySelectorAll('input[type="radio"]:not(:disabled)')).filter(
+      /**
+       * @param {Element} el
+       * @returns {el is HTMLInputElement}
+       */
+      (el) => el instanceof HTMLInputElement
+    );
+
+    const currentIndex = radios.indexOf(event.target);
+    if (currentIndex === -1 || radios.length < 2) return;
+
+    event.preventDefault();
+
+    const delta = event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -1 : 1;
+    const nextIndex = (currentIndex + delta + radios.length) % radios.length;
+    const nextRadio = radios[nextIndex];
+
+    if (!nextRadio || nextRadio === event.target) return;
+
+    nextRadio.checked = true;
+    nextRadio.focus();
+    nextRadio.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
   /**
@@ -448,15 +513,67 @@ export class VariantPickerCLDual extends Component {
   }
 
   /**
+   * Matches selected color against a combination row (frame-only or combined frame / lens).
+   * @param {string | undefined} comboColor - Frame color from combination data.
+   * @param {string | undefined} comboSize - Size from combination data.
+   * @returns {boolean}
+   */
+  #matchesSelectedColor(comboColor, comboSize) {
+    if (!this.#selectedColor) {
+      return true;
+    }
+
+    const selected = this.#selectedColor.trim();
+    const frame = comboColor?.trim() ?? '';
+
+    if (!frame) {
+      return false;
+    }
+
+    if (selected === frame) {
+      return true;
+    }
+
+    if (comboSize?.trim()) {
+      const combined = `${frame} / ${comboSize.trim()}`;
+      if (selected === combined) {
+        return true;
+      }
+    }
+
+    if (selected.includes(' / ')) {
+      const framePart = selected.split(' / ')[0]?.trim();
+      if (framePart === frame) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
    * Handles selection change events.
    * @param {Event} event - The change event.
    */
   #handleSelectionChange(event) {
-    if (!(event.target instanceof HTMLInputElement)) return;
-    if (event.target.type !== 'radio') return;
+    if (!(event.target instanceof HTMLInputElement)) {
+      return;
+    }
+    if (event.target.type !== 'radio') {
+      return;
+    }
 
     const optionType = event.target.dataset.optionType;
     const value = event.target.value;
+    const connectedProductUrl = event.target.dataset.connectedProductUrl;
+    let variantId = event.target.dataset.variantId;
+
+    if (!variantId && connectedProductUrl) {
+      const variantMatch = connectedProductUrl.match(/[?&]variant=(\d+)/);
+      if (variantMatch) {
+        variantId = variantMatch[1];
+      }
+    }
 
     if (optionType === 'color') {
       this.#selectedColor = value;
@@ -464,15 +581,68 @@ export class VariantPickerCLDual extends Component {
       this.#selectedSize = value;
     }
 
+    // Check if input has data-connected-product-url - if so, navigate directly (similar to base VariantPicker)
+    // This handles cases where a swatch has a direct product URL even if no matching combination exists
+    if (connectedProductUrl && variantId) {
+      // Don't navigate if inside product-card or quick-add-dialog (those handle their own navigation)
+      if (event.target.closest('product-card') || event.target.closest('quick-add-dialog')) {
+        // Let the parent component handle navigation
+        return;
+      }
+
+      // Check if we're on a product page
+      const isOnProductPage = this.dataset.templateProductMatch === 'true';
+
+      // For combined listings, if we have a connectedProductUrl, we should navigate
+      // Build the product URL with variant
+      const productUrl = connectedProductUrl.includes('?variant=') 
+        ? connectedProductUrl 
+        : `${connectedProductUrl}?variant=${variantId}`;
+      const productUrlBase = connectedProductUrl.split('?')[0];
+      const currentUrlBase = this.#currentProductUrl || window.location.pathname;
+      const isDifferentProduct = productUrlBase !== currentUrlBase;
+
+      // Dispatch VariantSelectedEvent to disable buttons
+      this.dispatchEvent(
+        new VariantSelectedEvent({
+          id: variantId,
+        })
+      );
+
+      // Update UI
+      requestAnimationFrame(() => {
+        if (!(event.target instanceof HTMLInputElement)) return;
+        this.#updateSelectedOption(event.target);
+        this.#updateFiltering();
+
+        // Navigate using morphing if on product page, otherwise use full page navigation
+        if (isOnProductPage) {
+          this.#fetchAndMorphProduct(productUrl, isDifferentProduct, variantId);
+
+          // Update browser history
+          const url = new URL(productUrl, window.location.origin);
+          if (url.href !== window.location.href) {
+            requestYieldCallback(() => {
+              history.replaceState({}, '', url.toString());
+            });
+          }
+        } else {
+          // Not on product page, use full page navigation
+          window.location.href = productUrl;
+        }
+      });
+      return; // Exit early to prevent duplicate execution
+    }
+
     // If both are selected, dispatch VariantSelectedEvent FIRST to disable buttons
     // Then update UI, then navigate (matching variant-main-picker order)
     if (this.#selectedColor && this.#selectedSize) {
       // Find matching combination to get variantId
-      const selectedColorTrimmed = this.#selectedColor?.trim().toLowerCase() || '';
       const selectedSizeTrimmed = this.#selectedSize?.trim().toLowerCase() || '';
+
       const matchingCombination = this.#combinations.find(
         (combo) =>
-          combo.color?.trim().toLowerCase() === selectedColorTrimmed &&
+          this.#matchesSelectedColor(combo.color, combo.size) &&
           combo.size?.trim().toLowerCase() === selectedSizeTrimmed
       );
 
@@ -523,7 +693,8 @@ export class VariantPickerCLDual extends Component {
     const inputIndex = Number.parseInt(target.dataset.inputIndex || '');
 
     if (!Number.isNaN(fieldsetIndex) && !Number.isNaN(inputIndex)) {
-      const optionsContainer = target.closest('.variant-picker-cl-dual__options');
+      const optionsContainer =
+        target.closest('.variant-picker-cl-dual__options') || target.closest('fieldset.variant-option--swatches');
       const checkedIndices = this.#checkedIndices[fieldsetIndex];
       const radios = this.#radios[fieldsetIndex];
 
@@ -550,26 +721,7 @@ export class VariantPickerCLDual extends Component {
     this.#selectedSize = this.dataset.currentSize || undefined;
 
     // Re-initialize radio tracking for pill animation
-    this.#checkedIndices = [];
-    this.#radios = [];
-    const optionsContainers = this.querySelectorAll('.variant-picker-cl-dual__options[data-fieldset-index]');
-    optionsContainers.forEach((container) => {
-      const radios = Array.from(container.querySelectorAll('input[type="radio"]')).filter(
-        /**
-         * @param {Element} el
-         * @returns {el is HTMLInputElement}
-         */
-        (el) => el instanceof HTMLInputElement
-      );
-      this.#radios.push(radios);
-
-      const initialCheckedIndex = radios.findIndex((radio) => radio.dataset.currentChecked === 'true');
-      if (initialCheckedIndex !== -1) {
-        this.#checkedIndices.push([initialCheckedIndex]);
-      } else {
-        this.#checkedIndices.push([]);
-      }
-    });
+    this.#initializeRadioGroups();
 
     // Re-run filtering with updated data
     this.#updateFiltering();
@@ -586,7 +738,7 @@ export class VariantPickerCLDual extends Component {
     const availableColors = this.#getAvailableColors();
     const availableSizes = this.#getAvailableSizes();
 
-    // Update color options
+    // Update color options (pill-style only — swatch availability is set server-side in Liquid)
     const colorLabels = this.querySelectorAll(
       '.variant-picker-cl-dual__options[data-option-type="color"] > .variant-picker-cl-dual__label'
     );
@@ -604,17 +756,14 @@ export class VariantPickerCLDual extends Component {
         const selectedSizeTrimmed = this.#selectedSize.trim();
         hasSelectedSize = this.#combinations.some(
           (c) =>
-            c.color &&
-            c.color.trim() === colorValue &&
+            this.#matchesSelectedColor(c.color, c.size) &&
             c.size &&
             c.size.trim() === selectedSizeTrimmed
         );
       }
 
-      // Color is available if it's in the available colors list AND has the selected size (if size is selected)
       const colorIsAvailable = isAvailable && hasSelectedSize;
 
-      // Update data-option-available attribute on both input and label
       input.setAttribute('data-option-available', colorIsAvailable.toString());
       label.setAttribute('data-option-available', colorIsAvailable.toString());
       if (!colorIsAvailable) {
@@ -623,7 +772,6 @@ export class VariantPickerCLDual extends Component {
         input.removeAttribute('aria-disabled');
       }
 
-      // Disable if not available (unless it's the currently selected one)
       if (!colorIsAvailable && !isSelected) {
         label.setAttribute('data-disabled', 'true');
         input.disabled = true;
@@ -633,7 +781,7 @@ export class VariantPickerCLDual extends Component {
       }
     });
 
-    // Update size options
+    // Update size options (pill-style only)
     const sizeLabels = this.querySelectorAll(
       '.variant-picker-cl-dual__options[data-option-type="size"] > .variant-picker-cl-dual__label'
     );
@@ -645,16 +793,14 @@ export class VariantPickerCLDual extends Component {
       const isAvailable = availableSizes.some((s) => s.trim() === sizeValue);
       const isSelected = this.#selectedSize && this.#selectedSize.trim() === sizeValue;
 
-      // Check if this size has any available combinations
       const hasAvailableCombination = this.#combinations.some(
         (c) =>
           c.size &&
           c.size.trim() === sizeValue &&
           c.available === true &&
-          (!this.#selectedColor || (c.color && c.color.trim() === this.#selectedColor.trim()))
+          this.#matchesSelectedColor(c.color, c.size)
       );
 
-      // Update data-option-available attribute on both input and label
       input.setAttribute('data-option-available', hasAvailableCombination.toString());
       label.setAttribute('data-option-available', hasAvailableCombination.toString());
       if (!hasAvailableCombination) {
@@ -663,7 +809,6 @@ export class VariantPickerCLDual extends Component {
         input.removeAttribute('aria-disabled');
       }
 
-      // Disable if not available (unless it's the currently selected one)
       if (!isAvailable && !isSelected) {
         label.setAttribute('data-disabled', 'true');
         input.disabled = true;
@@ -721,12 +866,10 @@ export class VariantPickerCLDual extends Component {
       ];
     }
 
-    // Return sizes that have a combination with the selected color
-    const selectedColorTrimmed = this.#selectedColor.trim();
     return [
       ...new Set(
         this.#combinations
-          .filter((c) => c.color && c.color.trim() === selectedColorTrimmed)
+          .filter((c) => this.#matchesSelectedColor(c.color, c.size))
           .map((c) => c.size)
           .filter(Boolean)
           .map((c) => c.trim())
@@ -738,13 +881,18 @@ export class VariantPickerCLDual extends Component {
    * Finds and navigates to the product matching both color and size selections.
    */
   #navigateToMatchingProduct() {
-    if (!this.#selectedColor || !this.#selectedSize) return;
+    if (!this.#selectedColor || !this.#selectedSize) {
+      return;
+    }
 
     // Find the matching combination (with trimmed comparison for robustness)
-    const selectedColorTrimmed = this.#selectedColor.trim();
     const selectedSizeTrimmed = this.#selectedSize.trim();
+
     const matchingCombination = this.#combinations.find(
-      (c) => c.color && c.color.trim() === selectedColorTrimmed && c.size && c.size.trim() === selectedSizeTrimmed
+      (c) =>
+        this.#matchesSelectedColor(c.color, c.size) &&
+        c.size &&
+        c.size.trim() === selectedSizeTrimmed
     );
 
     if (!matchingCombination) {
@@ -775,15 +923,25 @@ export class VariantPickerCLDual extends Component {
    * @param {string} variantId - The variant ID for the event.
    */
   #fetchAndMorphProduct(productUrl, isDifferentProduct, variantId) {
+
     // Abort any pending requests
     this.#abortController?.abort();
     this.#abortController = new AbortController();
+
+    const focusedSwatchInput =
+      document.activeElement instanceof HTMLInputElement &&
+      document.activeElement.type === 'radio' &&
+      this.contains(document.activeElement)
+        ? document.activeElement
+        : null;
+    const focusedSwatchValue = focusedSwatchInput?.value ?? null;
 
     fetch(productUrl, { signal: this.#abortController.signal })
       .then((response) => {
         return response.text();
       })
       .then((responseText) => {
+
         const html = new DOMParser().parseFromString(responseText, 'text/html');
         const main = document.querySelector('main');
         const newMain = html.querySelector('main');
@@ -846,6 +1004,15 @@ export class VariantPickerCLDual extends Component {
           if (pickerElement && pickerElement instanceof VariantPickerCLDual) {
             // Re-read data attributes and reinitialize
             pickerElement.#reinitializeAfterMorph();
+
+            if (focusedSwatchValue) {
+              const restoredInput = pickerElement.querySelector(
+                `input[type="radio"][value="${CSS.escape(focusedSwatchValue)}"]`
+              );
+              if (restoredInput instanceof HTMLInputElement && !restoredInput.disabled) {
+                restoredInput.focus();
+              }
+            }
           } else {
             // If element not found, it might be a new instance that hasn't initialized yet
             // The connectedCallback will handle initialization, but we should still try to find and update it
@@ -855,6 +1022,15 @@ export class VariantPickerCLDual extends Component {
               );
               if (delayedPickerElement && delayedPickerElement instanceof VariantPickerCLDual) {
                 delayedPickerElement.#reinitializeAfterMorph();
+
+                if (focusedSwatchValue) {
+                  const restoredInput = delayedPickerElement.querySelector(
+                    `input[type="radio"][value="${CSS.escape(focusedSwatchValue)}"]`
+                  );
+                  if (restoredInput instanceof HTMLInputElement && !restoredInput.disabled) {
+                    restoredInput.focus();
+                  }
+                }
               }
             }, 100);
           }

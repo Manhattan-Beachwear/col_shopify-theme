@@ -173,6 +173,7 @@
           "type": "filters",
           "static": true,
           "settings": {
+            "use_simple_controls": true,
             "enable_filtering": false,
             "filter_style": "vertical",
             "filter_width": "centered",
@@ -212,8 +213,9 @@
             "card-gallery": {
               "type": "_product-card-gallery",
               "settings": {
-                "image_ratio": "adapt",
-                "media_fit": "cover",
+                "show_second_image_on_hover": true,
+                "image_ratio": "square",
+                "media_fit": "contain",
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
@@ -282,7 +284,11 @@
                 "product_swatches_padding_top": 4,
                 "product_swatches_padding_bottom": 0,
                 "product_swatches_padding_left": 0,
-                "product_swatches_padding_right": 0
+                "product_swatches_padding_right": 0,
+                "show_product_image_swatches": false,
+                "product_image_swatch_style": "circle",
+                "product_image_swatch_size": 48,
+                "show_horizontal_scroll": false
               },
               "blocks": {}
             }
@@ -310,7 +316,11 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 0,
         "padding-block-end": 32,
-        "enable_combined_listings": true
+        "enable_combined_listings": true,
+        "show_product_image_swatches": false,
+        "product_image_swatch_style": "circle",
+        "product_image_swatch_size": 48,
+        "show_horizontal_scroll": false
       }
     },
     "section_cXMiiJ": {
@@ -575,7 +585,11 @@
         "color_scheme": "",
         "padding-block-start": 24,
         "padding-block-end": 24,
-        "enable_combined_listings": false
+        "enable_combined_listings": false,
+        "show_product_image_swatches": false,
+        "product_image_swatch_style": "circle",
+        "product_image_swatch_size": 48,
+        "show_horizontal_scroll": false
       }
     }
   },

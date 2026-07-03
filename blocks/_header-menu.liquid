@@ -60,9 +60,10 @@
       data-animation-delay="{{ animation_speed }}"
       {{ block.shopify_attributes }}
       style="--submenu-animation-speed: {{ animation_speed }}ms;"
+      on:focusout="/handleFocusOut"
     >
       <div class="header-menu__inner">
-        {%- render 'header-menu' %}
+        {%- render 'header-menu', block_settings: block_settings %}
       </div>
 
       <script
@@ -298,10 +299,45 @@
     transition: clip-path var(--submenu-animation-speed) var(--ease-out-cubic);
   }
 
+  /* Aligned dropdown: under parent*/
+  .menu-list__list-item:where(:not([slot='overflow'])) > .menu-list__submenu--aligned {
+    width: auto;
+    left: auto;
+    right: auto;
+    min-width: 200px;
+  }
+
+  .menu-list__submenu--aligned .mega-menu.section {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .menu-list__submenu--aligned .mega-menu__grid,
+  .menu-list__submenu--aligned .mega-menu__list {
+    display: block !important;
+    width: auto !important;
+  }
+
+  .menu-list__submenu--aligned .mega-menu__column {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .menu-list__submenu--aligned .mega-menu__link {
+    display: block !important;
+    padding: var(--padding-2xs) var(--padding-sm);
+    white-space: nowrap;
+  }
+
   /* Show the submenus on hover */
   .menu-list__list-item:has([aria-expanded='true']) > .menu-list__submenu,
+  .menu-list__list-item:focus-within > .menu-list__submenu,
   /* Show the overflow menu when a menu item is hovered */
   .overflow-menu:has([slot="overflow"] [aria-expanded='true'])::part(overflow),
+  .overflow-menu:has([slot='overflow'] .menu-list__list-item:focus-within)::part(overflow),
   /* Keep the submenus open when they are hovered */
   .menu-list__submenu:is(:hover),
   .overflow-menu::part(overflow):hover {
@@ -724,6 +760,23 @@
     {
       "type": "header",
       "content": "t:content.submenu_feature"
+    },
+    {
+      "type": "select",
+      "id": "dropdown_alignment",
+      "label": "Dropdown alignment",
+      "info": "Choose how text-only dropdown menus are aligned. This setting only affects text menus, not mega menus with images.",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "aligned",
+          "label": "Aligned"
+        }
+      ],
+      "default": "left"
     },
     {
       "type": "select",

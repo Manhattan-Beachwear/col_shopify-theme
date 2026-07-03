@@ -449,11 +449,6 @@ export class Slideshow extends Component {
       this.#setSlideHidden(this.refs.slides[0], false);
     }
 
-    for (const slide of this.refs.slides ?? []) {
-      if (slide === this.refs.slides[0]) continue;
-      this.#setSlideHidden(slide, true);
-    }
-
     this.#updateScrollerFocusability();
   }
 
