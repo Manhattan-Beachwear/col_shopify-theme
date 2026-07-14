@@ -83,7 +83,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Surfboard Traction Pads</h2>",
+            "text": "<h2>New Traction Pads</h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -109,7 +109,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Traction pads are a key tool of the trade when it comes to surfing. The better the grip, the more control you have of your surfboard. </p><p>Creatures of Leisure offers a wide variety of unique and reliable tail pads for surfing. From high performance, techy traction pads to bare bones entry level grip for new surfers. We offer traction pads for all types of surfboards. Explore the collection below.</p>",
+            "text": "<p>Explore our new range of surfboard traction pads. Fresh pads, colors and templates to ensure your quiver of new surfboards are dialed. Grip up!</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
