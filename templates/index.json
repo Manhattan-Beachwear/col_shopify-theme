@@ -896,6 +896,21 @@
     "product_list_DmmaD8": {
       "type": "product-list",
       "blocks": {
+        "button_TGNmqP": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "EXLORE ALL",
+            "link": "shopify://collections/wheely-bags",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
         "static-header": {
           "type": "_product-list-content",
           "name": "t:names.header",
@@ -981,26 +996,11 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "product_list_button_8QrNhM": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": true,
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
             }
           },
           "block_order": [
             "product_list_text_yAmEW4",
-            "text_HdkCLh",
-            "product_list_button_8QrNhM"
+            "text_HdkCLh"
           ]
         },
         "static-product-card": {
@@ -1114,6 +1114,9 @@
           ]
         }
       },
+      "block_order": [
+        "button_TGNmqP"
+      ],
       "name": "t:names.products_grid",
       "settings": {
         "collection": "wheely-bags",
