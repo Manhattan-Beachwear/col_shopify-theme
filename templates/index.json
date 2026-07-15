@@ -934,7 +934,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>ETHAN EWING SIGNATURE TRACTION</h2>",
+                "text": "<h2>WHEELY BAGS</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -960,7 +960,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Designed and developed alongside Ethan Ewing, his fleet of performance traction pads offers something for every kind of surfer. PROTO 1.5 features moulded technology and our evolutionary nano-grip material, while Ethan's panel traction pays homage to boardshorts worn by power icons in the 90's. </p><p></p><p>Shop the full collection below.<br/><br/><br/></p>",
+                "text": "<p>Cart your quiver through airports and foreign lands with ease. Our wheely bags are built tough featuring lighter, stronger and more durable DIAMOND-TECH 2.0 fabric. </p><p>Designed for serious surf travel. </p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
