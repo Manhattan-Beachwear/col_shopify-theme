@@ -17,12 +17,11 @@
         "announcement_eBXTYf": {
           "type": "_announcement",
           "name": "t:names.announcement",
-          "disabled": true,
           "settings": {
-            "text": "Memorial Day Sale is <strong>Live</strong>. Use Code: <strong>MDW25</strong> for 25% Off Sitewide.",
+            "text": "<strong>WAREHOUSE CLOSED UNTIL 8/5</strong> - shipping delays expected.",
             "link": "",
             "font": "var(--font-body--family)",
-            "font_size": "1rem",
+            "font_size": "0.75rem",
             "weight": "",
             "letter_spacing": "normal",
             "case": "none"
@@ -84,6 +83,7 @@
             "menu_font_style": "regular",
             "type_font_primary_link": "subheading",
             "type_case_primary_link": "uppercase",
+            "dropdown_alignment": "left",
             "menu_style": "collection_images",
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
@@ -121,6 +121,7 @@
             "menu_font_style": "regular",
             "type_font_primary_link": "subheading",
             "type_case_primary_link": "none",
+            "dropdown_alignment": "left",
             "menu_style": "collection_images",
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
