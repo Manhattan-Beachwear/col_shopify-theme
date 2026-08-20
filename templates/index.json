@@ -423,7 +423,7 @@
                   "type": "button",
                   "name": "t:names.button",
                   "settings": {
-                    "label": "Watch Ep. 1",
+                    "label": "CHECK IT OUT",
                     "link": "shopify://blogs/news/ethan-ewing-in-stab-in-the-dark",
                     "open_in_new_tab": false,
                     "style_class": "button-secondary",
