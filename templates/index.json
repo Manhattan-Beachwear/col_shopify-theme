@@ -997,7 +997,105 @@
         "gap": 48,
         "color_scheme": "scheme-6",
         "padding-block-start": 48,
-        "padding-block-end": 20,
+        "padding-block-end": 10,
+        "enable_combined_listings": false,
+        "show_product_image_swatches": false,
+        "product_image_swatch_style": "circle",
+        "product_image_swatch_size": 48,
+        "show_horizontal_scroll": false
+      }
+    },
+    "collection_list_LebnXF": {
+      "type": "collection-list",
+      "blocks": {
+        "static-collection-card": {
+          "type": "_collection-card",
+          "name": "t:names.collection_card",
+          "static": true,
+          "settings": {
+            "placement": "on_image",
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
+            "collection_card_gap": 21,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0
+          },
+          "blocks": {
+            "collection_title_VpDePA": {
+              "type": "collection-title",
+              "name": "t:names.collection_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "custom",
+                "font": "var(--font-heading--family)",
+                "font_size": "1.125rem",
+                "line_height": "loose",
+                "letter_spacing": "loose",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#ffffff",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 8,
+                "padding-inline-end": 8
+              },
+              "blocks": {}
+            },
+            "collection-card-image": {
+              "type": "_collection-card-image",
+              "name": "t:names.collection_card_image",
+              "static": true,
+              "settings": {
+                "image_ratio": "square",
+                "hover_scale": false,
+                "toggle_overlay": true,
+                "overlay_color": "#00000040",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "collection_title_VpDePA"
+          ]
+        }
+      },
+      "name": "t:names.collections_grid",
+      "settings": {
+        "collection_list": [
+          "grom",
+          "surfears"
+        ],
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "columns": 2,
+        "mobile_columns": "2",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 24,
+        "bento_gap": 8,
+        "rows_gap": 24,
+        "max_collections": 4,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 48,
+        "color_scheme": "scheme-6",
+        "padding-block-start": 0,
+        "padding-block-end": 48,
         "enable_combined_listings": false,
         "show_product_image_swatches": false,
         "product_image_swatch_style": "circle",
@@ -1714,104 +1812,6 @@
         "padding-block-end": 48
       }
     },
-    "collection_list_LebnXF": {
-      "type": "collection-list",
-      "blocks": {
-        "static-collection-card": {
-          "type": "_collection-card",
-          "name": "t:names.collection_card",
-          "static": true,
-          "settings": {
-            "placement": "on_image",
-            "horizontal_alignment": "center",
-            "vertical_alignment": "center",
-            "collection_card_gap": 21,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0
-          },
-          "blocks": {
-            "collection_title_VpDePA": {
-              "type": "collection-title",
-              "name": "t:names.collection_title",
-              "settings": {
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "custom",
-                "font": "var(--font-heading--family)",
-                "font_size": "1.125rem",
-                "line_height": "loose",
-                "letter_spacing": "loose",
-                "case": "uppercase",
-                "wrap": "pretty",
-                "color": "var(--color-foreground-heading)",
-                "background": false,
-                "background_color": "#ffffff",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 8,
-                "padding-inline-end": 8
-              },
-              "blocks": {}
-            },
-            "collection-card-image": {
-              "type": "_collection-card-image",
-              "name": "t:names.collection_card_image",
-              "static": true,
-              "settings": {
-                "image_ratio": "square",
-                "hover_scale": false,
-                "toggle_overlay": true,
-                "overlay_color": "#00000040",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "collection_title_VpDePA"
-          ]
-        }
-      },
-      "name": "t:names.collections_grid",
-      "settings": {
-        "collection_list": [
-          "grom",
-          "surfears"
-        ],
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "columns": 2,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 24,
-        "bento_gap": 8,
-        "rows_gap": 24,
-        "max_collections": 4,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 48,
-        "color_scheme": "scheme-6",
-        "padding-block-start": 0,
-        "padding-block-end": 48,
-        "enable_combined_listings": false,
-        "show_product_image_swatches": false,
-        "product_image_swatch_style": "circle",
-        "product_image_swatch_size": 48,
-        "show_horizontal_scroll": false
-      }
-    },
     "section_VJtqXA": {
       "type": "section",
       "blocks": {
@@ -1934,12 +1934,12 @@
     "section_ChrATT",
     "section_pdWGVx",
     "collection_list_8yKQwL",
+    "collection_list_LebnXF",
     "section_z4iDAB",
     "section_7YCjBa",
     "product_list_DmmaD8",
     "section_T8HV3x",
     "featured_blog_posts_CGkFC7",
-    "collection_list_LebnXF",
     "section_VJtqXA"
   ]
 }
