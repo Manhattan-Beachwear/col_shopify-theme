@@ -1263,7 +1263,7 @@
         "collection": "wheely-bags",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 12,
+        "max_products": 8,
         "columns": 3,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
