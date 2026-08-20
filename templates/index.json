@@ -63,7 +63,7 @@
           "name": "t:names.slide",
           "settings": {
             "media_type_1": "image",
-            "image_1": "shopify://shop_images/SHORTBOARD_TRIPLE_website_2880x1620_2.jpg",
+            "image_1": "shopify://shop_images/RELIANCE20_AUGUST_WEBSITE_SLIDER.jpg",
             "image_1_mobile": "shopify://shop_images/SHORTBOARD_TRIPLE_9X16_2_1.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -127,7 +127,7 @@
                 "text_JketLa": {
                   "type": "text",
                   "settings": {
-                    "text": "<p><strong>boardbags built for punisment</strong></p>",
+                    "text": "<p><strong>DUTY RATED LEASHES</strong></p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -153,7 +153,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p>Designed with serious surf travel in mind</p>",
+                    "text": "<p>Get the right leash for the right waves</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -179,7 +179,7 @@
                   "type": "button",
                   "settings": {
                     "label": "Explore",
-                    "link": "shopify://products/shortboard-triple-black-silver-63",
+                    "link": "shopify://collections/reliance-2-0",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "width": "fit-content",
