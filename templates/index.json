@@ -608,6 +608,33 @@
               },
               "blocks": {}
             },
+            "variant_title_xeYTJ7": {
+              "type": "variant-title",
+              "name": "t:names.variant_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "center",
+                "type_preset": "custom",
+                "font": "var(--font-body--family)",
+                "font_size": "0.75rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "uppercase",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "custom_color": "#000000C2",
+                "font_style": "normal",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "price_8fqihB": {
               "type": "price",
               "name": "t:names.product_price",
@@ -635,6 +662,7 @@
           "block_order": [
             "product_card_gallery_BU33yQ",
             "product_title_jqpRBp",
+            "variant_title_xeYTJ7",
             "price_8fqihB"
           ]
         }
@@ -906,7 +934,7 @@
                 "alignment": "center",
                 "type_preset": "custom",
                 "font": "var(--font-heading--family)",
-                "font_size": "1rem",
+                "font_size": "1.125rem",
                 "line_height": "loose",
                 "letter_spacing": "loose",
                 "case": "uppercase",
@@ -956,7 +984,7 @@
         ],
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "columns": 4,
+        "columns": 2,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
         "columns_gap": 24,
