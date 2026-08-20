@@ -12,59 +12,13 @@
     "slideshow_nngMxP": {
       "type": "slideshow",
       "blocks": {
-        "slide_8niTwi": {
-          "type": "_slide",
-          "name": "t:names.slide",
-          "settings": {
-            "media_type_1": "image",
-            "image_1": "shopify://shop_images/1PACKED_EP4_WEBSITE_HEADER_2880X1620_1.jpg",
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "button_qweVJH": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "WATCH NOW",
-                "link": "https://www.creatures-usa.com/pages/packed",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "button_qweVJH"
-          ]
-        },
         "slide_bcei9q": {
           "type": "_slide",
           "name": "t:names.slide",
           "settings": {
             "media_type_1": "image",
             "image_1": "shopify://shop_images/RELIANCE20_AUGUST_WEBSITE_SLIDER.jpg",
-            "image_1_mobile": "shopify://shop_images/SHORTBOARD_TRIPLE_9X16_2_1.jpg",
+            "image_1_mobile": "shopify://shop_images/RELIANCE20_AUGUST_WEBSITE_SLIDER_MOBILE.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -72,7 +26,7 @@
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-end",
             "vertical_alignment_flex_direction_column": "flex-end",
-            "gap": 12,
+            "gap": 0,
             "inherit_color_scheme": true,
             "color_scheme": "",
             "toggle_overlay": true,
@@ -93,9 +47,9 @@
                 "horizontal_alignment": "flex-start",
                 "vertical_alignment": "center",
                 "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-end",
-                "vertical_alignment_flex_direction_column": "flex-end",
-                "gap": 12,
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 20,
                 "width": "fit-content",
                 "custom_width": 50,
                 "width_mobile": "fit-content",
@@ -115,7 +69,7 @@
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
-                "link": "shopify://collections/boardcovers",
+                "link": "shopify://collections/reliance-2-0",
                 "open_in_new_tab": true,
                 "placeholder": "",
                 "padding-block-start": 48,
@@ -127,7 +81,7 @@
                 "text_JketLa": {
                   "type": "text",
                   "settings": {
-                    "text": "<p><strong>DUTY RATED LEASHES</strong></p>",
+                    "text": "<p><strong>DUTY RATED LEASHES </strong>⛓️</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -178,14 +132,14 @@
                 "button_tYW8Yz": {
                   "type": "button",
                   "settings": {
-                    "label": "Explore",
+                    "label": "SHOP NOW",
                     "link": "shopify://collections/reliance-2-0",
                     "open_in_new_tab": true,
                     "style_class": "button-secondary",
                     "width": "fit-content",
                     "custom_width": 100,
-                    "width_mobile": "custom",
-                    "custom_width_mobile": 54
+                    "width_mobile": "fit-content",
+                    "custom_width_mobile": 50
                   },
                   "blocks": {}
                 }
@@ -199,6 +153,52 @@
           },
           "block_order": [
             "group_jNMGMy"
+          ]
+        },
+        "slide_8niTwi": {
+          "type": "_slide",
+          "name": "t:names.slide",
+          "settings": {
+            "media_type_1": "image",
+            "image_1": "shopify://shop_images/1PACKED_EP4_WEBSITE_HEADER_2880X1620_1.jpg",
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "button_qweVJH": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "WATCH NOW",
+                "link": "https://www.creatures-usa.com/pages/packed",
+                "open_in_new_tab": false,
+                "style_class": "button-secondary",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_qweVJH"
           ]
         },
         "slide_tazVJa": {
@@ -348,8 +348,8 @@
         }
       },
       "block_order": [
-        "slide_8niTwi",
         "slide_bcei9q",
+        "slide_8niTwi",
         "slide_tazVJa"
       ],
       "name": "Hero Slideshow",
@@ -359,8 +359,8 @@
         "slideshow_controls_style": "dots",
         "autoplay": false,
         "autoplay_speed": 3,
-        "section_height": "medium",
-        "section_height_custom": 50,
+        "section_height": "large",
+        "section_height_custom": 70,
         "section_width": "full-width",
         "toggle_overlay": false,
         "overlay_color": "#00000026",
