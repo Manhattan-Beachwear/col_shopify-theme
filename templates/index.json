@@ -520,7 +520,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2><strong>NEW IN: TRACTION</strong></h2><p>A fresh new drop of traction pads to ensure your summertime quiver is dialed with grip.</p>",
+                "text": "<h2><strong>BEST SELLERS</strong></h2><p>Top gear to optimize your fall surf missions</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -580,6 +580,24 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "swatches_JHnTi8": {
+              "type": "swatches",
+              "name": "t:names.swatches",
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0,
+                "show_product_image_swatches": false,
+                "product_image_swatch_style": "square",
+                "product_image_swatch_size": 48,
+                "show_horizontal_scroll": false
               },
               "blocks": {}
             },
@@ -661,6 +679,7 @@
           },
           "block_order": [
             "product_card_gallery_BU33yQ",
+            "swatches_JHnTi8",
             "product_title_jqpRBp",
             "variant_title_xeYTJ7",
             "price_8fqihB"
@@ -669,7 +688,7 @@
       },
       "name": "t:names.products_grid",
       "settings": {
-        "collection": "new",
+        "collection": "best-sellers-fall-2026",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 12,
@@ -686,8 +705,8 @@
         "color_scheme": "scheme-1",
         "padding-block-start": 48,
         "padding-block-end": 48,
-        "enable_combined_listings": false,
-        "show_product_image_swatches": false,
+        "enable_combined_listings": true,
+        "show_product_image_swatches": true,
         "product_image_swatch_style": "circle",
         "product_image_swatch_size": 48,
         "show_horizontal_scroll": false
