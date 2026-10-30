@@ -9,9 +9,9 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/CREATURES_2025_PRIMARY_BLACK_5.png",
+    "logo": "shopify://shop_images/CREATURES_WEBSITE_HEADER_2.png",
     "logo_inverse": "shopify://shop_images/CREATURES_WEBSITE_HEADER.png",
-    "logo_height": 50,
+    "logo_height": 100,
     "logo_height_mobile": 50,
     "favicon": "shopify://shop_images/CREATURES_WEBSITE_HEADER_BLACK.png",
     "type_body_font": "libre_franklin_n4",
