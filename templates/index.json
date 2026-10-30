@@ -712,24 +712,23 @@
         "show_horizontal_scroll": false
       }
     },
-    "section_ChrATT": {
-      "type": "section",
+    "marquee_k8Ur9m": {
+      "type": "marquee",
       "blocks": {
-        "text_qYFNpH": {
+        "text_xbYXJq": {
           "type": "text",
-          "name": "t:names.heading",
           "settings": {
             "text": "<h2><strong>PREMIUM SURF HARDWARE. BUILT FOR PUNISHMENT. SINCE 1987.</strong></h2>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
             "type_preset": "custom",
-            "font": "var(--font-heading--family)",
-            "font_size": "1.25rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
+            "font": "var(--font-subheading--family)",
+            "font_size": "1rem",
+            "line_height": "loose",
+            "letter_spacing": "loose",
             "case": "none",
-            "wrap": "pretty",
+            "wrap": "nowrap",
             "color": "var(--color-foreground)",
             "background": false,
             "background_color": "#00000026",
@@ -743,36 +742,15 @@
         }
       },
       "block_order": [
-        "text_qYFNpH"
+        "text_xbYXJq"
       ],
-      "name": "t:names.rich_text_section",
+      "name": "t:names.marquee_section",
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 0,
-        "section_width": "full-width",
-        "section_height": "custom",
-        "section_height_custom": 20,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "image_zoom_fade_animation": false,
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "movement_direction": "normal",
+        "color_scheme": "scheme-5",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 24
       }
     },
     "section_pdWGVx": {
@@ -1949,7 +1927,7 @@
   "order": [
     "slideshow_nngMxP",
     "product_list_F8R6FQ",
-    "section_ChrATT",
+    "marquee_k8Ur9m",
     "section_pdWGVx",
     "collection_list_8yKQwL",
     "collection_list_LebnXF",
