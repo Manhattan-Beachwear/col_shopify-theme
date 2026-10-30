@@ -662,7 +662,7 @@
                 "show_tax_info": false,
                 "type_preset": "custom",
                 "width": "100%",
-                "alignment": "center",
+                "alignment": "left",
                 "font": "var(--font-body--family)",
                 "font_size": "0.75rem",
                 "line_height": "normal",
@@ -1400,7 +1400,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2><strong>WHEELY BAGS</strong></h2>",
+                "text": "<h2><strong>SURFBOARD TRAVEL BAGS</strong></h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -1426,7 +1426,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Cart your quiver through airports and foreign lands with ease. Our wheely bags are built tough featuring lighter, stronger and more durable DIAMOND-TECH 2.0 fabric. </p><p>Designed for serious surf travel. </p>",
+                "text": "<p>Cart your quiver through airports and foreign lands with ease. Whether you're headed on a strike mission with two boards or lugging the entire quiver.&nbsp;</p><p>Our bags are built tough featuring lighter, stronger and more durable DIAMOND-TECH 2.0 fabric. Designed for serious surf travel.&nbsp;</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "center",
@@ -1568,10 +1568,9 @@
             "swatches_M3FR8K": {
               "type": "swatches",
               "name": "t:names.swatches",
-              "disabled": true,
               "settings": {
-                "product_swatches_alignment": "center",
-                "product_swatches_alignment_mobile": "center",
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
                 "hide_padding": false,
                 "product_swatches_padding_top": 4,
                 "product_swatches_padding_bottom": 0,
