@@ -1395,6 +1395,7 @@
             "swatches_M3FR8K": {
               "type": "swatches",
               "name": "t:names.swatches",
+              "disabled": true,
               "settings": {
                 "product_swatches_alignment": "flex-start",
                 "product_swatches_alignment_mobile": "flex-start",
@@ -1425,10 +1426,10 @@
       ],
       "name": "t:names.products_grid",
       "settings": {
-        "collection": "wheely-bags",
+        "collection": "surfboard-travel-bags",
         "layout_type": "grid",
         "carousel_on_mobile": false,
-        "max_products": 8,
+        "max_products": 16,
         "columns": 3,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
